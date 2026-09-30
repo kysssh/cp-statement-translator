@@ -11,7 +11,7 @@ export interface ProtectionConfig {
 }
 
 export type Slot =
-  | { kind: 'opaque'; node: Node } // nodo congelado (fórmula, <pre>, imagen)
+  | { kind: 'opaque'; nodes: Node[] } // nodos congelados (fórmula, <pre>, imagen)
   | { kind: 'inline'; el: Element }; // envoltorio de formato con texto dentro
 
 export interface Extraction {
@@ -38,7 +38,30 @@ export function extract(block: Element, cfg: ProtectionConfig): Extraction {
     if (!cfg.rawMathPattern) return text;
     // Regex propio: una global compartida arrastraría `lastIndex` entre llamadas.
     const re = new RegExp(cfg.rawMathPattern.source, cfg.rawMathPattern.flags.includes('g') ? cfg.rawMathPattern.flags : cfg.rawMathPattern.flags + 'g');
-    return text.replace(re, (match) => openToken(alloc({ kind: 'opaque', node: document.createTextNode(match) })));
+    return text.replace(re, (match) => openToken(alloc({ kind: 'opaque', nodes: [document.createTextNode(match)] })));
+  };
+
+  const isOpaque = (n: Node | undefined): n is Element =>
+    !!n && n.nodeType === Node.ELEMENT_NODE && (n as Element).matches(cfg.opaqueSelector);
+
+  /**
+   * Nodos opacos CONTIGUOS (sin nada entre ellos) forman un solo marcador.
+   * Codeforces renderiza cada fórmula como .MathJax_Preview + .MathJax + <script>
+   * pegados: tres marcadores seguidos invitan al traductor a mezclarlos.
+   */
+  const walkChildren = (parent: Node): string => {
+    const kids = Array.from(parent.childNodes);
+    let out = '';
+    for (let i = 0; i < kids.length; i++) {
+      if (isOpaque(kids[i])) {
+        const run: Node[] = [kids[i]];
+        while (isOpaque(kids[i + 1])) run.push(kids[++i]);
+        out += openToken(alloc({ kind: 'opaque', nodes: run }));
+      } else {
+        out += walk(kids[i]);
+      }
+    }
+    return out;
   };
 
   const walk = (node: Node): string => {
@@ -48,11 +71,11 @@ export function extract(block: Element, cfg: ProtectionConfig): Extraction {
 
     // Opaco primero: gana sobre inline y NO se desciende (aquí vive la garantía).
     if (el.matches(cfg.opaqueSelector)) {
-      return openToken(alloc({ kind: 'opaque', node: el }));
+      return openToken(alloc({ kind: 'opaque', nodes: [el] }));
     }
     if (el.tagName === 'BR') return ' ';
 
-    const inner = Array.from(el.childNodes).map(walk).join('');
+    const inner = walkChildren(el);
 
     if (inner.trim() && el.matches(cfg.inlineSelector)) {
       const id = alloc({ kind: 'inline', el });
@@ -61,7 +84,7 @@ export function extract(block: Element, cfg: ProtectionConfig): Extraction {
     return inner; // estructural: transparente
   };
 
-  const text = Array.from(block.childNodes).map(walk).join('');
+  const text = walkChildren(block);
   return { text: text.replace(/\s+/g, ' ').trim(), slots };
 }
 
@@ -93,7 +116,7 @@ export function restore(translated: string, slots: Map<number, Slot>): DocumentF
     if (slot.kind === 'opaque') {
       if (closing || used.has(id)) continue;
       used.add(id);
-      top().appendChild(slot.node);
+      for (const n of slot.nodes) top().appendChild(n);
       continue;
     }
 

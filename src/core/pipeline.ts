@@ -1,49 +1,79 @@
 import { extract, restore, type ProtectionConfig } from './protector';
 import { isValid, normalizeTokens } from './validator';
 
+export interface TranslateOpts {
+  /** Reintento: el traductor debe evitar enviar los marcadores (o ser más estricto). */
+  isolated?: boolean;
+}
+
 /** Traduce N textos → N textos, mismo orden. Lo implementa el content script. */
-export type TranslateFn = (texts: string[]) => Promise<string[]>;
+export type TranslateFn = (texts: string[], opts?: TranslateOpts) => Promise<string[]>;
+
+/** Caché de traducciones YA validadas, indexada por los textos fuente. */
+export interface BlockCache {
+  load(sourceTexts: string[]): Promise<string[] | null>;
+  save(sourceTexts: string[], outs: string[]): Promise<void>;
+}
 
 export interface PipelineResult {
   translated: number;
   skipped: Element[];
+  fromCache: boolean;
 }
 
 /**
- * extract → translate → validar → (reintento aislado) → restore.
+ * extract → (caché) → translate → validar → (reintento aislado) → restore.
  * Un bloque inválido tras el reintento se queda en su idioma original, marcado.
- * Si `translate` lanza, no se ha tocado ningún bloque y el error sube al llamador.
+ * Si `translate` lanza en la primera pasada, no se ha tocado ningún bloque.
  */
 export async function translateBlocks(
   blocks: Element[],
   cfg: ProtectionConfig,
   translate: TranslateFn,
+  cache?: BlockCache,
 ): Promise<PipelineResult> {
   const extractions = blocks.map((b) => extract(b, cfg));
-  const raw = await translate(extractions.map((e) => e.text));
-  if (raw.length !== blocks.length) throw new Error('La traducción no devolvió el número de bloques esperado.');
+  const sources = extractions.map((e) => e.text);
 
-  const outs: (string | null)[] = raw.map((o, i) => {
-    const fixed = normalizeTokens(o);
-    return isValid(extractions[i].text, fixed) ? fixed : null;
-  });
+  let outs: (string | null)[] | null = null;
+  let fromCache = false;
 
-  // Un reintento aislado por cada bloque inválido.
-  for (let i = 0; i < outs.length; i++) {
-    if (outs[i] !== null) continue;
-    try {
-      const [again] = await translate([extractions[i].text]);
-      const fixed = normalizeTokens(again ?? '');
-      if (isValid(extractions[i].text, fixed)) outs[i] = fixed;
-    } catch {
-      /* se queda sin traducir */
+  // La caché nunca se da por buena sin revalidar.
+  const cached = await cache?.load(sources);
+  if (cached && cached.length === blocks.length && cached.every((o, i) => isValid(sources[i], o))) {
+    outs = cached;
+    fromCache = true;
+  }
+
+  if (!outs) {
+    const raw = await translate(sources);
+    if (raw.length !== blocks.length) throw new Error('La traducción no devolvió el número de bloques esperado.');
+
+    outs = raw.map((o, i) => {
+      const fixed = normalizeTokens(o);
+      return isValid(sources[i], fixed) ? fixed : null;
+    });
+
+    // Un reintento aislado por cada bloque inválido.
+    for (let i = 0; i < outs.length; i++) {
+      if (outs[i] !== null) continue;
+      try {
+        const [again] = await translate([sources[i]], { isolated: true });
+        const fixed = normalizeTokens(again ?? '');
+        if (isValid(sources[i], fixed)) outs[i] = fixed;
+      } catch {
+        /* se queda sin traducir */
+      }
     }
+
+    // Solo se cachea si TODO quedó bien: nunca se congela un fallo.
+    if (outs.every((o) => o !== null)) await cache?.save(sources, outs as string[]);
   }
 
   const skipped: Element[] = [];
   let translated = 0;
   blocks.forEach((block, i) => {
-    const out = outs[i];
+    const out = outs![i];
     if (out === null) {
       block.classList.add('cpt-skipped');
       block.setAttribute('title', 'No se pudo traducir con seguridad');
@@ -55,5 +85,5 @@ export async function translateBlocks(
     translated++;
   });
 
-  return { translated, skipped };
+  return { translated, skipped, fromCache };
 }

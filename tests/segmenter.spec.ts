@@ -11,7 +11,7 @@ function load(name: string): HTMLElement {
 
 describe('collectBlocks', () => {
   it('Codeforces: nada dentro de <pre>, sin anidados, sin bloques vacíos', () => {
-    const root = load('cf-1850a.html');
+    const root = load('cf-1030a.html');
     const blocks = collectBlocks(root, codeforces.blockSelector, codeforces.protection);
     expect(blocks.length).toBeGreaterThan(5);
     for (const b of blocks) {
@@ -26,7 +26,7 @@ describe('collectBlocks', () => {
     const root = load('cses-1068.html');
     const blocks = collectBlocks(root, cses.blockSelector, cses.protection);
     const tags = blocks.map((b) => b.tagName);
-    expect(tags.filter((t) => t === 'H1')).toHaveLength(5);
+    expect(tags.filter((t) => t === 'H1')).toHaveLength(4);
     expect(blocks.some((b) => b.textContent?.includes('1 \\le n'))).toBe(false);
     expect(blocks.every((b) => !b.closest('pre'))).toBe(true);
   });

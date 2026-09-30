@@ -5,7 +5,7 @@ export const codeforces: SiteAdapter = {
   matches: (loc) => loc.hostname.endsWith('codeforces.com'),
   findStatementRoot: (doc) => doc.querySelector<HTMLElement>('.problem-statement'),
 
-  blockSelector: 'p, li, .section-title, .property-title, .header .title',
+  blockSelector: 'p, li, .section-title, .property-title, .header .title, .sample-test .title',
 
   protection: {
     // .tex-span envuelve cada fórmula ($$$...$$$) antes y después de MathJax;
@@ -15,6 +15,7 @@ export const codeforces: SiteAdapter = {
       '.tex-span', '.tex-font-style-tt',
       '.MathJax', '.MathJax_Preview', '.MathJax_Display', '.MathJax_SVG', '.MathJax_CHTML',
       'mjx-container', '.mjx-chtml',
+      '.input-output-copier',
       'script', 'style',
       '.katex',
       'img', 'svg',

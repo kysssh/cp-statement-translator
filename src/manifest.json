@@ -4,6 +4,14 @@
     "version": "0.1.0",
     "description": "Traduce enunciados de jueces online preservando LaTeX y bloques de código.",
     "permissions": ["storage"],
+    "host_permissions": [
+        "https://api.groq.com/*",
+        "https://generativelanguage.googleapis.com/*",
+        "https://api.anthropic.com/*"
+    ],
+    "background": { "service_worker": "src/background/service-worker.ts", "type": "module" },
+    "options_page": "src/options/options.html",
+    "action": { "default_title": "Traducir enunciado" },
     "content_scripts": [
         {
             "matches": [

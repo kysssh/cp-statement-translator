@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { extract, restore } from '../src/core/protector';
 import { isValid, normalizeTokens } from '../src/core/validator';
@@ -9,8 +9,12 @@ import { codeforces } from '../src/adapters/codeforces';
 import { cses } from '../src/adapters/cses';
 import type { SiteAdapter } from '../src/adapters/types';
 
+const real = (f: string) => existsSync(`tests/fixtures/${f}`) && statSync(`tests/fixtures/${f}`).size > 0;
+
 const FIXTURES: [string, SiteAdapter][] = [
-  ['cf-1850a.html', codeforces],
+  ['cf-1030a.html', codeforces],
+  ['cf-formulas.html', codeforces],
+  ...((real('cf-2268e.html') ? [['cf-2268e.html', codeforces]] : []) as [string, SiteAdapter][]),
   ['cses-1068.html', cses],
 ];
 
@@ -102,10 +106,11 @@ describe('restore', () => {
   it('reconstruye en orden: "Hola ⟦0⟧ mundo"', () => {
     const p = document.createElement('p');
     p.innerHTML = 'x <span class="tex-span">m</span> y';
+    const math = p.querySelector('.tex-span'); // restore lo MUEVE fuera de <p>
     const { slots } = extract(p, cfg);
     const frag = restore('Hola ⟦0⟧ mundo', slots);
     expect(frag.childNodes).toHaveLength(3);
-    expect(frag.childNodes[1]).toBe(p.querySelector('.tex-span'));
+    expect(frag.childNodes[1]).toBe(math);
   });
 
   it('tolera marcadores inventados, cierres sueltos y aperturas sin cierre', () => {
@@ -174,5 +179,65 @@ describe('fnv1a', () => {
   it('valores conocidos', () => {
     expect(fnv1a('')).toBe('811c9dc5');
     expect(fnv1a('a')).toBe('e40c292c');
+  });
+});
+
+describe('caché del pipeline', () => {
+  const cfg = codeforces.protection;
+  const setup = () => {
+    document.body.innerHTML = '<div><p>Given <span class="tex-span">n</span> numbers.</p></div>';
+    return Array.from(document.querySelectorAll('p'));
+  };
+  const memory = () => {
+    const store = new Map<string, string[]>();
+    return {
+      store,
+      load: async (t: string[]) => store.get(t.join('|')) ?? null,
+      save: async (t: string[], o: string[]) => void store.set(t.join('|'), o),
+    };
+  };
+
+  it('segunda visita: cero llamadas al traductor', async () => {
+    const cache = memory();
+    let calls = 0;
+    const tr = async (t: string[]) => (calls++, t.map((s) => `[ES] ${s}`));
+    await translateBlocks(setup(), cfg, tr, cache);
+    const res = await translateBlocks(setup(), cfg, tr, cache);
+    expect(calls).toBe(1);
+    expect(res.fromCache).toBe(true);
+    expect(document.querySelector('.tex-span')?.textContent).toBe('n');
+  });
+
+  it('entrada de caché corrupta se ignora; los fallos no se cachean', async () => {
+    const cache = memory();
+    cache.store.set('Given ⟦0⟧ numbers.', ['sin marcadores']);
+    let calls = 0;
+    await translateBlocks(setup(), cfg, async (t) => (calls++, t.map((s) => `[ES] ${s}`)), cache);
+    expect(calls).toBe(1);
+
+    const bad = memory();
+    await translateBlocks(setup(), cfg, async (t) => t.map(() => 'roto'), bad);
+    expect(bad.store.size).toBe(0);
+  });
+});
+
+describe('Codeforces con MathJax renderizado', () => {
+  it('cada fórmula (Preview + MathJax + script) es UN solo marcador', () => {
+    const root = load('cf-formulas.html');
+    const blocks = collectBlocks(root, codeforces.blockSelector, codeforces.protection);
+    let formulas = 0;
+    for (const b of blocks) {
+      const { text, slots } = extract(b, codeforces.protection);
+      expect(text).not.toMatch(/⟦\d+⟧⟦\d+⟧/);
+      for (const s of slots.values()) if (s.kind === 'opaque' && s.nodes.length === 3) formulas++;
+    }
+    expect(formulas).toBeGreaterThan(10);
+  });
+
+  it('el título de los ejemplos se traduce sin arrastrar el botón Copy', () => {
+    const root = load('cf-1030a.html');
+    const blocks = collectBlocks(root, codeforces.blockSelector, codeforces.protection);
+    const t = blocks.find((b) => b.matches('.sample-test .title'))!;
+    expect(extract(t, codeforces.protection).text).toMatch(/^Input ?⟦\d+⟧$/);
   });
 });

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CP Statement Translator — Opciones</title>
+    <style>
+      body { font: 14px/1.5 system-ui, sans-serif; max-width: 520px; margin: 32px auto; padding: 0 16px; }
+      label { display: block; margin: 16px 0 4px; font-weight: 600; }
+      select, input { width: 100%; padding: 6px; box-sizing: border-box; }
+      button { margin-top: 16px; padding: 6px 14px; }
+      #status { margin-top: 12px; }
+      .hidden { display: none; }
+    </style>
+  </head>
+  <body>
+    <h1>Opciones</h1>
+    <label for="provider">Proveedor de traducción</label>
+    <select id="provider"></select>
+
+    <div id="keyRow" class="hidden">
+      <label for="apiKey">API key</label>
+      <input id="apiKey" type="password" autocomplete="off" />
+      <label for="model">Modelo (opcional)</label>
+      <input id="model" type="text" placeholder="por defecto" />
+    </div>
+
+    <button id="save">Guardar</button>
+    <div id="status" role="status"></div>
+    <script type="module" src="./options.ts"></script>
+  </body>
+</html>
