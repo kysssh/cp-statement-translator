@@ -1,13 +1,16 @@
 {
   "name": "cp-statement-translator",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Extensión de Chrome que traduce enunciados de Codeforces y CSES al español sin tocar fórmulas ni código.",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "vitest run",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "zip": "npm run build && tar -a -cf cp-statement-translator-v1.0.0.zip -C dist .",
+    "check": "tsc --noEmit && vitest run"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.0.0-beta.33",

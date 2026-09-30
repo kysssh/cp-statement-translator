@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Proyecto
+*.zip
+.env
+*.pem
+tests/fixtures/*.raw
