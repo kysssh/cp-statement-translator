@@ -1,0 +1,20 @@
+.cpt-button {
+  display: inline-block;
+  margin: 6px 0;
+  padding: 6px 14px;
+  border: 1px solid #3b5998;
+  border-radius: 4px;
+  background: #3b5998;
+  color: #fff;
+  font: 600 13px/1.4 system-ui, sans-serif;
+  cursor: pointer;
+}
+.cpt-button:hover:not(:disabled) { background: #2d4373; }
+.cpt-button:disabled { opacity: 0.7; cursor: progress; }
+.cpt-button[data-state='done'] { background: #2e7d32; border-color: #2e7d32; }
+.cpt-button[data-state='error'] { background: #c62828; border-color: #c62828; }
+
+.cpt-skipped {
+  outline: 1px dashed #c62828;
+  outline-offset: 2px;
+}

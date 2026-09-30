@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "CP Statement Translator",
+    "version": "0.1.0",
+    "description": "Traduce enunciados de jueces online preservando LaTeX y bloques de código.",
+    "permissions": ["storage"],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://codeforces.com/problemset/problem/*",
+                "https://codeforces.com/contest/*/problem/*",
+                "https://codeforces.com/gym/*/problem/*",
+                "https://codeforces.com/problemset/gymProblem/*",
+                "https://cses.fi/problemset/task/*"
+            ],
+            "js": ["src/content/index.ts"],
+            "css": ["src/content/ui.css"],
+            "run_at": "document_idle"
+        }
+    ]
+}
