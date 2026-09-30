@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CP Statement Translator</title>
+    <link rel="stylesheet" href="../ui/theme.css" />
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">T</div>
+      <div>
+        <h1>CP Translator</h1>
+        <p class="sub">Codeforces · CSES</p>
+      </div>
+    </header>
+
+    <section>
+      <h2>Motor activo</h2>
+      <div id="list" class="list" role="radiogroup" aria-label="Motor de traducción"></div>
+    </section>
+
+    <section>
+      <h2>Modo oscuro</h2>
+      <div id="themeSlot"></div>
+    </section>
+
+    <div id="warn" class="status err" hidden></div>
+
+    <footer>
+      <button id="cache" class="btn" type="button"></button>
+      <button id="open" class="btn btn-primary" type="button">Ajustes</button>
+    </footer>
+    <script type="module" src="./popup.ts"></script>
+  </body>
+</html>

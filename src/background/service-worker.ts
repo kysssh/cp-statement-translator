@@ -1,11 +1,15 @@
 import { getSettings } from '../shared/settings';
 import { PROVIDERS, DEFAULT_PROVIDER } from './providers';
 import { HttpError } from '../shared/llm';
-import type { TranslateRequest, TranslateResponse } from '../shared/messages';
+import type { OpenOptionsRequest, TranslateRequest, TranslateResponse } from '../shared/messages';
 
 // Único contexto que ve las API keys y hace peticiones de red.
 chrome.runtime.onMessage.addListener(
-  (msg: TranslateRequest, _sender, sendResponse: (r: TranslateResponse) => void) => {
+  (msg: TranslateRequest | OpenOptionsRequest, _sender, sendResponse: (r: TranslateResponse) => void) => {
+    if (msg?.type === 'OPEN_OPTIONS') {
+      void chrome.runtime.openOptionsPage();
+      return;
+    }
     if (msg?.type !== 'TRANSLATE') return;
 
     handle(msg)

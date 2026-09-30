@@ -1,12 +1,15 @@
+import './ui.css';
 import { resolveAdapter } from '../adapters';
 import type { SiteAdapter } from '../adapters/types';
 import { collectBlocks } from '../core/segmenter';
 import { whenMathReady } from '../core/mathjax';
 import { translateBlocks, type TranslateFn } from '../core/pipeline';
 import { chromeBuiltin } from '../background/providers/chrome-builtin';
-import { getProviderId } from '../shared/settings';
-import type { TranslateRequest, TranslateResponse } from '../shared/messages';
-import { mountButton, setButtonState, type ButtonState } from './button';
+import { getProviderId, setThemeMode } from '../shared/settings';
+import { providerName } from '../shared/provider-names';
+import type { OpenOptionsRequest, TranslateRequest, TranslateResponse } from '../shared/messages';
+import { mountUi, setThemeIcon, setUi, type Lang, type UiInfo } from './button';
+import { initDark, isDark, onDarkChange } from './dark';
 import { storageCache } from './cache';
 import { createView, snapshotBlocks, type TranslationView } from './toggle';
 
@@ -14,7 +17,7 @@ function makeTranslate(provider: string, cacheKey: string): TranslateFn {
   return async (texts, opts) => {
     // El traductor local vive en la página: sin red y sin claves.
     if (provider === 'chrome-builtin') {
-      return chromeBuiltin.translate(texts, { strict: opts?.isolated }, (m) => setButtonState('loading', m));
+      return chromeBuiltin.translate(texts, { strict: opts?.isolated }, (m) => setUi('loading', { message: m }));
     }
 
     const req: TranslateRequest = { type: 'TRANSLATE', blocks: texts, cacheKey, strict: opts?.isolated };
@@ -26,7 +29,7 @@ function makeTranslate(provider: string, cacheKey: string): TranslateFn {
 }
 
 let view: TranslationView | null = null;
-let doneNote: string | undefined;
+let doneInfo: UiInfo = {};
 
 async function main() {
   const adapter = resolveAdapter(location);
@@ -36,24 +39,28 @@ async function main() {
   if (!root) return;
 
   await whenMathReady();
-  mountButton(adapter.mountPoint(root), (state) => onClick(state, adapter, root));
+  mountUi(adapter.mountPoint(root), {
+    onTranslate: () => void translate(adapter, root),
+    onShow: showLang,
+    onTheme: () => void setThemeMode(isDark() ? 'off' : 'on'),
+    onSettings: () => {
+      const req: OpenOptionsRequest = { type: 'OPEN_OPTIONS' };
+      void chrome.runtime.sendMessage(req);
+    },
+  });
+  void initDark();
+  onDarkChange(setThemeIcon);
 }
 
-function onClick(state: ButtonState, adapter: SiteAdapter, root: HTMLElement) {
-  if (state === 'loading') return;
-  if (state === 'done' && view) {
-    view.showOriginal();
-    setButtonState('original', 'Mostrando el enunciado original');
-  } else if (state === 'original' && view) {
-    view.showTranslated();
-    setButtonState('done', doneNote);
-  } else {
-    void translate(adapter, root);
-  }
+function showLang(lang: Lang) {
+  if (!view) return;
+  if (lang === 'en') view.showOriginal();
+  else view.showTranslated();
+  setUi('done', { ...doneInfo, lang });
 }
 
 async function translate(adapter: SiteAdapter, root: HTMLElement) {
-  setButtonState('loading');
+  setUi('loading');
   try {
     const blocks = collectBlocks(root, adapter.blockSelector, adapter.protection);
     const provider = await getProviderId();
@@ -68,13 +75,21 @@ async function translate(adapter: SiteAdapter, root: HTMLElement) {
     );
 
     view = createView(blocks, snapshot, result.skipped);
-    doneNote = [
-      result.fromCache ? 'Desde la caché.' : '',
-      result.skipped.length ? `${result.skipped.length} bloque(s) sin traducir (borde punteado).` : '',
-    ].filter(Boolean).join(' ') || undefined;
-    setButtonState('done', doneNote);
+    doneInfo = {
+      provider: providerName(provider),
+      note:
+        [
+          result.fromCache ? 'Desde la caché.' : '',
+          result.skipped.length
+            ? `${result.skipped.length} bloque(s) se dejaron en inglés por seguridad (borde punteado).`
+            : '',
+        ]
+          .filter(Boolean)
+          .join(' ') || undefined,
+    };
+    setUi('done', { ...doneInfo, lang: 'es' });
   } catch (e) {
-    setButtonState('error', e instanceof Error ? e.message : String(e));
+    setUi('error', { message: e instanceof Error ? e.message : String(e) });
   }
 }
 

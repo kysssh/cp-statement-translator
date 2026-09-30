@@ -1,0 +1,24 @@
+body { width: 340px; padding: 16px; display: grid; gap: 14px; }
+header { display: flex; align-items: center; gap: 12px; }
+header h1 { font-size: 16px; letter-spacing: -0.01em; }
+.sub { color: var(--muted); font-size: 12.5px; }
+h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 8px; }
+
+.list { display: grid; gap: 6px; }
+.item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; text-align: left; width: 100%;
+  font: inherit; color: inherit; cursor: pointer;
+  background: var(--surface); border: 1.5px solid var(--border); border-radius: 12px;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.item:hover { border-color: var(--accent); }
+.item[aria-checked='true'] { border-color: var(--accent); background: var(--accent-soft); }
+.item .info { flex: 1; display: grid; }
+.item .n { font-weight: 700; }
+.item .s { font-size: 12px; color: var(--muted); }
+.item .radio { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border); }
+.item[aria-checked='true'] .radio { border: 5px solid var(--accent); }
+
+footer { display: flex; gap: 8px; }
+footer .btn { flex: 1; justify-content: center; }

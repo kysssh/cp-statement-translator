@@ -1,0 +1,24 @@
+/* Modo oscuro por inversión (Codeforces). CSES usa su propia hoja oscura. */
+html.cpt-dark {
+  background: #fff; /* se invierte a negro */
+  filter: invert(1) hue-rotate(180deg);
+}
+/* Lo que no debe invertirse: medios y fotos de perfil */
+html.cpt-dark video,
+html.cpt-dark canvas,
+html.cpt-dark iframe,
+html.cpt-dark img[src*='userpic'],
+html.cpt-dark img[src*='titlePhoto'],
+html.cpt-dark .avatar img {
+  filter: invert(1) hue-rotate(180deg);
+}
+/* La barra del traductor recupera sus colores (dobles inversión) con paleta oscura */
+html.cpt-dark .cpt-root {
+  filter: invert(1) hue-rotate(180deg);
+  --cpt-bg: #171a24;
+  --cpt-border: #2b3042;
+  --cpt-text: #eceff6;
+  --cpt-muted: #98a2b8;
+  --cpt-err: #ff8c78;
+  --cpt-err-bg: #3a1d19;
+}

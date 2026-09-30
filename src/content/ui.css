@@ -1,20 +1,131 @@
-.cpt-button {
-  display: inline-block;
-  margin: 6px 0;
-  padding: 6px 14px;
-  border: 1px solid #3b5998;
-  border-radius: 4px;
-  background: #3b5998;
-  color: #fff;
-  font: 600 13px/1.4 system-ui, sans-serif;
-  cursor: pointer;
+.cpt-root {
+  --cpt-accent: #5b5bf0;
+  --cpt-accent-2: #8b5cf6;
+  --cpt-bg: #ffffff;
+  --cpt-border: #dfe3ee;
+  --cpt-text: #1b1f2a;
+  --cpt-muted: #667085;
+  --cpt-err: #c0341d;
+  --cpt-err-bg: #fde8e4;
+  display: block;
+  margin: 8px 0 12px;
+  font: 500 13px/1.4 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--cpt-text);
 }
-.cpt-button:hover:not(:disabled) { background: #2d4373; }
-.cpt-button:disabled { opacity: 0.7; cursor: progress; }
-.cpt-button[data-state='done'] { background: #2e7d32; border-color: #2e7d32; }
-.cpt-button[data-state='error'] { background: #c62828; border-color: #c62828; }
+@media (prefers-color-scheme: dark) {
+  .cpt-root {
+    --cpt-bg: #171a24;
+    --cpt-border: #2b3042;
+    --cpt-text: #eceff6;
+    --cpt-muted: #98a2b8;
+    --cpt-err: #ff8c78;
+    --cpt-err-bg: #3a1d19;
+  }
+}
+
+.cpt-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px;
+  background: var(--cpt-bg);
+  border: 1px solid var(--cpt-border);
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 6px 18px rgba(16, 24, 40, 0.07);
+}
+.cpt-bar button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+  margin: 0;
+}
+
+.cpt-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px 7px 12px;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--cpt-accent), var(--cpt-accent-2));
+  box-shadow: 0 2px 8px rgba(91, 91, 240, 0.35);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+.cpt-primary:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.06); }
+.cpt-primary:active:not(:disabled) { transform: translateY(0); }
+.cpt-primary:disabled { cursor: progress; filter: saturate(0.8); }
+.cpt-ico { display: inline-flex; }
+
+.cpt-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: cpt-spin 0.7s linear infinite;
+}
+@keyframes cpt-spin { to { transform: rotate(360deg); } }
+
+/* Selector ES | EN, solo tras traducir */
+.cpt-seg {
+  display: none;
+  padding: 2px;
+  gap: 2px;
+  background: color-mix(in srgb, var(--cpt-accent) 10%, transparent);
+  border-radius: 999px;
+}
+.cpt-seg button {
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cpt-muted);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.cpt-seg button[aria-pressed='true'] {
+  background: linear-gradient(135deg, var(--cpt-accent), var(--cpt-accent-2));
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(91, 91, 240, 0.4);
+}
+.cpt-root[data-state='done'] .cpt-seg { display: inline-flex; }
+.cpt-root[data-state='done'] .cpt-primary { display: none; }
+
+.cpt-chip {
+  padding: 3px 10px;
+  border-radius: 999px;
+  color: var(--cpt-muted);
+  background: color-mix(in srgb, var(--cpt-muted) 12%, transparent);
+  font-size: 12px;
+}
+.cpt-chip:empty { display: none; }
+
+.cpt-gear {
+  display: inline-flex;
+  padding: 7px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cpt-muted);
+}
+.cpt-gear:hover { color: var(--cpt-accent); background: color-mix(in srgb, var(--cpt-accent) 10%, transparent); }
+
+.cpt-msg {
+  display: inline-block;
+  margin: 8px 0 0 6px;
+  color: var(--cpt-muted);
+  font-size: 12px;
+}
+.cpt-root[data-state='error'] .cpt-msg {
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: var(--cpt-err);
+  background: var(--cpt-err-bg);
+}
+.cpt-root[data-state='error'] .cpt-primary { background: linear-gradient(135deg, #e0553d, #c0341d); box-shadow: none; }
+.cpt-msg[hidden] { display: none; }
 
 .cpt-skipped {
-  outline: 1px dashed #c62828;
-  outline-offset: 2px;
+  outline: 1.5px dashed #c0341d;
+  outline-offset: 3px;
+  border-radius: 3px;
 }

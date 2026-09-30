@@ -3,30 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CP Statement Translator — Opciones</title>
-    <style>
-      body { font: 14px/1.5 system-ui, sans-serif; max-width: 520px; margin: 32px auto; padding: 0 16px; }
-      label { display: block; margin: 16px 0 4px; font-weight: 600; }
-      select, input { width: 100%; padding: 6px; box-sizing: border-box; }
-      button { margin-top: 16px; padding: 6px 14px; }
-      #status { margin-top: 12px; }
-      .hidden { display: none; }
-    </style>
+    <title>CP Statement Translator — Ajustes</title>
+    <link rel="stylesheet" href="../ui/theme.css" />
+    <link rel="stylesheet" href="./options.css" />
   </head>
   <body>
-    <h1>Opciones</h1>
-    <label for="provider">Proveedor de traducción</label>
-    <select id="provider"></select>
+    <header class="hero">
+      <div class="wrap hero-in">
+        <div class="logo">T</div>
+        <div>
+          <h1>CP Statement Translator</h1>
+          <p class="sub">Traduce enunciados de Codeforces y CSES sin tocar fórmulas ni código.</p>
+        </div>
+      </div>
+    </header>
 
-    <div id="keyRow" class="hidden">
-      <label for="apiKey">API key</label>
-      <input id="apiKey" type="password" autocomplete="off" />
-      <label for="model">Modelo (opcional)</label>
-      <input id="model" type="text" placeholder="por defecto" />
-    </div>
+    <main class="wrap">
+      <section>
+        <h2>Motor de traducción</h2>
+        <p class="sub">Elige quién traduce. Puedes cambiar cuando quieras; cada motor guarda su propia caché.</p>
+        <div id="providers" class="grid" role="radiogroup" aria-label="Motor de traducción"></div>
+      </section>
 
-    <button id="save">Guardar</button>
-    <div id="status" role="status"></div>
+      <section id="config" class="card"></section>
+
+      <section class="card">
+        <div class="row between">
+          <div>
+            <h3>Modo oscuro</h3>
+            <p class="sub">Oscurece Codeforces y CSES. «Auto» sigue el tema de tu sistema. También hay un botón luna/sol en la barra del problema.</p>
+          </div>
+          <div id="themeSlot"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="row between">
+          <div>
+            <h3>Caché de traducciones</h3>
+            <p class="sub" id="cacheInfo">Calculando…</p>
+          </div>
+          <button id="clearCache" class="btn btn-danger" type="button"></button>
+        </div>
+      </section>
+
+      <section class="card about">
+        <h3>Privacidad</h3>
+        <ul>
+          <li>Las fórmulas, los ejemplos y el código <strong>nunca se envían</strong> a ningún motor: se sustituyen por marcadores.</li>
+          <li>Tus API keys se guardan solo en este navegador y únicamente las lee el service worker, nunca la página.</li>
+          <li>Si un bloque no se puede traducir con seguridad, se deja en inglés en lugar de arriesgar una fórmula rota.</li>
+        </ul>
+      </section>
+    </main>
     <script type="module" src="./options.ts"></script>
   </body>
 </html>

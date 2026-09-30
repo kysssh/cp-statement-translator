@@ -1,0 +1,53 @@
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+.hero { padding: 36px 0 28px; background: linear-gradient(180deg, var(--accent-soft), transparent); }
+.hero-in { display: flex; align-items: center; gap: 16px; }
+.hero h1 { font-size: 24px; letter-spacing: -0.02em; }
+.sub { color: var(--muted); }
+
+main.wrap { display: grid; gap: 24px; padding-bottom: 60px; }
+h2 { font-size: 17px; margin-bottom: 4px; }
+h3 { font-size: 15px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; margin-top: 14px; }
+
+.pcard {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 16px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.pcard:hover { border-color: var(--accent); transform: translateY(-2px); }
+.pcard[aria-checked='true'] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent), var(--shadow);
+}
+.pcard .name { font-weight: 700; font-size: 15px; }
+.pcard .tag { color: var(--muted); font-size: 12.5px; }
+.pcard .badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.pcard .dot {
+  position: absolute; top: 14px; right: 14px;
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--border); display: grid; place-items: center; color: #fff;
+}
+.pcard[aria-checked='true'] .dot { background: var(--grad); border-color: transparent; }
+.pcard .dot svg { display: none; }
+.pcard[aria-checked='true'] .dot svg { display: block; }
+
+.row.between { justify-content: space-between; gap: 16px; }
+.cfg-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.cfg-head .badges { display: flex; gap: 6px; }
+.key-row { display: flex; gap: 8px; }
+.key-row input { flex: 1; }
+.actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+.about ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); display: grid; gap: 6px; }
+.about strong { color: var(--text); }
+.row.between #themeSlot{flex-shrink:0}

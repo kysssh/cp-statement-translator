@@ -1,10 +1,10 @@
 /** Parte los bloques en lotes de como máximo `maxChars` caracteres (un bloque nunca se parte). */
-export function chunkBlocks(blocks: string[], maxChars = 6000): string[][] {
+export function chunkBlocks(blocks: string[], maxChars = 6000, maxItems = Infinity): string[][] {
   const chunks: string[][] = [];
   let cur: string[] = [];
   let size = 0;
   for (const b of blocks) {
-    if (cur.length && size + b.length > maxChars) {
+    if (cur.length && (size + b.length > maxChars || cur.length >= maxItems)) {
       chunks.push(cur);
       cur = [];
       size = 0;
@@ -42,19 +42,23 @@ export class HttpError extends Error {
 }
 
 /** fetch con backoff exponencial para 429 y 5xx. */
-export async function fetchWithRetry(url: string, init: RequestInit, retries = 2): Promise<Response> {
+export async function fetchWithRetry(url: string, init: RequestInit, retries = 4): Promise<Response> {
   for (let attempt = 0; ; attempt++) {
     const res = await fetch(url, init);
     const retryable = res.status === 429 || res.status >= 500;
     if (!retryable || attempt >= retries) return res;
     const wait = Number(res.headers.get('retry-after')) * 1000 || 1000 * 2 ** attempt;
-    await new Promise((r) => setTimeout(r, Math.min(wait, 8000)));
+    const jitter = Math.random() * 400;
+    await new Promise((r) => setTimeout(r, Math.min(wait, 10000) + jitter));
   }
 }
 
 export async function ensureOk(res: Response, name: string): Promise<void> {
   if (res.ok) return;
   if (res.status === 401 || res.status === 403) throw new HttpError(res.status, `${name}: API key inválida o sin permiso.`);
+  if (res.status === 404) throw new HttpError(404, `${name}: modelo no disponible (${(await res.text()).slice(0, 160)}). Pulsa «Cargar modelos» en Ajustes y elige otro.`);
+  if (res.status === 503 || res.status === 529) throw new HttpError(res.status, `${name}: el servicio está saturado ahora mismo (se reintentó varias veces). Prueba en unos minutos, elige otro modelo con «Cargar modelos» o cambia de motor.`);
+  if (res.status === 456) throw new HttpError(456, `${name}: cuota mensual agotada. Cambia de proveedor en Opciones.`);
   if (res.status === 429) throw new HttpError(429, `${name}: cuota agotada. Reintenta más tarde o cambia de proveedor en Opciones.`);
   throw new HttpError(res.status, `${name} ${res.status}: ${(await res.text()).slice(0, 200)}`);
 }

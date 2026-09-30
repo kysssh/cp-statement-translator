@@ -6,6 +6,10 @@ export interface TranslateRequest {
   strict?: boolean;
 }
 
+export interface OpenOptionsRequest {
+  type: 'OPEN_OPTIONS';
+}
+
 export type TranslateResponse =
   | { ok: true; blocks: string[]; fromCache: boolean }
   | { ok: false; error: string; code?: number };

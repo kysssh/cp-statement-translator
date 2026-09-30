@@ -27,3 +27,18 @@ export async function getSettings(): Promise<Settings> {
 export async function saveSettings(s: Settings): Promise<void> {
   await chrome.storage.local.set({ provider: s.provider, keys: s.keys, models: s.models });
 }
+
+/** Modo oscuro de Codeforces/CSES. 'auto' sigue al sistema operativo. */
+export type ThemeMode = 'auto' | 'on' | 'off';
+export const THEME_KEY = 'themeMode';
+
+export const normalizeTheme = (v: unknown): ThemeMode => (v === 'on' || v === 'auto' ? v : 'off');
+
+export async function getThemeMode(): Promise<ThemeMode> {
+  const { [THEME_KEY]: v } = await chrome.storage.local.get(THEME_KEY);
+  return normalizeTheme(v);
+}
+
+export async function setThemeMode(mode: ThemeMode): Promise<void> {
+  await chrome.storage.local.set({ [THEME_KEY]: mode });
+}

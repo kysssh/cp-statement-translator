@@ -1,4 +1,5 @@
 import { translateBySegments } from '../../core/segments';
+import { PROVIDER_NAMES } from '../../shared/provider-names';
 import type { TranslationProvider } from './types';
 
 const CFG = { sourceLanguage: 'en', targetLanguage: 'es' } as const;
@@ -36,6 +37,8 @@ async function getTranslator(onProgress?: (m: string) => void): Promise<Translat
 export const chromeBuiltin: TranslationProvider = {
   id: 'chrome-builtin',
   label: 'Traductor del navegador (local, gratis)',
+  shortName: PROVIDER_NAMES['chrome-builtin'],
+  tagline: 'Se ejecuta en tu equipo: sin cuenta, sin red, sin cuota. Sin glosario.',
   needsKey: false,
   supportsPrompt: false,
   free: true,
