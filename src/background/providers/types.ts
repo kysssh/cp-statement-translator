@@ -1,3 +1,5 @@
+import type { BatchTranslator } from './quota';
+
 export interface ProviderOptions {
   apiKey?: string;
   model?: string;
@@ -21,6 +23,9 @@ export interface TranslationProvider {
   needsKey: boolean;
   supportsPrompt: boolean;
   free: boolean;
+
+  /** Traduce un único lote y devuelve la cuota restante (lo usa la cola, T36). */
+  translateBatch?: BatchTranslator;
 
   /** Modelos sugeridos (el usuario puede escribir otro). */
   models?: ModelInfo[];
