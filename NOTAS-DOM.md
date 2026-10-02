@@ -67,7 +67,7 @@ KaTeX, con un **contenedor externo propio que es la clave**:
 - **Lo que hay que marcar como opaco es `.language-math`** (51 y 58 ocurrencias en las páginas medidas, y `.katex` nunca aparece sin él). Es el elemento que React controla.
 - Medidas: `/silver/prefix-sums` → 58 `.katex`, 58 `.language-math`, 7 `.math-display`. `/silver/binary-search` → 41 `.katex`. Coinciden exactamente: `.language-math` es el único envoltorio.
 - **No hay LaTeX sin renderizar**: no hay `mjx-container` (0), no hay MathJax. Todo pasa por KaTeX. Por tanto **`rawMathPattern` no hace falta** en el adapter (confirmado en T42).
-- Sí hay texto que parece fórmula pero es un `<span>` de KaTeX interno (`span.mord`, `span.texttt`…). Queda dentro de `.language-math`, así que no hay que worryse.
+- Sí hay texto que parece fórmula pero es un `<span>` de KaTeX interno (`span.mord`, `span.texttt`…). Queda dentro de `.language-math`, así que no hay que worryse de ellas.
 
 ---
 
