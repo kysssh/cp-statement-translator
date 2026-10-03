@@ -32,6 +32,12 @@
             ],
             "js": ["src/content/index.ts"],
             "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://usaco.guide/*"],
+            "js": ["src/content/docs.ts"],
+            "run_at": "document_idle"
         }
     ]
 }
+

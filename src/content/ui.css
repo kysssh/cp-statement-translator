@@ -12,6 +12,17 @@
   font: 500 13px/1.4 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   color: var(--cpt-text);
 }
+
+/* Variante fija para sitios de documentos (docs.ts): montada en body */
+body > .cpt-root {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  margin: 0;
+  z-index: 2147483647;
+  max-width: min(420px, calc(100vw - 40px));
+}
+
 @media (prefers-color-scheme: dark) {
   .cpt-root {
     --cpt-bg: #171a24;
@@ -109,6 +120,19 @@
 }
 .cpt-gear:hover { color: var(--cpt-accent); background: color-mix(in srgb, var(--cpt-accent) 10%, transparent); }
 
+/* Botón de cancelar: solo visible mientras se traduce por lotes (T37) */
+.cpt-cancel {
+  display: inline-flex;
+  padding: 6px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cpt-err);
+  transition: background 0.15s ease;
+}
+.cpt-cancel:hover { background: color-mix(in srgb, var(--cpt-err) 12%, transparent); }
+.cpt-cancel[hidden] { display: none; }
+
+
 .cpt-msg {
   display: inline-block;
   margin: 8px 0 0 6px;
@@ -128,4 +152,51 @@
   outline: 1.5px dashed #c0341d;
   outline-offset: 3px;
   border-radius: 3px;
+}
+
+/* Selector de modo (Todo | Al leer) en documentos (T46) */
+.cpt-mode-seg {
+  display: inline-flex;
+  padding: 2px;
+  gap: 2px;
+  background: color-mix(in srgb, var(--cpt-muted) 12%, transparent);
+  border-radius: 999px;
+}
+.cpt-mode-btn {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cpt-muted);
+  font-size: 11px;
+  font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.cpt-mode-btn[aria-pressed='true'] {
+  background: var(--cpt-bg);
+  color: var(--cpt-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* Banner de atribución y licencia al pie del documento (T47) */
+.cpt-attribution {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 36px 0 20px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--cpt-accent) 6%, var(--cpt-bg));
+  border: 1px solid color-mix(in srgb, var(--cpt-accent) 22%, transparent);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--cpt-muted);
+}
+.cpt-attribution a {
+  color: var(--cpt-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+.cpt-attribution a:hover {
+  filter: brightness(1.2);
 }

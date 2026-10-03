@@ -20,7 +20,7 @@ export interface BatchTranslation {
  * Es lo que consume la cola del content script (T36): un lote por llamada, sin
  * estado entre peticiones, porque el service worker de MV3 se puede detener.
  */
-async function translateBatch(blocks: string[], o: { apiKey?: string; model?: string; strict?: boolean }): Promise<BatchTranslation> {
+async function translateBatch(blocks: string[], o: { apiKey?: string; model?: string; strict?: boolean; systemPrompt?: string }): Promise<BatchTranslation> {
   const model = o.model || 'openai/gpt-oss-120b';
   const send = (jsonMode: boolean) =>
     fetchWithRetry(GROQ_URL, {
@@ -34,7 +34,7 @@ async function translateBatch(blocks: string[], o: { apiKey?: string; model?: st
         ...(model.includes('gpt-oss') ? { reasoning_effort: 'low' } : {}),
         ...(jsonMode ? { response_format: { type: 'json_object' } } : {}),
         messages: [
-          { role: 'system', content: SYSTEM_PROMPT + (o.strict ? STRICT_REMINDER : '') },
+          { role: 'system', content: (o.systemPrompt ?? (SYSTEM_PROMPT + (o.strict ? STRICT_REMINDER : ''))) },
           { role: 'user', content: JSON.stringify({ blocks }) },
         ],
       }),
@@ -56,12 +56,7 @@ async function translateBatch(blocks: string[], o: { apiKey?: string; model?: st
   const data = await res.json();
   return {
     blocks: parseBlocks(data.choices[0].message.content ?? '', blocks.length),
-    quota: {
-      remainingTokens: quota.remainingTokens,
-      remainingRequests: quota.remainingRequests,
-      resetTokensMs: quota.resetTokensMs,
-      resetRequestsMs: quota.resetRequestsMs,
-    },
+    quota,
     retryAfterMs,
   };
 }

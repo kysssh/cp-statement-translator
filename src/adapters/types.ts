@@ -1,13 +1,26 @@
 import type { ProtectionConfig } from '../core/protector';
 
 export interface SiteAdapter {
-  id: 'codeforces' | 'cses';
+  id: 'codeforces' | 'cses' | 'usaco';
+  /**
+   * Tipo de contenido del sitio.
+   * - 'problem': enunciado corto, una sola llamada a la API.
+   * - 'doc': artículo largo; requiere cola, lotes y glosario de documentos.
+   * Opcional: si no se declara, se asume 'problem' para compatibilidad.
+   */
+  contentType?: 'problem' | 'doc';
+  /**
+   * Si true, el sistema usa Groq obligatoriamente y muestra un mensaje claro
+   * si no hay key configurada (el traductor local no admite glosario ni lotes).
+   * Opcional: si no se declara, el sistema usa el proveedor configurado.
+   */
+  requiresGroq?: boolean;
   matches(loc: Location): boolean;
   findStatementRoot(doc: Document): HTMLElement | null;
   /** Elementos hoja que forman una unidad de traducción con sentido. */
   blockSelector: string;
   protection: ProtectionConfig;
-  /** Identificador estable del problema, para la caché. */
+  /** Identificador estable del problema o documento, para la caché. */
   problemKey(loc: Location): string;
   /** Dónde colgar el botón. */
   mountPoint(root: HTMLElement): HTMLElement;

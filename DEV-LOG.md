@@ -164,3 +164,85 @@ y no envía el resto; cada lote se aplica al llegar.
 `x-ratelimit-remaining-tokens` antes y después de un artículo real, para ver si el
 prompt cacheado reduce el consumo y si la desviación de `estimateTokens` supera
 el 20 %.
+
+---
+
+## T37 — Progreso y cancelación
+
+- Integración en `src/content/button.ts` y `src/content/queue.ts`.
+- Muestra el avance dinámico: `"Traduciendo 3/8 lotes…"`.
+- Botón de cancelación (`cpt-cancel` con icono `x`) visible durante la traducción.
+- Cancelación reactiva: la cola comprueba el flag `cancelled` antes de cada lote. Lo traducido hasta ese momento se conserva intacto en el DOM.
+
+## T38 — Caché por bloque individual
+
+- Módulo implementado en `src/content/block-cache.ts`.
+- Clave de caché = `cpt:b:${fnv1a(sourceText)}:${glossaryVersion}`. Si cambia la versión del glosario o prompt, los bloques viejos se invalidan automáticamente.
+- Función `partitionByCache(sources, cache)` que separa hits (se aplican al instante sin consumir red ni tokens) y misses (únicos que se envían a la cola).
+- Limpieza LRU simple con límite de 2 000 entradas para evitar desbordar el almacenamiento local de la extensión.
+- Tests en `tests/block-cache.spec.ts`.
+
+## T39 — Glosario y prompt para documentos
+
+- Implementado en `src/shared/doc-prompt.ts`.
+- Glosario técnico versionado (`DOC_GLOSSARY_VERSION = 'v1.0'`).
+- Política decidida: términos canónicos de algoritmos y estructuras de datos (Segment Tree, BFS, Dijkstra, Trie, etc.) se mantienen en inglés; la prosa explicativa se traduce con registro didáctico y natural.
+- Preservación estricta de marcadores `⟦n⟧` y fórmulas LaTeX.
+
+## T40 — Requisitos declarados en el adapter
+
+- `SiteAdapter` extendido con campos opcionales `contentType: 'problem' | 'doc'` y `requiresGroq: boolean`.
+- En el service worker (`src/background/service-worker.ts`), `handleDocBatch` verifica que Groq esté configurado con una API key válida, mostrando un mensaje descriptivo si no lo está.
+- Compatibilidad retroactiva completa: Codeforces y CSES continúan compilando y funcionando sin alteraciones.
+
+## T41 — Reaplicar la traducción tras navegar (SPA)
+
+- Implementado en `src/content/navigation.ts`.
+- Soporte para Navigation API (`navigation.addEventListener('navigatesuccess')`) con fallback a `MutationObserver` y hook de `history.pushState`.
+- Al navegar en la SPA de USACO Guide (Next.js):
+  1. Cancela cualquier cola activa.
+  2. Espera a que Next.js monte el nuevo contenedor `.markdown`.
+  3. Restablece la UI en `document.body` (que sobrevive al reemplazo del DOM).
+  4. Si el usuario ya estaba traduciendo, re-aplica usando la caché sin costo de tokens.
+
+## T42 — Adapter `usaco.ts`
+
+- Implementado en `src/adapters/usaco.ts` según las especificaciones de `NOTAS-DOM.md`.
+- Contenedor: `.markdown`.
+- Bloques traducibles: `p`, `li`, `h2`, `h3`, `h4`, `td`, `th`, `blockquote`.
+- Elementos opacos: `.language-math`, `.math-display`, `pre`, `.prism-code`, `code.inline-code`, `img`, `svg`, `button`, `a.anchor`, `span.absolute`, `details > summary`, `table.no-markdown`.
+- Las tablas de problemas (`table.no-markdown`) quedan completamente excluidas para evitar traducir nombres de problemas o etiquetas sensibles.
+
+## T43 — Content script de documentos y manifest
+
+- Punto de entrada separado `src/content/docs.ts` en `src/manifest.json` emparejado con `https://usaco.guide/*`.
+- El script de problemas (`index.ts`) no se ejecuta en USACO Guide, manteniendo el aislamiento entre sitios de problemas y documentación.
+- Estilos integrados en `ui.css` con anclaje flotante `position: fixed` para no interferir con la maquetación de Next.js.
+
+## T44 — Round-trip sobre los fixtures de USACO
+
+- Suite de pruebas en `tests/protector.usaco.spec.ts` sobre `usaco-corto.html`, `usaco-formulas.html` y `usaco-tablas.html`.
+- 9 tests pasando:
+  - `restore(extract())` preserva exactamente texto e identidad de nodos protegidos.
+  - El texto a traducir no filtra clases de KaTeX ni código opaco.
+  - Simulación de pipeline `[ES]` preserva intactas fórmulas KaTeX, bloques `pre` y tablas de problemas.
+
+## T45 — Componentes con estado (desplegables y mutaciones)
+
+- Manejo de `<details>` en `src/content/docs.ts` mediante listener del evento `toggle` en fase de captura. Al expandirse un desplegable, si el documento está en español, extrae y traduce sus bloques de texto internos.
+- `MutationObserver` supervisa la inserción de nuevos elementos dinámicos dentro de `.markdown`.
+- Exclusión segura de tablas de problemas ya validada.
+
+## T46 — Traducción por sección y bajo demanda (scroll)
+
+- Módulo `src/content/sections.ts` con `splitIntoSections(blocks)` por encabezados `<h2>`.
+- `SectionObserver` basado en `IntersectionObserver` con `rootMargin: '300px 0px'` para pre-cargar y traducir automáticamente las secciones que van entrando en pantalla.
+- Selector de modo en la barra de la UI: `[ Todo | Al leer ]`.
+- En modo "Al leer", el consumo de cuota de Groq se reduce drásticamente al traducir solo las secciones consultadas por el usuario.
+
+## T47 — Atribución y toggle EN ↔ ES en documentos largos
+
+- Módulo `src/content/doc-view.ts` con `DocTranslationView`.
+- Instantáneo e idempotente: guarda clones del DOM original antes de reemplazar y los clones traducidos después. Permite alternar entre EN y ES en cualquier instante sin re-consultar a Groq ni re-ejecutar `restore()`.
+- Aviso de atribución y licencia generado automáticamente al final del artículo con `ensureDocAttribution()`:
+  *"Traducción automática generada con IA. Contenido original de USACO Guide, bajo licencia CC BY-NC-SA 4.0."*
