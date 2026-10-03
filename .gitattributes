@@ -1,0 +1,2 @@
+# HTML fixtures preserve whitespace from captured pages and code examples.
+tests/fixtures/*.html -whitespace

@@ -1,7 +1,7 @@
 import type { ProtectionConfig } from '../core/protector';
 
 export interface SiteAdapter {
-  id: 'codeforces' | 'cses' | 'usaco';
+  id: 'codeforces' | 'cses' | 'usaco' | 'cpalgorithms';
   /**
    * Tipo de contenido del sitio.
    * - 'problem': enunciado corto, una sola llamada a la API.
@@ -15,6 +15,17 @@ export interface SiteAdapter {
    * Opcional: si no se declara, el sistema usa el proveedor configurado.
    */
   requiresGroq?: boolean;
+  /** Configuración exclusiva del content script de documentos. */
+  documentation?: {
+    rootSelector: string;
+    spaNavigation?: boolean;
+    attribution?: {
+      siteName: string;
+      siteUrl: string;
+      licenseName: string;
+      licenseUrl: string;
+    };
+  };
   matches(loc: Location): boolean;
   findStatementRoot(doc: Document): HTMLElement | null;
   /** Elementos hoja que forman una unidad de traducción con sentido. */

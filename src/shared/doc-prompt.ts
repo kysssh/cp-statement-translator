@@ -12,7 +12,7 @@
  */
 
 /** Versión semántica del glosario: al cambiarla, la caché por bloque (T38) se invalida. */
-export const DOC_GLOSSARY_VERSION = '1';
+export const DOC_GLOSSARY_VERSION = '2';
 
 /**
  * Glosario como dato estructurado, para poder versionarlo (T38) y auditarlo.
@@ -109,6 +109,13 @@ export const DOC_GLOSSARY: Record<string, string> = {
   'modular arithmetic': 'aritmética modular',
   'greatest common divisor': 'máximo común divisor',
   'least common multiple': 'mínimo común múltiplo',
+  'binary exponentiation': 'exponenciación binaria',
+  'number theory': 'teoría de números',
+  'modular inverse': 'inverso modular',
+  'prime factorization': 'factorización prima',
+  'range query': 'consulta de rango',
+  'point update': 'actualización puntual',
+  'lazy propagation': 'propagación diferida (lazy propagation)',
 
   // Graph theory
   'graph': 'grafo',

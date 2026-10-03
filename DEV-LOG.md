@@ -1,4 +1,4 @@
-# DEV-LOG
+﻿# DEV-LOG
 
 Bitácora del desarrollo. Una entrada por tarea, con lo medido y lo aprendido.
 
@@ -246,3 +246,72 @@ el 20 %.
 - Instantáneo e idempotente: guarda clones del DOM original antes de reemplazar y los clones traducidos después. Permite alternar entre EN y ES en cualquier instante sin re-consultar a Groq ni re-ejecutar `restore()`.
 - Aviso de atribución y licencia generado automáticamente al final del artículo con `ensureDocAttribution()`:
   *"Traducción automática generada con IA. Contenido original de USACO Guide, bajo licencia CC BY-NC-SA 4.0."*
+
+## T48 — Reconocimiento de CP-Algorithms (2026-10-03)
+
+- Inspeccionados Euclidean Algorithm, Segment Tree y Breadth First Search con Chrome headless, tras renderizar MathJax.
+- Guardados tres fixtures reales en `tests/fixtures/cpalgorithms-*.html`, informe JSON y script reproducible `tools/inspect-cpalgorithms.mjs`.
+- Raíz comprobada: `article.md-content__inner`. Proteger `.arithmatex`, código, anclas, metadatos y controles de pestañas.
+- El cambio de pestaña conserva el DOM y texto editado. Navegar a otro artículo recarga el documento (experimento con variable global).
+- Detalles, límites de la muestra y puntos de integración en `NOTAS-DOM.md`, sección CP-Algorithms — T48.
+- Base verificada: `npm run check`, TypeScript y 96 pruebas en 11 archivos, todo correcto.
+- Sin cambios en el código de la extensión. T49 pendiente del visto bueno del usuario.
+
+## T49 — Adapter CP-Algorithms e integración (2026-10-03)
+
+- Añadido `src/adapters/cpalgorithms.ts`: raíz `article.md-content__inner`, prosa y encabezados, protección de `.arithmatex`, MathJax, código, anclas, metadatos y controles de pestañas. Regex de respaldo para LaTeX sin renderizar.
+- Registrado el adapter y añadido `https://cp-algorithms.com/*` al content script de documentos en el manifest. El script de problemas de CF/CSES conserva sus rutas.
+- `docs.ts` selecciona el adapter por sitio para raíz, segmentación, protección y atribución. La configuración de USACO mantiene `.markdown` y navegación SPA; CP-Algorithms utiliza la recarga normal comprobada en T48.
+- Atribución específica de CP-Algorithms: CC BY-SA 4.0. USACO mantiene CC BY-NC-SA 4.0.
+- Glosario ampliado con términos de teoría de números y consultas de rango; versión 2 para renovar la caché de documentos según el nuevo glosario. La caché de enunciados no cambia.
+- Las nuevas pruebas de integración detectaron un defecto previo: `restore()` movía fórmulas y código antes de guardar la copia original en `applyBlock()`. Se llama a `recordOriginal()` antes de reconstruir cualquier traducción. Verificado EN/ES con fórmulas y código tanto en CP-Algorithms como en USACO, y con caché en CP-Algorithms.
+- Verificación final: `npm run check` pasó, TypeScript y 108 pruebas en 12 archivos (incluye las 96 existentes); `npm run build` pasó y regeneró `dist`; `git diff --check` sin errores de espacios.
+- Las pruebas usan traducción simulada, sin consumir cuota. No se ha probado todavía la traducción real con Groq en el navegador ni todos los casos especiales: corresponden a T50/T51.
+- T49 terminada. T50 pendiente del visto bueno del usuario.
+
+## T50 — Round-trip y casos especiales de CP-Algorithms (2026-10-03)
+
+- Nueva suite `tests/protector.cpalgorithms.spec.ts`: round-trip sobre las tres capturas reales de T48, seguido de traducción simulada de todos los bloques seleccionados. Comprueba texto, identidad y HTML de nodos opacos y atributos de enlaces.
+- Fixture adicional `cpalgorithms-casos-sinteticos.html`, identificado expresamente como sintético: avisos, detalles con summary, tablas, pestañas con prosa, enlaces con formato, código inline y las cuatro formas de LaTeX sin renderizar. Verificados los controles seleccionados, estado abierto, listeners de copiar/toggle y tres ciclos EN/ES.
+- Fallos reales corregidos en el adapter: anclas vacías con atributo name ahora son opacas; se conservan los nodos br; summary se incluye como bloque traducible. No se cambiaron los selectores de CF, CSES ni USACO.
+- Nuevas pruebas de integración para respuestas sin marcadores desde API y caché. Una respuesta inválida de API conserva el bloque original. Se detectó que docs.ts aplicaba la caché sin validación: ahora normaliza y valida marcadores, y una entrada incompleta se convierte en pendiente para retraducir sin perder fórmulas ni código. Esta protección también cubre USACO.
+- Verificación final: `npm run check`, TypeScript y 117 pruebas en 13 archivos, todas correctas (incluye CF, CSES y USACO); `npm run build` correcto, dist actualizado; `git diff --check` sin errores de espacios.
+- La prueba completa del fixture de Segment Tree dispone de 60 segundos porque el DOM renderizado de MathJax es grande. No se eliminó ni redujo ninguna comprobación.
+- Las traducciones de estas pruebas son simuladas y no consumen Groq. La navegación con la extensión en navegador corresponde a T51.
+- T50 terminada. T51 pendiente del visto bueno del usuario.
+
+## T51 — Navegación con la extensión cargada (2026-10-03)
+
+- Verificación reproducible: `node tools/verify-cpalgorithms-navigation.mjs`. Usa Chromium compatible con extensiones unpacked (ruta local predeterminada o variable CPT_TEST_BROWSER), dist y un perfil temporal independiente. No utiliza el perfil ni claves personales.
+- Extensión real de dist cargada en Chromium 153.0.8010.12. Se simula exclusivamente la respuesta HTTP de Groq dentro de su service worker de prueba; content script, mensajes, cola, validación y almacenamiento son los reales. El prefijo [T51] indica contenido simulado, no una traducción de calidad evaluada.
+- 10 comprobaciones aprobadas: montaje inicial único; traducción por el worker real; cambio de pestaña de código; enlace hash de encabezado; alternancia EN/ES conservando la pestaña; cambio de artículo mediante enlace real; traducción del artículo nuevo; recarga con caché persistente; regreso por historial con UI funcional; ausencia de errores de ejecución y consola.
+- BFS a Binary Exponentiation recarga el documento: desaparece la variable de prueba, aparece una única UI en estado idle y funciona la traducción del artículo nuevo. No se necesita modificar navigation.ts.
+- Recarga y regreso por historial recuperaron los bloques desde caché sin solicitudes adicionales. Total: dos respuestas HTTP simuladas, lotes de 48 y 64 bloques. Cero llamadas reales a Groq.
+- Informe completo: `tools/cpalgorithms-navigation-report.json` (passed: true, 0 excepciones y 0 errores de consola).
+- Esta etapa no modifica src, manifest ni dist. Se usa la compilación verificada en T50; su base de TypeScript y 117 pruebas permanece registrada allí. `git diff --check` sin errores de espacios.
+- Límite: no se verifica aquí calidad ni disponibilidad de Groq real. No se cambian las rutas de CF, CSES o USACO.
+- T51 terminada. T52 (README, versión y cierre) pendiente del visto bueno del usuario.
+
+## T52 — README, mediciones y cierre v1.1 (2026-10-03)
+
+- README actualizado para CF, CSES, USACO Guide y CP-Algorithms: instalación/actualización, proveedor para cada sitio, modos Todo/Al leer, caché, navegación, atribuciones y limitaciones de cobertura.
+- Límites de Groq verificados en su documentación oficial el 2026-10-03: para GPT-OSS 120B/20B gratuitos, 30 RPM, 1 000 RPD, 8 000 TPM y 200 000 TPD; los límites exactos dependen de la organización/modelo. Fuente: https://console.groq.com/docs/rate-limits. Corregido el comentario antiguo de rate-limit.ts que negaba la existencia de límite diario de tokens; la lógica de cuota no cambia.
+- Medición reproducible offline: `node tools/measure-document-tokens.mjs`. Usa los adapters, protector, chunker y estimador reales, sin generar código ni contactar APIs. Informe: `tools/document-token-estimates.json`.
+
+| Fixture | Bloques | Lotes | Entrada estimada | Salida estimada | Total estimado |
+|---|---:|---:|---:|---:|---:|
+| usaco-corto | 97 | 1 | 3 813 | 3 469 | 7 282 |
+| usaco-formulas | 24 | 1 | 1 489 | 761 | 2 250 |
+| usaco-tablas | 49 | 1 | 2 001 | 1 360 | 3 361 |
+| cpalgorithms-corto | 35 | 1 | 2 004 | 1 355 | 3 359 |
+| cpalgorithms-codigo | 215 | 5 | 16 398 | 14 146 | 30 544 |
+| cpalgorithms-pestanas | 48 | 1 | 2 492 | 1 926 | 4 418 |
+
+Estas cifras son heurísticas: 4 caracteres/token, salida +15 %, presupuesto de bloques de 3 000 tokens y prompt de 837 tokens repetido en cada lote. No incluyen JSON adicional, razonamiento, reintentos ni ahorro por caché de prompt del proveedor. No son uso medido de Groq. El consumo real de las validaciones T48-T52 fue cero tokens del proveedor; una revisita completamente cubierta por la caché tampoco requiere una llamada.
+
+- Versión 1.1.0 sincronizada en package.json, package-lock.json y manifest. El lockfile solo cambia sus dos campos de versión; no cambian dependencias.
+- `npm run zip` toma el nombre desde package.json a través de tools/package-extension.mjs y verifica que coincida con dist/manifest.json. Generado cp-statement-translator-v1.1.0.zip. El archivo mantiene la raíz lista para Cargar descomprimida.
+- Verificación final: `npm run check`, TypeScript y 117 pruebas en 13 archivos, todas aprobadas; `npm run zip` incluye compilación correcta; ZIP íntegro y contenido idéntico a dist, manifest 1.1.0 y rutas de los sitios verificadas; `git diff --check` sin errores de espacios. La verificación T51 registra 10 comprobaciones aprobadas con extensión cargada y Groq simulado.
+- Cierre local con commit de implementación/documentación y etiqueta v1.1 conforme a la guía. T48-T52 completadas. No se evaluó la calidad de Groq real; esa limitación queda explícita en el README.
+
+Las capturas HTML preservan los espacios originales, incluidos los de bloques de código; .gitattributes excluye esos fixtures de los avisos de whitespace de Git. El código y la documentación sí se revisan con diff --check.

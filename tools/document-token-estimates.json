@@ -1,0 +1,68 @@
+{
+  "capturedAt": "2026-10-03T22:43:12.257Z",
+  "glossaryVersion": "2",
+  "method": "Heuristic: 4 characters/token, output +15%, full system prompt repeated per batch, 3000 block-input tokens/batch. Excludes JSON overhead, model reasoning, retries and provider-side prompt caching. Not API usage.",
+  "systemPromptTokens": 837,
+  "results": [
+    {
+      "site": "usaco",
+      "fixture": "usaco-corto.html",
+      "blocks": 97,
+      "batches": 1,
+      "estimatedInput": 3813,
+      "estimatedOutput": 3469,
+      "estimatedTotal": 7282,
+      "estimatedCachedRevisit": 0
+    },
+    {
+      "site": "usaco",
+      "fixture": "usaco-formulas.html",
+      "blocks": 24,
+      "batches": 1,
+      "estimatedInput": 1489,
+      "estimatedOutput": 761,
+      "estimatedTotal": 2250,
+      "estimatedCachedRevisit": 0
+    },
+    {
+      "site": "usaco",
+      "fixture": "usaco-tablas.html",
+      "blocks": 49,
+      "batches": 1,
+      "estimatedInput": 2001,
+      "estimatedOutput": 1360,
+      "estimatedTotal": 3361,
+      "estimatedCachedRevisit": 0
+    },
+    {
+      "site": "cpalgorithms",
+      "fixture": "cpalgorithms-corto.html",
+      "blocks": 35,
+      "batches": 1,
+      "estimatedInput": 2004,
+      "estimatedOutput": 1355,
+      "estimatedTotal": 3359,
+      "estimatedCachedRevisit": 0
+    },
+    {
+      "site": "cpalgorithms",
+      "fixture": "cpalgorithms-codigo.html",
+      "blocks": 215,
+      "batches": 5,
+      "estimatedInput": 16398,
+      "estimatedOutput": 14146,
+      "estimatedTotal": 30544,
+      "estimatedCachedRevisit": 0
+    },
+    {
+      "site": "cpalgorithms",
+      "fixture": "cpalgorithms-pestanas.html",
+      "blocks": 48,
+      "batches": 1,
+      "estimatedInput": 2492,
+      "estimatedOutput": 1926,
+      "estimatedTotal": 4418,
+      "estimatedCachedRevisit": 0
+    }
+  ]
+}

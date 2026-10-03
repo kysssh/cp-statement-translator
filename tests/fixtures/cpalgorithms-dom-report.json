@@ -1,0 +1,1472 @@
+{
+  "capturedAt": "2026-10-03T21:55:51.288Z",
+  "results": [
+    {
+      "file": "cpalgorithms-corto.html",
+      "title": "Euclidean algorithm for computing the greatest common divisor - Algorithms for Competitive Programming",
+      "url": "https://cp-algorithms.com/algebra/euclid-algorithm.html",
+      "rootCount": 1,
+      "counts": {
+        "p": 23,
+        "li": 13,
+        "h1": 1,
+        "h2": 6,
+        "h3": 0,
+        "h4": 0,
+        "pre": 5,
+        "code": 8,
+        "mjx-container": 110,
+        ".MathJax": 110,
+        ".arithmatex": 55,
+        "a.headerlink": 7,
+        "table": 0,
+        ".tabbed-set": 0,
+        ".tabbed-labels": 0,
+        ".tabbed-content": 0,
+        ".admonition": 0,
+        "details": 0,
+        "summary": 0,
+        "input": 0,
+        "button": 5,
+        "script": 1
+      },
+      "config": {
+        "annotate": null,
+        "base": "..",
+        "features": [
+          "toc.integrate",
+          "search.suggest",
+          "content.code.copy"
+        ],
+        "search": "../assets/javascripts/workers/search.2c215733.min.js",
+        "tags": null,
+        "translations": {
+          "clipboard.copied": "Copied to clipboard",
+          "clipboard.copy": "Copy to clipboard",
+          "search.result.more.one": "1 more on this page",
+          "search.result.more.other": "# more on this page",
+          "search.result.none": "No matching documents",
+          "search.result.one": "1 matching document",
+          "search.result.other": "# matching documents",
+          "search.result.placeholder": "Type to start searching",
+          "search.result.term.missing": "Missing",
+          "select.version": "Select version"
+        },
+        "version": null
+      },
+      "mathConfig": {
+        "inlineMath": [
+          [
+            "$",
+            "$"
+          ],
+          [
+            "\\(",
+            "\\)"
+          ]
+        ],
+        "displayMath": [
+          [
+            "$$",
+            "$$"
+          ],
+          [
+            "\\[",
+            "\\]"
+          ]
+        ],
+        "processEscapes": true,
+        "processEnvironments": true,
+        "packages": [
+          "base",
+          "ams",
+          "newcommand",
+          "noundefined",
+          "require",
+          "autoload",
+          "configmacros"
+        ]
+      },
+      "topChildren": [
+        {
+          "tag": "SCRIPT",
+          "class": ""
+        },
+        {
+          "tag": "A",
+          "class": "md-content__button md-icon"
+        },
+        {
+          "tag": "A",
+          "class": "md-content__button md-icon"
+        },
+        {
+          "tag": "A",
+          "class": "md-content__button md-icon"
+        },
+        {
+          "tag": "UL",
+          "class": "metadata page-metadata"
+        },
+        {
+          "tag": "H1",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "arithmatex"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H2",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "arithmatex"
+        },
+        {
+          "tag": "H2",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H2",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H2",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "arithmatex"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "H2",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "UL",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H2",
+          "class": ""
+        },
+        {
+          "tag": "UL",
+          "class": ""
+        },
+        {
+          "tag": "UL",
+          "class": "metadata page-metadata"
+        }
+      ],
+      "scripts": [
+        "https://www.googletagmanager.com/gtag/js?id=G-7FLS2HCYHH",
+        "https://cp-algorithms.com/assets/javascripts/toggle-sidebar.js",
+        "https://cp-algorithms.com/assets/javascripts/bundle.d7400e89.min.js",
+        "https://cp-algorithms.com/javascript/config.js",
+        "https://cp-algorithms.com/javascript/sidebar-toggle-sync.js",
+        "https://cp-algorithms.com/javascript/donation-banner.js",
+        "https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6",
+        "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"
+      ]
+    },
+    {
+      "file": "cpalgorithms-codigo.html",
+      "title": "Segment Tree - Algorithms for Competitive Programming",
+      "url": "https://cp-algorithms.com/data_structures/segment_tree.html",
+      "rootCount": 1,
+      "counts": {
+        "p": 153,
+        "li": 71,
+        "h1": 1,
+        "h2": 3,
+        "h3": 12,
+        "h4": 17,
+        "pre": 23,
+        "code": 30,
+        "mjx-container": 612,
+        ".MathJax": 612,
+        ".arithmatex": 306,
+        "a.headerlink": 33,
+        "table": 0,
+        ".tabbed-set": 0,
+        ".tabbed-labels": 0,
+        ".tabbed-content": 0,
+        ".admonition": 0,
+        "details": 0,
+        "summary": 0,
+        "input": 0,
+        "button": 23,
+        "script": 1
+      },
+      "config": {
+        "annotate": null,
+        "base": "..",
+        "features": [
+          "toc.integrate",
+          "search.suggest",
+          "content.code.copy"
+        ],
+        "search": "../assets/javascripts/workers/search.2c215733.min.js",
+        "tags": null,
+        "translations": {
+          "clipboard.copied": "Copied to clipboard",
+          "clipboard.copy": "Copy to clipboard",
+          "search.result.more.one": "1 more on this page",
+          "search.result.more.other": "# more on this page",
+          "search.result.none": "No matching documents",
+          "search.result.one": "1 matching document",
+          "search.result.other": "# matching documents",
+          "search.result.placeholder": "Type to start searching",
+          "search.result.term.missing": "Missing",
+          "select.version": "Select version"
+        },
+        "version": null
+      },
+      "mathConfig": {
+        "inlineMath": [
+          [
+            "$",
+            "$"
+          ],
+          [
+            "\\(",
+            "\\)"
+          ]
+        ],
+        "displayMath": [
+          [
+            "$$",
+            "$$"
+          ],
+          [
+            "\\[",
+            "\\]"
+          ]
+        ],
+        "processEscapes": true,
+        "processEnvironments": true,
+        "packages": [
+          "base",
+          "ams",
+          "newcommand",
+          "noundefined",
+          "require",
+          "autoload",
+          "configmacros"
+        ]
+      },
+      "topChildren": [
+        {
+          "tag": "SCRIPT",
+          "class": ""
+        },
+        {
+          "tag": "A",
+          "class": "md-content__button md-icon"
+        },
+        {
+          "tag": "A",
+          "class": "md-content__button md-icon"
+        },
+        {
+          "tag": "A",
+          "class": "md-content__button md-icon"
+        },
+        {
+          "tag": "UL",
+          "class": "metadata page-metadata"
+        },
+        {
+          "tag": "H1",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H2",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H3",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H3",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "OL",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "OL",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H3",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H3",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H3",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "H3",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H2",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H3",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "UL",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "H3",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H3",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "H3",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H3",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H4",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H3",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "highlight"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H2",
+          "class": ""
+        },
+        {
+          "tag": "UL",
+          "class": ""
+        },
+        {
+          "tag": "UL",
+          "class": "metadata page-metadata"
+        }
+      ],
+      "scripts": [
+        "https://www.googletagmanager.com/gtag/js?id=G-7FLS2HCYHH",
+        "https://cp-algorithms.com/assets/javascripts/toggle-sidebar.js",
+        "https://cp-algorithms.com/assets/javascripts/bundle.d7400e89.min.js",
+        "https://cp-algorithms.com/javascript/config.js",
+        "https://cp-algorithms.com/javascript/sidebar-toggle-sync.js",
+        "https://cp-algorithms.com/javascript/donation-banner.js",
+        "https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6",
+        "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"
+      ]
+    },
+    {
+      "file": "cpalgorithms-pestanas.html",
+      "title": "Breadth First Search - Algorithms for Competitive Programming",
+      "url": "https://cp-algorithms.com/graph/breadth-first-search.html",
+      "rootCount": 1,
+      "counts": {
+        "p": 18,
+        "li": 47,
+        "h1": 1,
+        "h2": 4,
+        "h3": 0,
+        "h4": 0,
+        "pre": 4,
+        "code": 4,
+        "mjx-container": 114,
+        ".MathJax": 114,
+        ".arithmatex": 57,
+        "a.headerlink": 5,
+        "table": 0,
+        ".tabbed-set": 2,
+        ".tabbed-labels": 2,
+        ".tabbed-content": 2,
+        ".admonition": 0,
+        "details": 0,
+        "summary": 0,
+        "input": 4,
+        "button": 8,
+        "script": 1
+      },
+      "config": {
+        "annotate": null,
+        "base": "..",
+        "features": [
+          "toc.integrate",
+          "search.suggest",
+          "content.code.copy"
+        ],
+        "search": "../assets/javascripts/workers/search.2c215733.min.js",
+        "tags": null,
+        "translations": {
+          "clipboard.copied": "Copied to clipboard",
+          "clipboard.copy": "Copy to clipboard",
+          "search.result.more.one": "1 more on this page",
+          "search.result.more.other": "# more on this page",
+          "search.result.none": "No matching documents",
+          "search.result.one": "1 matching document",
+          "search.result.other": "# matching documents",
+          "search.result.placeholder": "Type to start searching",
+          "search.result.term.missing": "Missing",
+          "select.version": "Select version"
+        },
+        "version": null
+      },
+      "mathConfig": {
+        "inlineMath": [
+          [
+            "$",
+            "$"
+          ],
+          [
+            "\\(",
+            "\\)"
+          ]
+        ],
+        "displayMath": [
+          [
+            "$$",
+            "$$"
+          ],
+          [
+            "\\[",
+            "\\]"
+          ]
+        ],
+        "processEscapes": true,
+        "processEnvironments": true,
+        "packages": [
+          "base",
+          "ams",
+          "newcommand",
+          "noundefined",
+          "require",
+          "autoload",
+          "configmacros"
+        ]
+      },
+      "topChildren": [
+        {
+          "tag": "SCRIPT",
+          "class": ""
+        },
+        {
+          "tag": "A",
+          "class": "md-content__button md-icon"
+        },
+        {
+          "tag": "A",
+          "class": "md-content__button md-icon"
+        },
+        {
+          "tag": "A",
+          "class": "md-content__button md-icon"
+        },
+        {
+          "tag": "UL",
+          "class": "metadata page-metadata"
+        },
+        {
+          "tag": "H1",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H2",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "H2",
+          "class": ""
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "tabbed-set tabbed-alternate"
+        },
+        {
+          "tag": "P",
+          "class": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "tabbed-set tabbed-alternate"
+        },
+        {
+          "tag": "H2",
+          "class": ""
+        },
+        {
+          "tag": "UL",
+          "class": ""
+        },
+        {
+          "tag": "H2",
+          "class": ""
+        },
+        {
+          "tag": "UL",
+          "class": ""
+        },
+        {
+          "tag": "UL",
+          "class": "metadata page-metadata"
+        }
+      ],
+      "scripts": [
+        "https://www.googletagmanager.com/gtag/js?id=G-7FLS2HCYHH",
+        "https://cp-algorithms.com/assets/javascripts/toggle-sidebar.js",
+        "https://cp-algorithms.com/assets/javascripts/bundle.d7400e89.min.js",
+        "https://cp-algorithms.com/javascript/config.js",
+        "https://cp-algorithms.com/javascript/sidebar-toggle-sync.js",
+        "https://cp-algorithms.com/javascript/donation-banner.js",
+        "https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6",
+        "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"
+      ],
+      "tabExperiment": {
+        "available": true,
+        "checked": true,
+        "paragraphPreserved": true,
+        "editPreserved": true
+      },
+      "navigationExperiment": {
+        "url": "https://cp-algorithms.com/algebra/binary-exp.html",
+        "sentinelSurvived": false
+      }
+    }
+  ]
+}

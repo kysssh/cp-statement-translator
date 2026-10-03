@@ -1,82 +1,135 @@
-# CP Statement Translator
+﻿# CP Statement Translator
 
-Extensión de Chrome que traduce al español los enunciados de **Codeforces** y **CSES** **sin tocar las fórmulas ni el código**: el LaTeX, los `<pre>` de los ejemplos, las imágenes y los identificadores nunca llegan al traductor, así que no pueden montarse ni deformarse como pasa con el traductor web.
+Extensión de Chrome que traduce al español enunciados de **Codeforces** y **CSES**, y artículos de **USACO Guide** y **CP-Algorithms**, preservando fórmulas, código y enlaces. Versión **1.1.0**.
 
-## Instalación
+## Sitios soportados
 
-Requiere Chrome (o Brave/Edge) **138 o superior** para el traductor local. Los motores con API funcionan en versiones anteriores.
+| Sitio | Contenido | Motor |
+|---|---|---|
+| Codeforces | Problemas en HTML, incluidos contest, gym y group | Proveedor configurado |
+| CSES | Enunciados de problemset | Proveedor configurado |
+| USACO Guide | Módulos de documentación | Groq |
+| CP-Algorithms | Artículos de cp-algorithms.com | Groq |
 
-**Desde el `.zip` (para usuarios)**
-1. Descomprime `cp-statement-translator-v1.0.0.zip` en una carpeta.
-2. Abre `chrome://extensions` y activa el **Modo de desarrollador**.
+El espejo de CP-Algorithms en GitHub Pages no está incluido. Las páginas de inicio o navegación sin artículo no son contenido traducible.
+
+## Instalación y actualización
+
+Para el traductor local de Chrome se requiere una versión compatible con Translator API (Chrome 138 o superior) y que el dispositivo pueda descargar el modelo de idioma. Los proveedores con API no dependen de esa función.
+
+Desde el paquete:
+
+1. Descomprime `cp-statement-translator-v1.1.0.zip` en una carpeta.
+2. Abre `chrome://extensions` y activa **Modo de desarrollador**.
 3. Pulsa **Cargar descomprimida** y elige esa carpeta.
 
-**Desde el código (para desarrolladores)**
+Desde el código:
+
 ```bash
 npm install
-npm run build        # genera dist/
+npm run build
 ```
-Carga `dist/` como se indica arriba. Cada vez que cambies código: `npm run build` y ↻ en `chrome://extensions`.
 
-## Uso
+Carga `dist/` con **Cargar descomprimida**. Después de actualizar el código, ejecuta `npm run build`, recarga la extensión en `chrome://extensions` y recarga las páginas abiertas para cargar el nuevo content script y los dominios del manifest.
 
-Abre un problema de Codeforces o CSES. Aparece una barra sobre el enunciado:
+## Uso en Codeforces y CSES
 
-- **Traducir al español**: traduce el problema. Después puedes alternar **ES | EN** sin perder nada.
-- 🌙/☀️ **Modo oscuro** y ⚙ **Ajustes**.
-- El icono de la extensión abre un popup para cambiar de motor rápido, ver el estado de las keys, elegir el modo oscuro o vaciar la caché.
+Abre un problema. La barra sobre el enunciado permite **Traducir al español**, alternar **ES | EN**, cambiar el tema y abrir **Ajustes**. El proveedor configurado se utiliza para los enunciados; el predeterminado es Chrome local.
 
-## Motores de traducción
+El popup permite elegir proveedor, comprobar si tiene una clave configurada y administrar la caché.
 
-| Motor | Coste | Glosario | Notas |
-|---|---|---|---|
-| **Chrome local** (por defecto) | Gratis | No | Sin cuenta ni red. Descarga un paquete de idioma la primera vez |
-| **Groq** | Gratis | Sí | Rápido. Key en console.groq.com |
-| **Gemini** | Gratis | Sí | Key en Google AI Studio. Las peticiones gratuitas pueden usarse para entrenar |
-| **DeepL** | Gratis hasta 500 K car./mes | No | Muy fiel con las fórmulas. Las keys gratuitas terminan en `:fx` |
-| **Claude Haiku** | De pago (~0,01 USD/enunciado) | Sí | Máxima calidad |
+## Uso en USACO Guide y CP-Algorithms
 
-En **Ajustes** pegas la key, eliges el modelo y pulsas **Guardar y probar**. Los nombres de modelo cambian con frecuencia: el botón **Cargar modelos** consulta a la API cuáles ofrece tu key.
+1. En **Ajustes**, selecciona **Groq**, configura tu API key y guarda los cambios.
+2. Abre un módulo del Guide o un artículo de CP-Algorithms.
+3. Elige **Todo** para traducir los bloques seleccionados del documento, o **Al leer** para traducir secciones al entrar en pantalla. Pulsa **Traducir al español**.
+4. Puedes cancelar entre lotes y alternar **ES | EN**. Se conservan fórmulas, código y controles de las pestañas.
 
-## Cómo protege las fórmulas
+Las traducciones de documentos usan Groq y el glosario técnico; los otros motores siguen disponibles para CF/CSES. La caché guarda bloques individuales y permite recuperar una traducción sin otra petición si el texto y la versión del glosario coinciden.
 
-1. Cada bloque del enunciado se recorre como árbol DOM (nunca con regex sobre HTML).
-2. Todo lo que no debe traducirse se sustituye por un marcador `⟦n⟧`; el formato (negritas, enlaces) por un par `⟦n⟧…⟦/n⟧`.
-3. Se traduce solo el texto con marcadores.
-4. Se **valida** que vuelven los mismos marcadores en el mismo orden. Si no, se reintenta ese bloque aislado (enviando solo el texto entre marcadores).
-5. Si aun así falla, el bloque **se queda en inglés** (con borde punteado): un enunciado en inglés es útil, uno con la fórmula cambiada de sitio no.
-6. Se reconstruye el DOM **moviendo los nodos originales** (no con `innerHTML`), por lo que las fórmulas ya renderizadas no parpadean y no hay XSS posible.
+En CP-Algorithms, cambiar de artículo recarga la página y muestra de nuevo el botón; pulsa **Traducir** para aplicar la caché o traducir ese artículo. Cambiar la pestaña de código o el enlace de un encabezado conserva la traducción. USACO mantiene su comportamiento de navegación SPA.
 
-## Privacidad y seguridad
+Cada artículo traducido muestra una atribución al sitio y su licencia: **CC BY-NC-SA 4.0** para USACO Guide y **CC BY-SA 4.0** para CP-Algorithms.
 
-- Fórmulas, ejemplos y código no salen del navegador.
-- Las API keys se guardan en `chrome.storage.local` y solo las lee el service worker, nunca el código que corre en la página. Están en texto plano dentro de tu perfil de Chrome: usa keys propias y con límite de gasto.
-- Permisos: `storage` y acceso a los dominios de las APIs que usas. El traductor local no usa red.
-- Uso personal: la extensión solo lee el DOM y no automatiza envíos ni acciones en los jueces. No redistribuyas enunciados traducidos.
+## Groq: límites y ahorro de cuota
 
-## Desarrollo
+Según los [límites oficiales de Groq](https://console.groq.com/docs/rate-limits), consultados el 3 de octubre de 2026, el plan gratuito de `openai/gpt-oss-120b` y `openai/gpt-oss-20b` publica **30 peticiones/minuto**, **1 000 peticiones/día**, **8 000 tokens/minuto** y **200 000 tokens/día**. Son límites por organización; los valores exactos de tu cuenta y modelo se consultan en la [página de límites](https://console.groq.com/settings/limits).
+
+- Usa **Al leer** si solo necesitas una parte del artículo.
+- Conserva la caché: recargar o volver a una página permite reutilizar los bloques.
+- Cancela cuando ya tengas la sección que necesitas. Los lotes completados se conservan.
+- Evita traducir muchos artículos largos seguidos. Un artículo puede requerir varios lotes.
+
+La cola utiliza las cabeceras de cuota disponibles y hace reintentos limitados ante errores 429. No cuenta localmente todos los tokens del día; agotar la cuota diaria puede requerir esperar al reinicio. El glosario de v1.1 usa versión 2: los bloques guardados con la versión anterior se volverán a traducir.
+
+## Mediciones de documentos
+
+Estimaciones offline con los adapters actuales, presupuesto de 3 000 tokens de bloques por lote, prompt repetido en cada lote y salida estimada un 15 % mayor. Incluyen el prompt, pero no el JSON adicional, razonamiento del modelo ni reintentos. **No son consumo real de API**; las pruebas utilizaron respuestas simuladas y gastaron cero tokens de Groq.
+
+| Fixture real | Bloques | Lotes | Entrada estimada | Salida estimada | Total estimado |
+|---|---:|---:|---:|---:|---:|
+| USACO corto | 97 | 1 | 3 813 | 3 469 | 7 282 |
+| USACO fórmulas | 24 | 1 | 1 489 | 761 | 2 250 |
+| USACO tablas | 49 | 1 | 2 001 | 1 360 | 3 361 |
+| CP-Algorithms corto | 35 | 1 | 2 004 | 1 355 | 3 359 |
+| CP-Algorithms código (Segment Tree) | 215 | 5 | 16 398 | 14 146 | 30 544 |
+| CP-Algorithms pestañas (BFS) | 48 | 1 | 2 492 | 1 926 | 4 418 |
+
+Una revisita completamente cubierta por la caché requiere cero peticiones. Para repetir la medición: `node tools/measure-document-tokens.mjs`. Resultados detallados en `tools/document-token-estimates.json`.
+
+## Motores
+
+| Proveedor | Uso |
+|---|---|
+| Chrome local | Enunciados; sin cuenta ni envío del texto a una API |
+| Groq | Enunciados y documentación; requiere clave |
+| Gemini | Enunciados; requiere clave |
+| DeepL | Enunciados; requiere clave |
+| Claude | Enunciados; requiere clave |
+
+En **Ajustes**, configura la clave y el modelo, y pulsa **Guardar y probar**. **Cargar modelos** consulta los modelos disponibles para tu cuenta. Los precios y las cuotas dependen del proveedor y del plan.
+
+## Protección y privacidad
+
+La extensión recorre el DOM y sustituye fórmulas, código e imágenes por marcadores. Traduce la prosa y valida que los marcadores regresen en el mismo orden antes de reconstruir el bloque. Conserva los atributos de enlaces y formato; las respuestas incompletas no se aplican al bloque. En enunciados se intenta una traducción aislada del bloque inválido antes de dejarlo en inglés. La caché de documentos también se valida antes de aplicarse.
+
+Las claves se guardan en `chrome.storage.local` dentro del perfil del navegador. Solo el service worker las lee; el content script no necesita acceder a ellas. Con proveedores remotos se envía la prosa seleccionada y sus marcadores a la API. El traductor local no envía ese texto a un proveedor remoto.
+
+Los permisos incluyen almacenamiento, ejecución en los sitios soportados y acceso a las APIs configuradas. La extensión no envía soluciones ni automatiza acciones de los jueces.
+
+## Desarrollo y verificación
 
 ```bash
-npm run check    # tsc + tests (Vitest + jsdom)
+npm run check    # TypeScript y suite completa de Vitest/jsdom
 npm run build    # compila a dist/
-npm run zip      # build + dist/ → cp-statement-translator-v<versión>.zip
+npm run zip      # compila y genera el ZIP según la versión de package.json
+node tools/measure-document-tokens.mjs
+node tools/verify-cpalgorithms-navigation.mjs
 ```
 
-```
+La prueba de navegador requiere Chromium con soporte para extensiones descomprimidas; puedes indicar su ruta con la variable de entorno `CPT_TEST_BROWSER`. Crea un perfil temporal, carga dist y simula Groq en el worker de prueba. No usa claves personales ni consume cuota. En sistemas distintos de Windows, el comando de empaquetado requiere `zip`; en Windows utiliza `tar`.
+
+Validación del cierre: 117 pruebas automatizadas, incluidos CF, CSES y USACO, y 10 comprobaciones de navegación en Chromium con la extensión real. Los fixtures principales se capturaron de páginas reales; el fixture de casos especiales de CP-Algorithms está identificado como sintético.
+
+```text
 src/
-  core/         lógica pura sin chrome.*: extract/restore, validador, segmentador, pipeline
-  adapters/     todo lo específico de cada juez (selectores). Añadir un juez = un archivo
-  content/      barra inyectada, modo oscuro, alternar ES/EN, caché
-  background/   service worker y proveedores (único que ve las keys)
+  core/         extracción/restauración, validación, segmentación y pipeline
+  adapters/     configuración y selectores por sitio
+  content/      barra, traducción de documentos, cola, caché y navegación
+  background/   service worker y proveedores
   options/, popup/, ui/, shared/
-tests/          fixtures HTML reales de Codeforces y CSES
+tests/          pruebas y fixtures de los cuatro sitios
+tools/          inspección, mediciones, prueba de navegador y empaquetado
 ```
 
-Para añadir un juez nuevo (AtCoder, etc.): crea `src/adapters/<juez>.ts` con sus selectores, regístralo en `adapters/index.ts` y añade su URL a `matches` en `src/manifest.json`. No debería hacer falta tocar `core/`.
+Para añadir un sitio, crea su adapter, regístralo en `src/adapters/index.ts` y añade las rutas al manifest. Un sitio de documentación necesita además `contentType: 'doc'` y la configuración `documentation` para raíz, atribución y navegación.
 
-## Limitaciones conocidas
+## Limitaciones comprobadas
 
-- El traductor local no admite glosario: puede traducir `array` como «matriz». Para eso están los motores con LLM.
-- Los enunciados de gym que son PDF no se pueden traducir.
-- El modo oscuro de Codeforces es un filtro de inversión; alguna imagen puede verse rara.
-- Si Codeforces o CSES cambian su HTML, solo hay que actualizar el adapter correspondiente.
+- Los PDF de gym no se traducen.
+- El traductor local no admite el glosario técnico.
+- Un cambio en el HTML de un sitio puede requerir actualizar su adapter.
+- Los artículos largos pueden tardar por los límites del proveedor.
+- Las pruebas de documentación usaron traducciones simuladas: no evalúan la calidad ni disponibilidad de Groq real.
+- Los avisos, desplegables y tablas adicionales de CP-Algorithms se cubren con casos sintéticos; su comportamiento en otras páginas reales puede requerir más inspección.
+- El tema oscuro de Codeforces utiliza inversión y puede alterar la apariencia de algunas imágenes.

@@ -10,9 +10,9 @@
  *   x-ratelimit-reset-tokens       tiempo hasta el reinicio por minuto ("7.66s")
  *   retry-after                     segundos a esperar; SOLO en respuestas 429
  *
- * Ojo: el límite diario de Groq se cuenta en PETICIONES, no en tokens. Con 1 000
- * peticiones/día, un artículo que cuesta 3 lotes no es un problema; encadenar
- * muchos artículos sí lo es.
+ * Las cabeceras de requests describen peticiones/día y las de tokens, tokens/minuto.
+ * Groq también aplica límites de tokens/día, que no se exponen en estas cabeceras.
+ * Consulta los límites de la cuenta para el modelo elegido.
  *
  * Los tokens en caché no cuentan para el límite, así que si el prompt del sistema
  * va primero y es idéntico en cada llamada, el consumo real puede ser menor.

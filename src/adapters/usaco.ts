@@ -19,6 +19,7 @@ export const usaco: SiteAdapter = {
   id: 'usaco',
   contentType: 'doc',
   requiresGroq: true,
+  documentation: { rootSelector: '.markdown', spaNavigation: true },
 
   matches(loc) {
     return loc.hostname === 'usaco.guide';

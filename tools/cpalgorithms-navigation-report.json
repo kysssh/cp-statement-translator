@@ -1,0 +1,92 @@
+{
+  "capturedAt": "2026-10-03T22:25:29.844Z",
+  "browser": "C:/Users/PERCY/AppData/Local/ms-playwright/chromium-1243/chrome-win64/chrome.exe",
+  "extension": "C:\\Users\\PERCY\\OneDrive\\Documentos\\Proyectos\\cp-statement-translator\\dist",
+  "translation": "Simulated Groq HTTP response in isolated test worker; actual content script, messaging, queue and storage",
+  "checks": [
+    {
+      "name": "extension mounted on initial article",
+      "url": "https://cp-algorithms.com/graph/breadth-first-search.html",
+      "uiCount": 1,
+      "state": "idle"
+    },
+    {
+      "name": "translation through real extension messaging and worker",
+      "state": "done",
+      "message": "",
+      "attributions": 1,
+      "paragraph": "[T51] Breadth first search is one of the basic and essential searching algorithms on graphs.",
+      "requests": 1
+    },
+    {
+      "name": "code tab retains translation and UI",
+      "passed": true
+    },
+    {
+      "name": "heading hash preserves translated article",
+      "passed": true,
+      "hash": "#description-of-the-algorithm"
+    },
+    {
+      "name": "EN/ES preserves selected language tab",
+      "passed": true
+    },
+    {
+      "name": "article link loads new document and fresh extension UI",
+      "url": "https://cp-algorithms.com/algebra/binary-exp.html",
+      "uiCount": 1,
+      "state": "idle",
+      "sentinelSurvived": false
+    },
+    {
+      "name": "new article translates",
+      "state": "done",
+      "message": "2 bloque(s) desde caché.",
+      "attributions": 1,
+      "paragraph": "[T51] Binary exponentiation (also known as exponentiation by squaring) is a trick which allows to calculate   an<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi>a</mi><mi>n</mi></msup></math>$a^n$ , where   n<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>n</mi></math>$n$  is a non-negative integer, using only   O(log⁡n)<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>O</mi><mo stretchy=\"false\">(</mo><mi>log</mi><mo data-mjx-texclass=\"NONE\">⁡</mo><mi>n</mi><mo stretchy=\"false\">)</mo></math>$O(\\log n)$  multiplications (instead of   O(n)<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></math>$O(n)$  multiplications required by the naive approach)."
+    },
+    {
+      "name": "reload reattaches UI and uses persistent block cache",
+      "state": "done",
+      "message": "Bloques recuperados de la caché.",
+      "attributions": 1,
+      "paragraph": "[T51] Binary exponentiation (also known as exponentiation by squaring) is a trick which allows to calculate   an<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi>a</mi><mi>n</mi></msup></math>$a^n$ , where   n<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>n</mi></math>$n$  is a non-negative integer, using only   O(log⁡n)<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>O</mi><mo stretchy=\"false\">(</mo><mi>log</mi><mo data-mjx-texclass=\"NONE\">⁡</mo><mi>n</mi><mo stretchy=\"false\">)</mo></math>$O(\\log n)$  multiplications (instead of   O(n)<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></math>$O(n)$  multiplications required by the naive approach).",
+      "newRequests": 0
+    },
+    {
+      "name": "history back returns functional UI and translated content",
+      "passed": true,
+      "initialState": "idle",
+      "newRequests": 0
+    },
+    {
+      "name": "no extension runtime or console errors",
+      "passed": true
+    }
+  ],
+  "exceptions": [],
+  "consoleErrors": [],
+  "worker": {
+    "targetId": "B3FA2D48E101D2FC75348703788333D0",
+    "type": "service_worker",
+    "title": "Service Worker chrome-extension://cfbmlgbpgkidijcclpbkelmnojbfllnm/service-worker-loader.js",
+    "url": "chrome-extension://cfbmlgbpgkidijcclpbkelmnojbfllnm/service-worker-loader.js",
+    "attached": false,
+    "canAccessOpener": false,
+    "browserContextId": "10E7D21090BB03CB0A4E23E9B6DD867E"
+  },
+  "browserVersion": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/153.0.8010.12",
+    "revision": "@971a7443b0c9b0a9b2860529b33331b76077ec62",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "jsVersion": "15.3.76.4"
+  },
+  "extensionOrigin": "chrome-extension://cfbmlgbpgkidijcclpbkelmnojbfllnm",
+  "passed": true,
+  "requestCount": 2,
+  "batchSizes": [
+    48,
+    64
+  ]
+}

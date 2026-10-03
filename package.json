@@ -1,15 +1,15 @@
 {
   "name": "cp-statement-translator",
   "private": true,
-  "version": "1.0.0",
-  "description": "Extensión de Chrome que traduce enunciados de Codeforces y CSES al español sin tocar fórmulas ni código.",
+  "version": "1.1.0",
+  "description": "Extensión de Chrome que traduce enunciados de Codeforces y CSES y documentación de USACO Guide y CP-Algorithms al español, preservando fórmulas y código.",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "vitest run",
     "preview": "vite preview",
-    "zip": "npm run build && tar -a -cf cp-statement-translator-v1.0.0.zip -C dist .",
+    "zip": "npm run build && node tools/package-extension.mjs",
     "check": "tsc --noEmit && vitest run"
   },
   "devDependencies": {
