@@ -1,0 +1,308 @@
+<div class="container" id="description-container" dir="ltr" lang="en"><style type="text/css">
+    div.illustration {
+        float: right;
+        padding-left: 20px;
+    }
+    div.illustration .illustration {
+        width: 100%;
+        border-radius: 4px;
+    }
+    pre {
+        display: block;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+    div.sampleinteractionread {
+        width: 60%;
+        margin: 3px 0px 3px 0px;
+    }
+    div.sampleinteractionread pre {
+        margin: 1px 5px 1px 5px;
+        border-radius: 5px;
+        border: solid 1px rgba(255, 255, 255, 0.25);
+        background-color: #cccccc;
+        padding: 14px 13px;
+        font-family: Courier, monospace;
+        font-variant-ligatures: none;
+    }
+    div.sampleinteractionwrite {
+        width: 60%;
+        margin: 3px 0px 3px 0px;
+        margin-left: auto;
+    }
+    div.sampleinteractionwrite pre {
+        margin: 1px 5px 1px 5px;
+        border-radius: 5px;
+        border: solid 1px rgba(255, 255, 255, 0.25);
+        background-color: #cccccc;
+        padding: 14px 13px;
+        font-family: Courier, monospace;
+        font-variant-ligatures: none;
+    }
+    table.sample {
+        width: 100%;
+    }
+</style>
+<script>
+    window.katexOptions = {
+        delimiters: [
+          {left: '\\[', right: '\\]', display: true}
+        ]
+    };
+</script>
+<dd style="padding-top: 20px"><div style="padding: 0px 20px 20px;">
+    <p>Educators are always coming up with new ways to teach math
+    to students. In 2011, an educational software company, All
+    Computer Math (ACM), developed an application to display
+    products in a traditional grade school math format. ACM is now
+    working on an updated version of the software that will display
+    results in a lattice format that some students find to be
+    easier when multiplying larger numbers.</p>
+
+    <p>An example would be when multiplying <span class="tex2jax_process"><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>345</mn><mo>⋅</mo><mn>56</mn><mo>=</mo><mn>19320</mn></mrow><annotation encoding="application/x-tex">345 \cdot 56 = 19320</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">345</span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right: 0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">56</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">19320</span></span></span></span></span></span> as given below,
+    using a lattice grid with 2 rows and 3 columns, which appears
+    inside a surrounding frame:</p>
+    <pre>+---------------+
+|   3   4   5   |
+| +---+---+---+ |
+| |1 /|2 /|2 /| |
+| | / | / | / |5|
+|1|/ 5|/ 0|/ 5| |
+| +---+---+---+ |
+|/|1 /|2 /|3 /| |
+| | / | / | / |6|
+|9|/ 8|/ 4|/ 0| |
+| +---+---+---+ |
+|/ 3 / 2 / 0    |
++---------------+
+</pre>
+
+    <p>The first operand, 345, is displayed above the top of the
+    grid with each digit centered horizontally above its column of
+    the grid, and the second operand, 56, is displayed along the
+    righthand side with each digit centered vertically at the
+    center of its row in the grid. A single cell of the grid, such
+    as</p>
+    <pre>          +---+
+          |3 /|
+          | / |
+          |/ 0|
+          +---+
+</pre>
+
+    <p>represents the product of the digit of the first operand
+    that is above its column and the digit of the second operand
+    that is to the right of its row. In our example, this cell
+    represents the product 5 times 6 = 30 that results when
+    multiplying the 5 in 345 and the 6 in 56. Note that the 10’s
+    digit of that product is placed in the upper left portion of
+    this cell and the 1’s digit in the lower right.</p>
+
+    <p>The overall product is then computed by summing along the
+    diagonals in the lattice that represent the same place values
+    in the result. For example, in our first problem the product
+    19320 was computed as:</p>
+
+    <table cellspacing="0" class="tabular">
+      <tbody><tr>
+        <td style="text-align:left">
+          <p>1’s digit</p>
+        </td>
+
+        <td style="text-align:left">
+          <p>= <b class="bfseries">0</b></p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p>10’s digit</p>
+        </td>
+
+        <td style="text-align:left">
+          <p>= 5 + 3 + 4 = 12, thus <b class="bfseries">2</b> with
+          a carry of 1</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p>100’s digit</p>
+        </td>
+
+        <td style="text-align:left">
+          <p>= (1 carry) + 2 + 0 + 2 + 8 = 13, thus <b class="bfseries">3</b> with a carry of 1</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p>1000’s digit</p>
+        </td>
+
+        <td style="text-align:left">
+          <p>= (1 carry) + 2 + 5 + 1 = <b class="bfseries">9</b></p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p>10000’s digit</p>
+        </td>
+
+        <td style="text-align:left">
+          <p>= <b class="bfseries">1</b></p>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <p>The resulting product is placed with the one’s digit below
+    the grid at the far right and, depending on its length, with
+    the most significant digits wrapped around the left side of the
+    grid. Each digit of the final product appears perfectly aligned
+    with the corresponding diagonal summands.</p>
+
+    <p>To provide an aesthetic view, we use a series of minus
+    (<tt class="ttfamily">-</tt>) characters for horizontal lines,
+    pipe (<tt class="ttfamily">|</tt>) characters for vertical
+    lines, and slash (<tt class="ttfamily">/</tt>) characters for
+    diagonal lines. Furthermore, we use a plus (<tt class="ttfamily">+</tt>) character wherever a horizontal and vertical
+    line meet. Each multiplication lattice is subsequently "boxed"
+    by an outer border. There is a row containing the first operand
+    which is between the topmost border and the top line of the
+    grid, and a row between the bottom of the grid and the bottom
+    border, which contains some portion of the resulting product.
+    There is one column between the leading | and the left edge of
+    the inner grid, which may contain a portion of the resulting
+    product, and one column after the right edge of the inner grid
+    but before the rightmost | border, which contains the second
+    operand. If the product is not long enough to wrap around the
+    bottom-left corner, the column between the left border and the
+    left edge of the grid will containing only spaces. (See the
+    later example of 3 x 3.)</p>
+
+    <p>Leading zeros should be displayed within lattice grid cells,
+    but leading zeros should never be displayed in the product, nor
+    should there ever be a slash (<tt class="ttfamily">/</tt>)
+    character prior to the leading digit of the product. For
+    example, consider the product of <span class="tex2jax_process"><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn><mo>⋅</mo><mn>27</mn><mo>=</mo><mn>324</mn></mrow><annotation encoding="application/x-tex">12 \cdot 27 = 324</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">12</span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right: 0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">27</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">324</span></span></span></span></span></span> below:</p>
+    <pre>+-----------+
+|   1   2   |
+| +---+---+ |
+| |0 /|0 /| |
+| | / | / |2|
+| |/ 2|/ 4| |
+| +---+---+ |
+| |0 /|1 /| |
+| | / | / |7|
+|3|/ 7|/ 4| |
+| +---+---+ |
+|/ 2 / 4    |
++-----------+
+</pre>
+
+    <p>Note that in the top-right grid of the lattice, the product
+    <span class="tex2jax_process"><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>⋅</mo><mn>2</mn><mo>=</mo><mn>04</mn></mrow><annotation encoding="application/x-tex">2 \cdot 2 = 04</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right: 0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">04</span></span></span></span></span></span> is
+    displayed with the zero for the tens digit. However, there is
+    no thousands digit displayed in the product 324, nor is there
+    any slash displayed above the digit 3 in that product.</p>
+
+    <h2>Input</h2>
+
+    <p>The input is composed of <span class="tex2jax_process"><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal" style="margin-right: 0.1389em;">T</span></span></span></span></span></span> test cases (<span class="tex2jax_process"><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>⩽</mo><mi>T</mi><mo>⩽</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">1 \leqslant T \leqslant 20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.7811em; vertical-align: -0.1367em;"></span><span class="mord">1</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.82em; vertical-align: -0.1367em;"></span><span class="mord mathnormal" style="margin-right: 0.1389em;">T</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">20</span></span></span></span></span></span>).</p>
+
+    <p>Each test contains two positive integers, <span class="tex2jax_process"><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span></span></span> and <span class="tex2jax_process"><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.6833em;"></span><span class="mord mathnormal" style="margin-right: 0.0502em;">B</span></span></span></span></span></span>, such that <span class="tex2jax_process"><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>⩽</mo><mi>A</mi><mo>⩽</mo><mn>9999</mn></mrow><annotation encoding="application/x-tex">1 \leqslant A \leqslant 9999</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.7811em; vertical-align: -0.1367em;"></span><span class="mord">1</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.82em; vertical-align: -0.1367em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">9999</span></span></span></span></span></span> and
+    <span class="tex2jax_process"><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>⩽</mo><mi>B</mi><mo>⩽</mo><mn>9999</mn></mrow><annotation encoding="application/x-tex">1 \leqslant B \leqslant
+    9999</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height: 0.7811em; vertical-align: -0.1367em;"></span><span class="mord">1</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.82em; vertical-align: -0.1367em;"></span><span class="mord mathnormal" style="margin-right: 0.0502em;">B</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height: 0.6444em;"></span><span class="mord">9999</span></span></span></span></span></span>.</p>
+
+    <p>The last test case will be followed by a line containing
+    <tt class="ttfamily">0 0</tt>.</p>
+
+    <h2>Output</h2>
+
+    <p>For each test case, produce the grid that illustrates how to
+    multiply the two numbers using the lattice multiplication
+    technique.</p>
+
+    <h2>Sample 1</h2><table class="vjudge_sample">
+<thead>
+  <tr>
+    <th>Input<span class="copier">Copiar</span></th>
+    <th>Output<span class="copier">Copiar</span></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><pre>345 56
+12 27
+1 68
+9999 7
+3 3
+0 0
+</pre></td>
+    <td><pre>+---------------+
+|   3   4   5   |
+| +---+---+---+ |
+| |1 /|2 /|2 /| |
+| | / | / | / |5|
+|1|/ 5|/ 0|/ 5| |
+| +---+---+---+ |
+|/|1 /|2 /|3 /| |
+| | / | / | / |6|
+|9|/ 8|/ 4|/ 0| |
+| +---+---+---+ |
+|/ 3 / 2 / 0    |
++---------------+
++-----------+
+|   1   2   |
+| +---+---+ |
+| |0 /|0 /| |
+| | / | / |2|
+| |/ 2|/ 4| |
+| +---+---+ |
+| |0 /|1 /| |
+| | / | / |7|
+|3|/ 7|/ 4| |
+| +---+---+ |
+|/ 2 / 4    |
++-----------+
++-------+
+|   1   |
+| +---+ |
+| |0 /| |
+| | / |6|
+| |/ 6| |
+| +---+ |
+| |0 /| |
+| | / |8|
+|6|/ 8| |
+| +---+ |
+|/ 8    |
++-------+
++-------------------+
+|   9   9   9   9   |
+| +---+---+---+---+ |
+| |6 /|6 /|6 /|6 /| |
+| | / | / | / | / |7|
+|6|/ 3|/ 3|/ 3|/ 3| |
+| +---+---+---+---+ |
+|/ 9 / 9 / 9 / 3    |
++-------------------+
++-------+
+|   3   |
+| +---+ |
+| |0 /| |
+| | / |3|
+| |/ 9| |
+| +---+ |
+|  9    |
++-------+
+</pre></td>
+  </tr>
+</tbody>
+</table>
+
+  </div></dd></div>

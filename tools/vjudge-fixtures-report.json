@@ -1,0 +1,572 @@
+{
+  "capturedAt": "2026-10-04T15:06:22.902Z",
+  "source": "Capturas DOM aportadas por el usuario; análisis offline.",
+  "contextEvidence": {
+    "url": "https://vjudge.net/problem/description/321177558442991?3551163336793",
+    "context": "iframe",
+    "frames": []
+  },
+  "contestNavigation": {
+    "a": "https://vjudge.net/contest/855562#problem/A",
+    "b": "https://vjudge.net/contest/855562#problem/B",
+    "sameContest": true,
+    "changedPart": "hash",
+    "liveNavigationVerified": false
+  },
+  "captures": [
+    {
+      "file": "vj-atcoder.html",
+      "listedName": "vj-atcoder.html",
+      "url": "https://vjudge.net/problem/AtCoder-dp_v",
+      "sha256": "a3239e22ecb630a059feb6ed7768a1ab3aeb6d462dd9e1e06a413db1b85d4063",
+      "length": 30386,
+      "root": {
+        "tag": "DD",
+        "id": "",
+        "class": ""
+      },
+      "pdf": false,
+      "counts": {
+        "p": 8,
+        "li": 7,
+        "div": 8,
+        "dd": 1,
+        "h3": 8,
+        "pre": 9,
+        "code": 0,
+        "br": 0,
+        "sub": 0,
+        "sup": 0,
+        "img": 1,
+        "svg": 0,
+        ".katex": 33,
+        ".MathJax": 0,
+        ".MathJax_SVG": 0,
+        "iframe": 0,
+        ".vjudge_sample": 4,
+        ".copier": 8,
+        ".vjudge-pdf-viewer-container": 0,
+        "canvas": 0,
+        ".textLayer": 0
+      },
+      "headings": [
+        "Problem Statement",
+        "Constraints",
+        "Input",
+        "Output",
+        "Sample 1",
+        "Sample 2",
+        "Sample 3",
+        "Sample 4"
+      ],
+      "paragraphAndHeadingCandidates": 23,
+      "looseText": [],
+      "images": [
+        {
+          "src": "https://cdn.vjudge.net.cn/cdf62bfaebfec23fd09421c599be0f93?18",
+          "alt": ""
+        }
+      ],
+      "framePlacement": "El fragmento por sí solo no prueba su contexto; consultar contextEvidence del informe."
+    },
+    {
+      "file": "vj-codechef.html",
+      "listedName": "vj-codechef.html",
+      "url": "https://vjudge.net/problem/CodeChef-INOI26P1",
+      "sha256": "252dee60e40327d206262733c6ac327f62b46df1a1735f9a1aba34c3ea50c641",
+      "length": 44249,
+      "root": {
+        "tag": "DIV",
+        "id": "description-container",
+        "class": "container"
+      },
+      "pdf": false,
+      "counts": {
+        "p": 8,
+        "li": 11,
+        "div": 9,
+        "dd": 1,
+        "h3": 7,
+        "pre": 6,
+        "code": 0,
+        "br": 1,
+        "sub": 0,
+        "sup": 0,
+        "img": 0,
+        "svg": 0,
+        ".katex": 41,
+        ".MathJax": 0,
+        ".MathJax_SVG": 0,
+        "iframe": 0,
+        ".vjudge_sample": 3,
+        ".copier": 6,
+        ".vjudge-pdf-viewer-container": 0,
+        "canvas": 0,
+        ".textLayer": 0
+      },
+      "headings": [
+        "Input Format",
+        "Output Format",
+        "Constraints",
+        "Subtasks",
+        "Sample 1",
+        "Sample 2",
+        "Sample 3"
+      ],
+      "paragraphAndHeadingCandidates": 26,
+      "looseText": [
+        {
+          "tag": "DIV",
+          "preview": "There are   subsequences as enlisted -   and  . Note that some of them appear multiple times."
+        }
+      ],
+      "images": [],
+      "framePlacement": "El fragmento por sí solo no prueba su contexto; consultar contextEvidence del informe."
+    },
+    {
+      "file": "vj-codeforces.html",
+      "listedName": "vj-codeforces.html",
+      "url": "https://vjudge.net/problem/CodeForces-1876C",
+      "sha256": "50ec6d8239cf4759857a4ad1191c5b06ac8bef40bde0de27cedd92d274f7d1f6",
+      "length": 26235,
+      "root": {
+        "tag": "DD",
+        "id": "",
+        "class": ""
+      },
+      "pdf": false,
+      "counts": {
+        "p": 11,
+        "li": 4,
+        "div": 6,
+        "dd": 1,
+        "h3": 4,
+        "pre": 4,
+        "code": 0,
+        "br": 0,
+        "sub": 0,
+        "sup": 0,
+        "img": 0,
+        "svg": 0,
+        ".katex": 30,
+        ".MathJax": 0,
+        ".MathJax_SVG": 0,
+        "iframe": 0,
+        ".vjudge_sample": 2,
+        ".copier": 4,
+        ".vjudge-pdf-viewer-container": 0,
+        "canvas": 0,
+        ".textLayer": 0
+      },
+      "headings": [
+        "Input",
+        "Output",
+        "Examples",
+        "Note"
+      ],
+      "paragraphAndHeadingCandidates": 19,
+      "looseText": [],
+      "images": [],
+      "framePlacement": "El fragmento por sí solo no prueba su contexto; consultar contextEvidence del informe."
+    },
+    {
+      "file": "vj-contest-a.html",
+      "listedName": "vj-contest-a.html",
+      "url": "https://vjudge.net/contest/855562#problem/A",
+      "sha256": "89e7135666b607a7e8e23d63c050928625271f7f321d8beb4b7ff41534c71849",
+      "length": 33152,
+      "root": {
+        "tag": "DIV",
+        "id": "description-container",
+        "class": "container"
+      },
+      "pdf": false,
+      "counts": {
+        "p": 13,
+        "li": 3,
+        "div": 6,
+        "dd": 1,
+        "h3": 4,
+        "pre": 2,
+        "code": 0,
+        "br": 0,
+        "sub": 0,
+        "sup": 0,
+        "img": 0,
+        "svg": 0,
+        ".katex": 38,
+        ".MathJax": 0,
+        ".MathJax_SVG": 0,
+        "iframe": 0,
+        ".vjudge_sample": 1,
+        ".copier": 2,
+        ".vjudge-pdf-viewer-container": 0,
+        "canvas": 0,
+        ".textLayer": 0
+      },
+      "headings": [
+        "Input",
+        "Output",
+        "Examples",
+        "Note"
+      ],
+      "paragraphAndHeadingCandidates": 20,
+      "looseText": [
+        {
+          "tag": "DIV",
+          "preview": "Note that the starting weight can be greater than  ."
+        }
+      ],
+      "images": [],
+      "framePlacement": "El fragmento por sí solo no prueba su contexto; consultar contextEvidence del informe."
+    },
+    {
+      "file": "vj-contest-b.html",
+      "listedName": "vj-contest-b.html",
+      "url": "https://vjudge.net/contest/855562#problem/B",
+      "sha256": "e8e7edcff4345d1f2a448a1bf9114504ed024615f2b3d6525a50e926caaecd4e",
+      "length": 30232,
+      "root": {
+        "tag": "DIV",
+        "id": "description-container",
+        "class": "container"
+      },
+      "pdf": false,
+      "counts": {
+        "p": 12,
+        "li": 0,
+        "div": 5,
+        "dd": 1,
+        "h3": 3,
+        "pre": 2,
+        "code": 0,
+        "br": 0,
+        "sub": 0,
+        "sup": 0,
+        "img": 0,
+        "svg": 0,
+        ".katex": 32,
+        ".MathJax": 0,
+        ".MathJax_SVG": 0,
+        "iframe": 0,
+        ".vjudge_sample": 1,
+        ".copier": 2,
+        ".vjudge-pdf-viewer-container": 0,
+        "canvas": 0,
+        ".textLayer": 0
+      },
+      "headings": [
+        "Input",
+        "Output",
+        "Examples"
+      ],
+      "paragraphAndHeadingCandidates": 15,
+      "looseText": [],
+      "images": [],
+      "framePlacement": "El fragmento por sí solo no prueba su contexto; consultar contextEvidence del informe."
+    },
+    {
+      "file": "vj-gym.html",
+      "listedName": "vj-gym.html",
+      "url": "https://vjudge.net/problem/Gym-106730M",
+      "sha256": "f9aadc0daa4dee01b48b5e5a22c445c6f355ef6c911ee0b8f47c91db2ca14448",
+      "length": 9200,
+      "root": {
+        "tag": "DD",
+        "id": "",
+        "class": ""
+      },
+      "pdf": false,
+      "counts": {
+        "p": 6,
+        "li": 1,
+        "div": 5,
+        "dd": 1,
+        "h3": 3,
+        "pre": 4,
+        "code": 0,
+        "br": 0,
+        "sub": 0,
+        "sup": 0,
+        "img": 1,
+        "svg": 0,
+        ".katex": 6,
+        ".MathJax": 0,
+        ".MathJax_SVG": 0,
+        "iframe": 0,
+        ".vjudge_sample": 2,
+        ".copier": 4,
+        ".vjudge-pdf-viewer-container": 0,
+        "canvas": 0,
+        ".textLayer": 0
+      },
+      "headings": [
+        "Input",
+        "Output",
+        "Examples"
+      ],
+      "paragraphAndHeadingCandidates": 10,
+      "looseText": [],
+      "images": [
+        {
+          "src": "https://cdn.vjudge.net.cn/c7f24097fe56ca28beac0b9a5b54c960?57",
+          "alt": null
+        }
+      ],
+      "framePlacement": "El fragmento por sí solo no prueba su contexto; consultar contextEvidence del informe."
+    },
+    {
+      "file": "vj-hackerrank.html",
+      "listedName": "vj-hackerrank.html",
+      "url": "https://vjudge.net/problem/HackerRank-dijkstrashortreach",
+      "sha256": "2a7d215b20363e2bafbd01372cb147ba9538a3f7660d2e22f6e53f069815f98b",
+      "length": 80099,
+      "root": {
+        "tag": "DIV",
+        "id": "description-container",
+        "class": "container"
+      },
+      "pdf": false,
+      "counts": {
+        "p": 23,
+        "li": 3,
+        "div": 23,
+        "dd": 1,
+        "h3": 0,
+        "pre": 3,
+        "code": 1,
+        "br": 9,
+        "sub": 0,
+        "sup": 0,
+        "img": 2,
+        "svg": 47,
+        ".katex": 0,
+        ".MathJax": 0,
+        ".MathJax_SVG": 42,
+        "iframe": 0,
+        ".vjudge_sample": 1,
+        ".copier": 2,
+        ".vjudge-pdf-viewer-container": 0,
+        "canvas": 0,
+        ".textLayer": 0
+      },
+      "headings": [],
+      "paragraphAndHeadingCandidates": 26,
+      "looseText": [],
+      "images": [
+        {
+          "src": "https://cdn.vjudge.net.cn/417bc0ca7774999e1cd3755be4df3494?22",
+          "alt": "image"
+        },
+        {
+          "src": "https://cdn.vjudge.net.cn/68976c721401e771f513add17a7a3baf?22",
+          "alt": "image"
+        }
+      ],
+      "framePlacement": "El fragmento por sí solo no prueba su contexto; consultar contextEvidence del informe."
+    },
+    {
+      "file": "vj-kattis.html",
+      "listedName": "vj-kattis.html",
+      "url": "https://vjudge.net/problem/Kattis-multiplication",
+      "sha256": "d4f5cfa2c6225630a5312d520d2c893efd953af4c6d10242f625974c47acce4c",
+      "length": 16792,
+      "root": {
+        "tag": "DIV",
+        "id": "description-container",
+        "class": "container"
+      },
+      "pdf": false,
+      "counts": {
+        "p": 23,
+        "li": 0,
+        "div": 2,
+        "dd": 1,
+        "h3": 0,
+        "pre": 5,
+        "code": 0,
+        "br": 0,
+        "sub": 0,
+        "sup": 0,
+        "img": 0,
+        "svg": 0,
+        ".katex": 9,
+        ".MathJax": 0,
+        ".MathJax_SVG": 0,
+        "iframe": 0,
+        ".vjudge_sample": 1,
+        ".copier": 2,
+        ".vjudge-pdf-viewer-container": 0,
+        "canvas": 0,
+        ".textLayer": 0
+      },
+      "headings": [
+        "Input",
+        "Output",
+        "Sample 1"
+      ],
+      "paragraphAndHeadingCandidates": 26,
+      "looseText": [],
+      "images": [],
+      "framePlacement": "El fragmento por sí solo no prueba su contexto; consultar contextEvidence del informe."
+    },
+    {
+      "file": "vj-poj.html",
+      "listedName": "vj-poj.html",
+      "url": "https://vjudge.net/problem/POJ-2482",
+      "sha256": "28d94acf663ab7fe52792bce399629a7de0775f1233fa3f6072cb05186e04f47",
+      "length": 5122,
+      "root": {
+        "tag": "DIV",
+        "id": "description-container",
+        "class": "container"
+      },
+      "pdf": false,
+      "counts": {
+        "p": 0,
+        "li": 0,
+        "div": 5,
+        "dd": 1,
+        "h3": 3,
+        "pre": 2,
+        "code": 0,
+        "br": 14,
+        "sub": 0,
+        "sup": 0,
+        "img": 1,
+        "svg": 0,
+        ".katex": 0,
+        ".MathJax": 0,
+        ".MathJax_SVG": 0,
+        "iframe": 0,
+        ".vjudge_sample": 1,
+        ".copier": 2,
+        ".vjudge-pdf-viewer-container": 0,
+        "canvas": 0,
+        ".textLayer": 0
+      },
+      "headings": [
+        "Input",
+        "Output",
+        "Sample"
+      ],
+      "paragraphAndHeadingCandidates": 3,
+      "looseText": [
+        {
+          "tag": "DIV",
+          "preview": "Fleeting time does not blur my memory of you. Can it really be 4 years since I first saw you? I stil"
+        },
+        {
+          "tag": "DIV",
+          "preview": "There are several test cases in the input. The first line of each case contains 3 integers: n, W, H,"
+        },
+        {
+          "tag": "DIV",
+          "preview": "For each test case, output the maximum brightness in a single line."
+        }
+      ],
+      "images": [
+        {
+          "src": "https://cdn.vjudge.net.cn/fd58b24568a9fde49c72c858b058a509?15",
+          "alt": null
+        }
+      ],
+      "framePlacement": "El fragmento por sí solo no prueba su contexto; consultar contextEvidence del informe."
+    },
+    {
+      "file": "vj-usaco.html",
+      "listedName": "vj-usaco.html",
+      "url": "https://vjudge.net/problem/USACO-1061",
+      "sha256": "6e9d3f937f96e8f2b55061b958e0115518b13f339c4d0455e7280dae927f3b76",
+      "length": 14688,
+      "root": {
+        "tag": "DIV",
+        "id": "description-container",
+        "class": "container"
+      },
+      "pdf": false,
+      "counts": {
+        "p": 14,
+        "li": 4,
+        "div": 5,
+        "dd": 1,
+        "h3": 0,
+        "pre": 2,
+        "code": 0,
+        "br": 0,
+        "sub": 0,
+        "sup": 0,
+        "img": 0,
+        "svg": 0,
+        ".katex": 17,
+        ".MathJax": 0,
+        ".MathJax_SVG": 0,
+        "iframe": 0,
+        ".vjudge_sample": 1,
+        ".copier": 2,
+        ".vjudge-pdf-viewer-container": 0,
+        "canvas": 0,
+        ".textLayer": 0
+      },
+      "headings": [
+        "INPUT FORMAT (input arrives from the terminal / stdin):",
+        "OUTPUT FORMAT (print output to the terminal / stdout):",
+        "SCORING:"
+      ],
+      "paragraphAndHeadingCandidates": 21,
+      "looseText": [
+        {
+          "tag": "DIV",
+          "preview": "The first line of input contains  .  Each of the next   lines describes the\nstarting location of a c"
+        },
+        {
+          "tag": "DIV",
+          "preview": "Print   lines of output.  Line   in the output should describe the number of\ncells worth of grass th"
+        }
+      ],
+      "images": [],
+      "framePlacement": "El fragmento por sí solo no prueba su contexto; consultar contextEvidence del informe."
+    },
+    {
+      "file": "vj-uva.html",
+      "listedName": "vj-uva.html",
+      "url": "https://vjudge.net/problem/UVA-108",
+      "sha256": "f97a737c366135be9fd9f43529d21524a806b8c60f891ec6ae3fb7109e390ec2",
+      "length": 21999,
+      "root": {
+        "tag": "DIV",
+        "id": "",
+        "class": "vjudge-pdf-viewer-container"
+      },
+      "pdf": true,
+      "counts": {
+        "p": 0,
+        "li": 0,
+        "div": 9,
+        "dd": 0,
+        "h3": 0,
+        "pre": 0,
+        "code": 0,
+        "br": 33,
+        "sub": 0,
+        "sup": 0,
+        "img": 0,
+        "svg": 0,
+        ".katex": 0,
+        ".MathJax": 0,
+        ".MathJax_SVG": 0,
+        "iframe": 0,
+        ".vjudge_sample": 0,
+        ".copier": 0,
+        ".vjudge-pdf-viewer-container": 1,
+        "canvas": 1,
+        ".textLayer": 1
+      },
+      "headings": [],
+      "paragraphAndHeadingCandidates": 0,
+      "looseText": [],
+      "images": [],
+      "framePlacement": "El fragmento por sí solo no prueba su contexto; consultar contextEvidence del informe."
+    }
+  ]
+}

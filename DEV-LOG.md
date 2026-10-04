@@ -315,3 +315,33 @@ Estas cifras son heurísticas: 4 caracteres/token, salida +15 %, presupuesto de 
 - Cierre local con commit de implementación/documentación y etiqueta v1.1 conforme a la guía. T48-T52 completadas. No se evaluó la calidad de Groq real; esa limitación queda explícita en el README.
 
 Las capturas HTML preservan los espacios originales, incluidos los de bloques de código; .gitattributes excluye esos fixtures de los avisos de whitespace de Git. El código y la documentación sí se revisan con diff --check.
+
+## VJudge — V0, preparación y reconocimiento parcial (2026-10-04)
+
+- V01 completada desde v1.1.0: rama feat/vjudge, 117 pruebas aprobadas y build correcto.
+- Inspección con Chrome y perfil temporal: cinco orígenes redirigen al login; la lista de contests sí carga por AJAX.
+- Registrada evidencia en tools/vjudge-dom-report.json; script reproducible tools/inspect-vjudge.mjs y sonda manual tools/capture-vjudge-console.js.
+- NOTAS-VJUDGE.md distingue lo observado de lo pendiente. No hay fixtures de enunciados ni selectores confirmados.
+- V02 parcial; V03/V04 requieren capturas en una sesión autenticada. V0 no está completa y V1 no se inicia.
+- Sin cambios en src o manifest ni consumo de proveedores de traducción.
+
+## VJudge — V04 y revisión de capturas del usuario (2026-10-04)
+
+- Revisados nueve orígenes con URL: ocho HTML y UVA como PDF; V04 completada para análisis offline.
+- Informe reproducible en tools/vjudge-fixtures-report.json; script tools/analyze-vjudge-fixtures.mjs. Incluye hashes para identificar los originales.
+- POJ no contiene p: descripción, entrada y salida con texto directo y br. USACO/CodeChef también requieren texto directo y estructuras mixtas.
+- Confirmadas fórmulas KaTeX y MathJax_SVG, imágenes y tablas vjudge_sample con controles copier.
+- UVA usa canvas y textLayer posicionada: se conserva como fixture de estado PDF, fuera del alcance de traducción por indicación del usuario.
+- Se analizaron los fragmentos con doctype para reproducir la comparación de clases en modo estándar. span.mathjax de USACO contiene prosa, no una sola fórmula.
+- HackerRank renombrado por el usuario a vj-hackerrank.html; asociación con URL correcta.
+- V02/V03 siguen parciales: los fragmentos no muestran el documento padre ni navegación de contest. Nuevas capturas requeridas descritas en NOTAS-VJUDGE.md.
+- Sin cambios en src/manifest, sin proveedores externos y sin avanzar a V1.
+
+## VJudge — cierre de reconocimiento V0 para iniciar V1 (2026-10-04)
+
+- JSON de contexto actualizado y válido: el enunciado corre en un iframe con URL propia https://vjudge.net/problem/description/321177558442991?3551163336793.
+- A/B actualizados: mismo contest 855562 y hashes #problem/A y #problem/B. Ambas capturas incluyen #description-container, encabezados y ejemplos.
+- Analizador ampliado para contexto y contest; informe generado sobre 11 fixtures (10 HTML y un visor PDF). Datos originales conservados.
+- NOTAS-VJUDGE.md reescrita con el estado final, evidencia y decisiones para el adapter/frames. El identificador opaco del iframe no equivale al juez/problema de origen.
+- V0 cerrada como base de implementación. Cobertura pendiente explícita: páginas privadas, virtuales, propias antes del inicio y navegación A/B en vivo, a comprobar en V2/V13. No se declara esa matriz verificada.
+- V1 pendiente de confirmación del usuario. Sin cambios en la extensión ni consumo de proveedores.
