@@ -1,7 +1,8 @@
 import type { ProtectionConfig } from '../core/protector';
+import type { SegmentationOptions } from '../core/segmenter';
 
 export interface SiteAdapter {
-  id: 'codeforces' | 'cses' | 'usaco' | 'cpalgorithms';
+  id: 'codeforces' | 'cses' | 'usaco' | 'cpalgorithms' | 'vjudge';
   /**
    * Tipo de contenido del sitio.
    * - 'problem': enunciado corto, una sola llamada a la API.
@@ -31,8 +32,9 @@ export interface SiteAdapter {
   /** Elementos hoja que forman una unidad de traducción con sentido. */
   blockSelector: string;
   protection: ProtectionConfig;
+  segmentation?: SegmentationOptions;
   /** Identificador estable del problema o documento, para la caché. */
-  problemKey(loc: Location): string;
+  problemKey(loc: Location, doc?: Document): string;
   /** Dónde colgar el botón. */
   mountPoint(root: HTMLElement): HTMLElement;
 }

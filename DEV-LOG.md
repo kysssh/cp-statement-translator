@@ -1,4 +1,4 @@
-﻿# DEV-LOG
+# DEV-LOG
 
 Bitácora del desarrollo. Una entrada por tarea, con lo medido y lo aprendido.
 
@@ -345,3 +345,17 @@ Las capturas HTML preservan los espacios originales, incluidos los de bloques de
 - NOTAS-VJUDGE.md reescrita con el estado final, evidencia y decisiones para el adapter/frames. El identificador opaco del iframe no equivale al juez/problema de origen.
 - V0 cerrada como base de implementación. Cobertura pendiente explícita: páginas privadas, virtuales, propias antes del inicio y navegación A/B en vivo, a comprobar en V2/V13. No se declara esa matriz verificada.
 - V1 pendiente de confirmación del usuario. Sin cambios en la extensión ni consumo de proveedores.
+
+## VJudge — V1, adapter y preservación de enunciados (2026-10-04)
+
+- Adapter vjudge.ts para el flujo de problemas, raíz comprobada #description-container, PDF excluido y unión de protecciones justificada por las capturas.
+- collectBlocks recibe opción looseText: cubre POJ sin p y estructuras mixtas USACO/CodeChef sin duplicar prosa. Envolturas mínimas data-cpt-segment estables entre llamadas.
+- Protector incorpora preserveStructure optativo para conservar HTML estructural, comentarios y espacios en round-trip. Valores por defecto y adapters existentes intactos.
+- .vjudge_sample opaca: ejemplos, controles e instancias se conservan y no se envían a la API. Dinero suelto se diferencia de delimitadores LaTeX.
+- 39 nuevas pruebas: diez capturas HTML, visor PDF, cobertura completa de prosa, identidad/HTML de opacos, round-trip exacto tras segmentación y casos sintéticos sub/sup/br y estructuras mixtas.
+- Primera ejecución detectó un error de recursión introducido al editar hasTranslatableText; corregido. Pruebas existentes sin modificar.
+- Caché por origen resuelta en página suelta/referrer/padre identificable. Fallback de descripción para contest sin metadatos; resolución completa juez/id pendiente explícita en V2.
+- npm run check pasó: TypeScript y 156 pruebas en 14 archivos; npm run build correcto. Sin llamadas reales a proveedores.
+- V0 registrada en commit 1c4c22c. V1 se registra separadamente. Registro del adapter, manifest, frames/UI y navegación corresponden a V2.
+- Grupos privados, virtuales y contests antes del inicio siguen pendientes de pruebas reales. Anuncios y descripción del contest fuera de alcance.
+- V1 terminada como base del adapter/core; V2 requiere confirmación del usuario.

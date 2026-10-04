@@ -8,6 +8,8 @@ export interface ProtectionConfig {
   inlineSelector: string;
   /** LaTeX aún sin renderizar dentro de nodos de texto. */
   rawMathPattern?: RegExp;
+  /** Opt-in: conservar estructura, comentarios y espacios del enunciado. */
+  preserveStructure?: boolean;
 }
 
 export type Slot =
@@ -66,7 +68,9 @@ export function extract(block: Element, cfg: ProtectionConfig): Extraction {
 
   const walk = (node: Node): string => {
     if (node.nodeType === Node.TEXT_NODE) return protectRawMath(node.textContent ?? '');
-    if (node.nodeType !== Node.ELEMENT_NODE) return '';
+    if (node.nodeType !== Node.ELEMENT_NODE) {
+      return cfg.preserveStructure ? openToken(alloc({ kind: 'opaque', nodes: [node] })) : '';
+    }
     const el = node as Element;
 
     // Opaco primero: gana sobre inline y NO se desciende (aquí vive la garantía).
@@ -77,7 +81,7 @@ export function extract(block: Element, cfg: ProtectionConfig): Extraction {
 
     const inner = walkChildren(el);
 
-    if (inner.trim() && el.matches(cfg.inlineSelector)) {
+    if (cfg.preserveStructure || (inner.trim() && el.matches(cfg.inlineSelector))) {
       const id = alloc({ kind: 'inline', el });
       return `${openToken(id)}${inner}${closeToken(id)}`;
     }
@@ -85,7 +89,7 @@ export function extract(block: Element, cfg: ProtectionConfig): Extraction {
   };
 
   const text = walkChildren(block);
-  return { text: text.replace(/\s+/g, ' ').trim(), slots };
+  return { text: cfg.preserveStructure ? text : text.replace(/\s+/g, ' ').trim(), slots };
 }
 
 /**

@@ -17,7 +17,7 @@ V02: rutas de problema y contest documentadas; variantes anteriores pendientes.
 V03: contexto iframe confirmado por captura del usuario.
 V04: 11 fixtures HTML recibidos, 10 enunciados HTML y un estado PDF.
 
-No se implementa V1 hasta la confirmación del usuario.
+V1 autorizada y completada como base de extracción/protección; estado actualizado al final de este documento.
 
 ## Hallazgo de arquitectura
 
@@ -107,3 +107,52 @@ tools/capture-vjudge-console.js recoge el contenedor desde DevTools.
 
 Los archivos del usuario se conservaron sin modificación. Sin cambios en src,
 manifest o proveedores; sin llamadas de traducción.
+
+## V1 — adapter y core (2026-10-04)
+
+Implementados V05–V07 como base del adapter, todavía sin registro en resolveAdapter
+ni cambios en manifest/content scripts. V2 integrará la UI y los frames.
+
+- src/adapters/vjudge.ts: contenido problem; dominio/rutas acotados,
+  raíz #description-container y exclusión del visor PDF.
+- Protección por unión basada en V0: KaTeX, MathJax_SVG, fórmulas crudas,
+  imágenes/SVG, pre/código, controles, scripts/styles, br y sub/sup.
+  La tabla .vjudge_sample se conserva entera y no viaja a la API.
+- Dinero como $5/$10 permanece como texto, no se interpreta como fórmula.
+  Esto matiza la regla genérica de la guía sobre no enviar dólares:
+  los delimitadores matemáticos se protegen; los importes legítimos se conservan.
+- collectBlocks admite segmentation.looseText de forma optativa. En casos mixtos,
+  crea spans data-cpt-segment solo para secuencias de prosa fuera de bloques hijos.
+  Estas envolturas permanecen en el DOM; el texto y los nodos existentes se conservan,
+  y una segunda segmentación no crea duplicados.
+- preserveStructure es una opción optativa del protector: mantiene los envoltorios
+  estructurales, comentarios y espacios. Fue necesaria para el round-trip exacto
+  de las estructuras antiguas; la configuración de los demás adapters no cambia.
+- Round-trip exacto del HTML después de preparar los segmentos, con igualdad de
+  texto antes/después de la preparación e identidad === de todos los opacos.
+- tests/protector.vjudge.spec.ts: 39 pruebas sobre 10 capturas HTML, el PDF real,
+  casos sintéticos mixtos y sub/sup/br, delimitadores y claves de caché.
+  Las traducciones se simulan; no hay consumo de proveedores.
+
+### Clave de origen: límite pendiente de V2
+
+problemKey(loc, doc?) devuelve vj:Juez-Id en páginas sueltas y en el iframe
+cuando el referrer/padre identifica esa página. Un iframe desde contest sin
+metadatos verificables usa vj:description:Id como fallback (ignora query).
+Esto separa descripciones, pero todavía no garantiza compartir caché con la
+página suelta. En V2 debe resolverse juez/id desde el padre antes de traducir.
+No se debe presentar ese fallback como cumplimiento completo de esa regla V05.
+
+### Matriz pendiente
+
+| Variante | Estado |
+|---|---|
+| Grupo privado | Requiere captura/prueba real en V2/V13; no se supone acceso |
+| Contest propio antes del inicio | Sin enunciado no deberá montar UI; falta prueba real |
+| Contest virtual | Requiere captura/prueba real en V2/V13 |
+| Anuncios/descripción del contest | Fuera del alcance de traducción de problemas |
+| A → B → A | Hay capturas A/B del mismo contest; prueba dinámica corresponde a V2 |
+
+Verificación: npm run check (TypeScript y 156 pruebas, 14 archivos),
+npm run build correcto, git diff --check correcto.
+V1 terminada como base de extracción/protección. V2 pendiente de confirmación.
