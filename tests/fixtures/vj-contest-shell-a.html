@@ -1,0 +1,889 @@
+<body class="page-panel-toggle-md-collapse">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark prod" id="top-nav">
+    <button class="navbar-toggler d-sm-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <a class="navbar-brand" href="/">
+            <img src="/static/bundle/11b24ab2156955d8f3fa.ico" height="30">
+            <span data-i18n="top.nav.home">Inicio</span>
+        </a>
+        <ul class="navbar-nav top-nav-primary">
+            <li class="nav-item" id="nav-problem">
+                <a class="nav-link" href="/problem" data-i18n="top.nav.problem">Problemas</a>
+            </li>
+            <li class="nav-item" id="nav-status">
+                <a class="nav-link" href="/status" data-i18n="top.nav.status">Estado</a>
+            </li>
+            <li class="nav-item active" id="nav-contest">
+                <a class="nav-link" href="/contest" data-i18n="top.nav.contest">Concursos</a>
+            </li>
+            <li class="nav-item" id="nav-workbook">
+                <a class="nav-link" href="/workbook" data-i18n="top.nav.workbook">Cuaderno</a>
+            </li>
+            <li class="nav-item" id="nav-user">
+                <a class="nav-link" href="/user" data-i18n="top.nav.user">Usuario</a>
+            </li>
+            <li class="nav-item" id="nav-group">
+                <a class="nav-link" href="/group" data-i18n="top.nav.group">Grupo</a>
+            </li>
+            <li class="nav-item" id="nav-article">
+                <a class="nav-link" href="/article" data-i18n="top.nav.article">Article</a>
+            </li>
+            <li class="nav-item" id="nav-comment">
+                <a class="nav-link" href="/comment" data-i18n="top.nav.forum">Foro</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="helpDropdown" data-bs-toggle="dropdown" data-i18n="top.nav.help">Ayuda</a>
+                <div class="dropdown-menu dropdown-menu-start">
+                    <a class="dropdown-item" href="/article/2771">
+                        <i class="fa fa-question-circle-o"></i>
+                        <span data-i18n="top.nav.faq">Preguntas frecuentes</span>
+                    </a>
+                    <a class="dropdown-item" href="/article/97">
+                        <i class="fa fa-bug"></i>
+                        <span data-i18n="top.nav.bf">Reportar errores</span>
+                    </a>
+                    <a class="dropdown-item" href="/article/96">
+                        <i class="fa fa-lightbulb-o"></i>
+                        <span data-i18n="top.nav.suggestions">Sugerencias</span>
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)" id="contact-us">
+                        <i class="fa fa-headphones"></i>
+                        <span data-i18n="top.nav.contact">Contacto</span>
+                    </a>
+                </div>
+            </li>
+            
+        </ul>
+        <ul class="navbar-nav top-nav-secondary ms-sm-auto">
+            <li class="nav-item top-nav-theme-item">
+                <a class="nav-link" href="javascript:void(0)" id="switchTheme" title="Auto Mode" aria-label="Auto Mode"><i class="fa fa-desktop"></i></a>
+            </li>
+            <li class="nav-item dropdown top-nav-locale-item">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="switchLocale" data-bs-toggle="dropdown" data-i18n="top.nav.locale">Idioma</a>
+                <div class="dropdown-menu dropdown-menu-end switch-locale-dropdown"><a class="dropdown-item" href="javascript:void(0)" data-locale="en" lang="en">English</a><a class="dropdown-item" href="javascript:void(0)" data-locale="zh-Hans" lang="zh-Hans">简体中文</a><a class="dropdown-item" href="javascript:void(0)" data-locale="zh-Hant" lang="zh-Hant">繁體中文</a><a class="dropdown-item" href="javascript:void(0)" data-locale="ja" lang="ja">日本語</a><a class="dropdown-item" href="javascript:void(0)" data-locale="ko" lang="ko">한국어</a><a class="dropdown-item" href="javascript:void(0)" data-locale="ar" lang="ar">اَلْعَرَبِيَّةُ</a><a class="dropdown-item" href="javascript:void(0)" data-locale="bn" lang="bn">বাংলা</a><a class="dropdown-item" href="javascript:void(0)" data-locale="hi" lang="hi">हिन्दी</a><a class="dropdown-item" href="javascript:void(0)" data-locale="vi" lang="vi">Tiếng Việt</a><a class="dropdown-item active" href="javascript:void(0)" data-locale="es" lang="es" aria-current="true">Español</a><a class="dropdown-item" href="javascript:void(0)" data-locale="pt" lang="pt">português</a><a class="dropdown-item" href="javascript:void(0)" data-locale="ru" lang="ru">русский язык</a><a class="dropdown-item" href="javascript:void(0)" data-locale="kk" lang="kk">Қазақ тілі</a></div>
+            </li>
+            
+                
+                    <li class="nav-item dropdown top-nav-user-item">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="userNameDropdown" data-bs-toggle="dropdown">Kysssh</a>
+                        <div class="dropdown-menu dropdown-menu-end user-dropdown">
+                            <a class="dropdown-item" href="/user/Kysssh" data-i18n="top.nav.profile">Perfil</a>
+                            <a class="dropdown-item" href="/user/remoteAccounts?oj=CodeForces" data-i18n="top.nav.manage_accounts">Gestionar cuentas</a>
+                            <a class="dropdown-item" href="/team/mine" data-i18n="team.mine">Mis equipos</a>
+                            <a class="dropdown-item message" href="/message" data-i18n="top.nav.message">Mensajes</a>
+                        </div>
+                    </li>
+                    <li class="nav-item top-nav-logout-item">
+                        <a class="nav-link logout" href="javascript:void(0)" data-i18n="top.nav.logout">Cerrar sesión</a>
+                    </li>
+                
+                
+            
+        </ul>
+    </div>
+</nav>
+<div id="page-panel-toggle-slot"><button type="button" class="btn btn-outline-light page-panel-toggle contest-problem-panels-toggle" data-bs-toggle="offcanvas" data-bs-target="#prob-left-panel" aria-controls="prob-left-panel">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </button></div>
+
+
+<div class="container-md" style="margin-top: 30px;">
+    
+        <div class="row alert alert-info" id="contest-announcement" style="display: none;"></div>
+    
+
+    <div class="row card" id="time-info">
+        <div class="row">
+            <div class="col-3 text-start">
+                <b>
+                    <span>Inicio</span>
+                    :
+                </b>
+                <span class="timestamp">2026-10-04 07:35 EST</span>
+            </div>
+            <div class="col-6 text-center">
+                <h3>
+                    <i id="btn-favorite" class="fa fa-star-o"></i>
+                    
+                    
+                    Estructuras de Datos Iniciales
+                </h3>
+            </div>
+            <div class="col-3 text-end">
+                <b>
+                    <span>Fin</span>
+                    :
+                </b>
+                <span class="timestamp">2026-10-04 08:31 EST</span>
+            </div>
+        </div>
+        <div class="row" id="contest-time-slider-container">
+            <div id="contest-time" class="noUi-target noUi-ltr noUi-horizontal noUi-txt-dir-ltr"><div class="noUi-base"><div class="noUi-connects"><div class="contest-time-progress" style="left: 0%; width: 100%;"></div></div><div class="noUi-origin" style="transform: translate(0%, 0px); z-index: 4;"><div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="3360000.0" aria-valuenow="3360000.0" aria-valuetext="3360000.00"><div class="noUi-touch-area"></div><div class="noUi-tooltip">0:56:00</div></div></div></div></div>
+        </div>
+        <div class="row">
+            <div class="col-3 text-start" id="info-elapsed"></div>
+            <div class="col-6 text-center">
+                <span id="info-running" style="color: var(--color-success);">Finalizado</span>
+                <span id="info-freeze" style="color: grey; display: none;">
+                    (<span>Clasificación congelada</span>)
+                </span>
+            </div>
+            <div class="col-3 text-end" id="info-remaining"></div>
+        </div>
+    </div>
+
+    
+        <div class="row">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist" id="contest-tabs">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" data-bs-toggle="tab" href="#overview" section="overview" role="tab" data-i18n="contest.view.overview" aria-selected="false" tabindex="-1">Resumen</a>
+                </li>
+
+                
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#problem" section="problem" role="tab" data-i18n="contest.view.problem" aria-selected="true">Problema</a>
+                    </li>
+                
+
+                
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="tab" href="#status" section="status" role="tab" data-i18n="contest.view.status" aria-selected="false" tabindex="-1">Estado</a>
+                    </li>
+                
+
+                
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="tab" href="#rank" section="rank" role="tab" data-i18n="contest.view.rank" aria-selected="false" tabindex="-1">Clasificación (0:56:00)</a>
+                    </li>
+                
+
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" data-bs-toggle="tab" href="#discuss" section="discuss" role="tab" data-i18n="contest.view.discuss" rel="#discuss" data-disqus-identifier="contest/855562" aria-selected="false" tabindex="-1">Discusión</a>
+                </li>
+
+                <li class="ms-auto text-end">
+                    <div class="btn-group" role="group">
+                        
+                            <button type="button" class="btn btn-secondary" id="btn-preference" data-i18n="contest.view.preference">Preferencias</button>
+                        
+                        
+                            <button type="button" class="btn btn-secondary" id="btn-clone" data-i18n="contest.view.clone">Clonar</button>
+                        
+                        
+                            <button type="button" class="btn btn-secondary" id="btn-update" data-i18n="contest.view.update">Actualizar</button>
+                            
+                                
+                                
+                                    <button type="button" class="btn btn-secondary" id="btn-manage" data-i18n="contest.view.manage">Gestionar</button>
+                                
+                            
+                        
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane in" id="overview" role="tabpanel">
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="contest_overview" class="container-fluid px-0">
+    <div class="row contest-overview-layout">
+        <aside class="col-lg-4">
+            <section id="contest-overview-meta-panel" class="contest-overview-panel">
+                <h4 data-i18n="contest.view.metadata">Información del concurso</h4>
+                <div id="contest-meta">
+    <section class="contest-meta-section">
+      <h5 class="contest-meta-section-title" data-i18n="contest.view.meta_section.basic">Datos básicos</h5>
+      <div class="contest-meta-section-body">
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.view.contest_type._">Contest type</div>
+      <div class="contest-meta-value">Classical contest <a class="contest-overview-help-link" href="https://vjudge.net/article/21659" target="_blank" rel="noopener noreferrer" aria-label="Más"><i class="fa fa-question-circle" aria-hidden="true"></i></a></div>
+    </div>
+  
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.view.visibility">Visibilidad</div>
+      <div class="contest-meta-value"><span style="color:var(--color-danger)">Privado: solo miembros del grupo pueden ver y enviar</span></div>
+    </div>
+  
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.view.begin_time">Hora de inicio</div>
+      <div class="contest-meta-value">2026-10-04 07:35:00</div>
+    </div>
+  
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.view.contest_duration">Duración</div>
+      <div class="contest-meta-value">56 Minutos</div>
+    </div>
+  
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.view.organizer">Organizador</div>
+      <div class="contest-meta-value"><a href="/user/Kysssh" target="_blank">Kysssh</a></div>
+    </div>
+  
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.group_owner">Group</div>
+      <div class="contest-meta-value"><a href="/group/educational-contests0" target="_blank"><img src="/static/bundle/bf2b66129c2d2acc0cc3.png" height="15"> Educational Contests</a></div>
+    </div>
+  
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.view.created_at">Creado</div>
+      <div class="contest-meta-value">2026-10-04 07:12:42</div>
+    </div>
+  </div>
+    </section>
+  
+    <section class="contest-meta-section">
+      <h5 class="contest-meta-section-title" data-i18n="contest.view.meta_section.rules">Reglas y evaluación</h5>
+      <div class="contest-meta-section-body">
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.view.rank_rule_label">Regla de clasificación</div>
+      <div class="contest-meta-value">ICPC Regla <a class="contest-overview-help-link" href="https://vjudge.net/article/11038" target="_blank" rel="noopener noreferrer" aria-label="Más"><i class="fa fa-question-circle" aria-hidden="true"></i></a></div>
+    </div>
+  
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.sum_time.label">Penalización total</div>
+      <div class="contest-meta-value">Suma</div>
+    </div>
+  
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.penalty_each">Penalización por intento (s)</div>
+      <div class="contest-meta-value">1200</div>
+    </div>
+  
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.partial_score.label">Puntuación parcial</div>
+      <div class="contest-meta-value">Deshabilitar</div>
+    </div>
+  
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.evaluation_mode.label">Modo de evaluación</div>
+      <div class="contest-meta-value">Múltiples envíos, evaluación en tiempo real y el mejor envío cuenta para la clasificación</div>
+    </div>
+  </div>
+    </section>
+  
+    <section class="contest-meta-section">
+      <h5 class="contest-meta-section-title" data-i18n="contest.view.meta_section.visibility">Visibilidad y congelación</h5>
+      <div class="contest-meta-section-body">
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.history_rank.label">Clasificación histórica</div>
+      <div class="contest-meta-value">Mostrar</div>
+    </div>
+  
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.peer_status.label">Estado de compañeros</div>
+      <div class="contest-meta-value">Ocultar</div>
+    </div>
+  
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.freeze_setting">Configuración de congelación</div>
+      <div class="contest-meta-value">Deshabilitado</div>
+    </div>
+  </div>
+    </section>
+  
+    <section class="contest-meta-section">
+      <h5 class="contest-meta-section-title" data-i18n="contest.view.meta_section.participation">Participación</h5>
+      <div class="contest-meta-section-body">
+    <div class="contest-meta-item">
+      <div class="contest-meta-label" data-i18n="contest.view.participant_mode">Modo de participación</div>
+      <div class="contest-meta-value"><span data-i18n="contest.participant_mode.individual_only">Solo individual</span> <a class="contest-overview-help-link" href="https://vjudge.net/article/18803" target="_blank" rel="noopener noreferrer" aria-label="Más"><i class="fa fa-question-circle" aria-hidden="true"></i></a></div>
+    </div>
+  </div>
+    </section>
+  </div>
+            </section>
+        </aside>
+        <main class="col-lg-8">
+            <section class="contest-overview-panel contest-overview-description-panel is-empty-description">
+                <div class="contest-overview-panel-actions">
+                    <a href="javascript:void(0)" id="contest-overview-text-edit-link" class="contest-overview-text-edit-link">
+                        <i class="fa fa-edit" aria-hidden="true"></i>
+                        <span data-i18n="contest.view.edit_overview_text">Editar descripción y anuncio</span>
+                    </a>
+                </div>
+                <div id="contest-description" style="display: none"></div>
+                <div id="contest-description-ad" class="contest-description-ad" style="">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9098591903020457" data-ad-slot="1011472145" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled" data-adsense-requested="true"><iframe id="aswift_1" name="aswift_1" data-load-complete="true"></iframe></ins>
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
+
+                </div>
+                
+                    <div class="tab-pane active show" id="problem" role="tabpanel">
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="contest_problem" class="container-fluid px-0">
+    <div id="contest-problem-list-view" style="display: none;">
+        <div class="table-responsive px-0">
+            <table id="contest-problems" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead><tr><th class="my-stat"></th><th class="all-stat" data-i18n="contest.view.stat">Estad.</th><th class="prob-num">#</th><th class="prob-origin" data-i18n="contest.view.origin">Origen</th><th class="prob-title text-start" data-i18n="contest.view.title">Título</th></tr></thead>
+                <tbody><tr>
+      <td class="my-stat"></td>
+      <td class="all-stat" style="background: linear-gradient(to right, rgba(37, 126, 44, 0.6) 0%, rgba(214, 94, 94, 0.6) 0%, rgba(214, 94, 94, 0.6) 0%, rgba(0, 0, 0, 0) 0%);"></td>
+      <td class="prob-num text-center">A</td>
+      
+      <td class="prob-origin text-center">
+             <a href="/problem/CodeForces-1654C" target="_blank" data-bs-toggle="tooltip" data-bs-original-title="CodeForces 1654C">
+               CodeForces 1654C
+             </a>
+           </td>
+      <td class="prob-title">
+        <a href="#problem/A">Alice and the Cake</a>
+      </td>
+    </tr><tr>
+      <td class="my-stat"></td>
+      <td class="all-stat" style="background: linear-gradient(to right, rgba(37, 126, 44, 0.6) 0%, rgba(214, 94, 94, 0.6) 0%, rgba(214, 94, 94, 0.6) 0%, rgba(0, 0, 0, 0) 0%);"></td>
+      <td class="prob-num text-center">B</td>
+      
+      <td class="prob-origin text-center">
+             <a href="/problem/CodeForces-1279C" target="_blank" data-bs-toggle="tooltip" data-bs-original-title="CodeForces 1279C">
+               CodeForces 1279C
+             </a>
+           </td>
+      <td class="prob-title">
+        <a href="#problem/B">Stack of Presents</a>
+      </td>
+    </tr><tr>
+      <td class="my-stat"></td>
+      <td class="all-stat" style="background: linear-gradient(to right, rgba(37, 126, 44, 0.6) 0%, rgba(214, 94, 94, 0.6) 0%, rgba(214, 94, 94, 0.6) 0%, rgba(0, 0, 0, 0) 0%);"></td>
+      <td class="prob-num text-center">C</td>
+      
+      <td class="prob-origin text-center">
+             <a href="/problem/CodeForces-158C" target="_blank" data-bs-toggle="tooltip" data-bs-original-title="CodeForces 158C">
+               CodeForces 158C
+             </a>
+           </td>
+      <td class="prob-title">
+        <a href="#problem/C">Cd and pwd commands</a>
+      </td>
+    </tr><tr>
+      <td class="my-stat"></td>
+      <td class="all-stat" style="background: linear-gradient(to right, rgba(37, 126, 44, 0.6) 0%, rgba(214, 94, 94, 0.6) 0%, rgba(214, 94, 94, 0.6) 0%, rgba(0, 0, 0, 0) 0%);"></td>
+      <td class="prob-num text-center">D</td>
+      
+      <td class="prob-origin text-center">
+             <a href="/problem/CodeForces-1179A" target="_blank" data-bs-toggle="tooltip" data-bs-original-title="CodeForces 1179A">
+               CodeForces 1179A
+             </a>
+           </td>
+      <td class="prob-title">
+        <a href="#problem/D">Valeriy and Deque</a>
+      </td>
+    </tr><tr>
+      <td class="my-stat"></td>
+      <td class="all-stat" style="background: linear-gradient(to right, rgba(37, 126, 44, 0.6) 0%, rgba(214, 94, 94, 0.6) 0%, rgba(214, 94, 94, 0.6) 0%, rgba(0, 0, 0, 0) 0%);"></td>
+      <td class="prob-num text-center">E</td>
+      
+      <td class="prob-origin text-center">
+             <a href="/problem/CodeForces-1468C" target="_blank" data-bs-toggle="tooltip" data-bs-original-title="CodeForces 1468C">
+               CodeForces 1468C
+             </a>
+           </td>
+      <td class="prob-title">
+        <a href="#problem/E">Berpizza</a>
+      </td>
+    </tr><tr>
+      <td class="my-stat"></td>
+      <td class="all-stat" style="background: linear-gradient(to right, rgba(37, 126, 44, 0.6) 0%, rgba(214, 94, 94, 0.6) 0%, rgba(214, 94, 94, 0.6) 0%, rgba(0, 0, 0, 0) 0%);"></td>
+      <td class="prob-num text-center">F</td>
+      
+      <td class="prob-origin text-center">
+             <a href="/problem/CodeForces-797C" target="_blank" data-bs-toggle="tooltip" data-bs-original-title="CodeForces 797C">
+               CodeForces 797C
+             </a>
+           </td>
+      <td class="prob-title">
+        <a href="#problem/F">Minimal string</a>
+      </td>
+    </tr></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="contest-problem-detail-view" style="display: block;">
+    <div class="page-panel-toggle-host d-none">
+        
+    </div>
+    <div class="row fixed-left-panel-layout page-panel-desktop-enabled">
+        <div class="offcanvas-md offcanvas-start problem-side-panel-column fixed-left-panel" id="prob-left-panel" tabindex="-1" aria-labelledby="contest-problem-panels-title">
+            <div class="offcanvas-header d-md-none">
+                <h5 class="offcanvas-title" id="contest-problem-panels-title" data-i18n="button.panels">Paneles</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#prob-left-panel" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body problem-side-panel-body">
+            <ul class="nav nav-pills problem-side-panel-section" id="problem-nav">
+      <li class="nav-item">
+        <a num="A" class="nav-link active" href="#problem/A">A</a>
+      </li>
+    
+      <li class="nav-item">
+        <a num="B" class="nav-link" href="#problem/B">B</a>
+      </li>
+    
+      <li class="nav-item">
+        <a num="C" class="nav-link" href="#problem/C">C</a>
+      </li>
+    
+      <li class="nav-item">
+        <a num="D" class="nav-link" href="#problem/D">D</a>
+      </li>
+    
+      <li class="nav-item">
+        <a num="E" class="nav-link" href="#problem/E">E</a>
+      </li>
+    
+      <li class="nav-item">
+        <a num="F" class="nav-link" href="#problem/F">F</a>
+      </li>
+    </ul>
+
+            <div class="alert alert-danger problem-side-panel-alert" role="alert" id="prob-alert" style="display: none"></div>
+
+            <div id="prob-operation" class="problem-side-panel-section">
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-outline-primary" id="problem-submit"><i class="fa fa-upload"></i> <span>Enviar</span></button>
+                    </div>
+                </div>
+                
+                    <div class="row">
+                        <div class="col-6">
+                            <a href="#status//A/all/" class="btn btn-secondary" id="btn-contest-status" data-i18n="contest.view.status">Estado</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="#status/Kysssh/A/all/" class="btn btn-secondary" id="btn-contest-my-status" data-i18n="contest.view.my_status">Mi estado</a>
+                        </div>
+                    </div>
+                
+                <div class="row">
+                    <div class="col-12">
+                        <a class="btn btn-secondary" id="btn-contest-problem-pdf" target="_blank" href="/contest/855562/problemPdf/A?descKey=321177558442991">
+                            <i class="fa fa-file-pdf-o"></i> PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="prob-properties" class="problem-side-panel-section">
+                <dl class="card row"><dt class="col-4">Límite de tiempo</dt><dd class="col-8">2000 ms</dd><dt class="col-4">Límite de memoria</dt><dd class="col-8">262144 kB</dd><dt class="col-4">Fuente</dt><dd class="col-8"><a href="https://codeforces.com/contest/1654">Codeforces Round 778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)</a></dd><dt class="col-4">Etiquetas</dt><dd class="col-8">
+    data structures
+
+
+    greedy
+
+
+    implementation
+
+
+    sortings
+
+
+    
+</dd><dt class="col-4">Dificultad</dt><dd class="col-8">1400</dd><dt class="col-4">Editorial</dt><dd class="col-8"><a href="https://codeforces.com/blog/entry/100277" title="Codeforces Round #778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)" target="_blank">Announcement</a>
+<a href="https://codeforces.com/blog/entry/100127" title="Editorial of Codeforces Round #778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)" target="_blank">Tutorial <span class="resource-locale">(en)</span></a></dd><div class="col-12 problem-spoiler-toggle-row"><button type="button" class="btn btn-outline-secondary btn-sm toggle-problem-spoiler" data-role="spoiler-toggle" aria-expanded="true">Spoilers: Ocultar</button></div></dl>
+            </div>
+
+            <div id="update-statements-tips" class="alert alert-info problem-side-panel-section" style="display: block; font-size: 15px; margin-bottom: 0px;">
+                <span>Seleccionar enunciados para los participantes</span>:
+            </div>
+
+            <div id="prob-descriptions" class="problem-side-panel-section" style="display: block;">
+                <div class="list-group" id="prob-descs"><li class="list-group-item problem-description-item active" data-key="321177558442991" data-version="1760081863000" data-author="main" data-author-name="System" data-type="main" data-lang="en" data-main-official="true"><div class="problem-description-item-prefix"><input type="checkbox" data-key="321177558442991" data-bs-toggle="tooltip" data-i18n-title="contest.view.statement_toggle_title" style="margin: 5px 10px" checked=""></div><img class="problem-description-item-avatar" src="/static/bundle/11b24ab2156955d8f3fa.ico" alt=""><div class="problem-description-item-main"><div class="statement-author-row"><a href="/user/System" data-bs-toggle="tooltip" target="_blank" data-bs-original-title="Initialization.">System</a><span class="statement-badge statement-badge-official">Oficial</span><span class="statement-badge statement-badge-lang">English</span></div><div class="problem-description-item-meta"><time class="statement-update-time" datetime="2025-10-10">2025-10-10</time></div></div></li><li class="list-group-item problem-description-item" data-key="428903450303683" data-version="1791117404000" data-author="translator:1281309:es" data-author-name="GPT" data-author-id="1281309" data-type="translator" data-lang="es"><div class="problem-description-item-prefix"><input type="checkbox" data-key="428903450303683" data-bs-toggle="tooltip" data-i18n-title="contest.view.statement_toggle_title" style="margin: 5px 10px"></div><img class="problem-description-item-avatar" src="https://cdn.vjudge.net.cn/user/avatar/1281309" alt=""><div class="problem-description-item-main"><div class="statement-author-row"><a href="/user/GPT" data-bs-toggle="tooltip" target="_blank" data-bs-original-title="Translated by gpt-6-luna">GPT</a><span class="statement-badge statement-badge-lang">Español</span></div><div class="problem-description-item-meta"><time class="statement-update-time" datetime="2026-10-04">2026-10-04</time></div></div></li><li class="list-group-item problem-description-item" data-key="361915980792828" data-version="1751604561000" data-author="user:631160" data-author-name="philtron_c" data-author-id="631160" data-type="user" data-lang="en"><div class="problem-description-item-prefix"><input type="checkbox" data-key="361915980792828" data-bs-toggle="tooltip" data-i18n-title="contest.view.statement_toggle_title" style="margin: 5px 10px"></div><img class="problem-description-item-avatar" src="https://cdn.vjudge.net.cn/user/avatar/631160?v=1723197192" alt=""><div class="problem-description-item-main"><div class="statement-author-row"><a href="/user/philtron_c" data-bs-toggle="tooltip" target="_blank" data-bs-original-title="Forked from System Crawler's version (2025-05-07)">philtron_c</a><span class="statement-badge statement-badge-lang">English</span></div><div class="problem-description-item-meta"><time class="statement-update-time" datetime="2025-07-04">2025-07-04</time></div></div></li><li class="list-group-item problem-description-item" data-key="414407366028678" data-version="1737381365000" data-author="translator:1281309:zh" data-author-name="GPT" data-author-id="1281309" data-type="translator" data-lang="zh"><div class="problem-description-item-prefix"><input type="checkbox" data-key="414407366028678" data-bs-toggle="tooltip" data-i18n-title="contest.view.statement_toggle_title" style="margin: 5px 10px"></div><img class="problem-description-item-avatar" src="https://cdn.vjudge.net.cn/user/avatar/1281309" alt=""><div class="problem-description-item-main"><div class="statement-author-row"><a href="/user/GPT" data-bs-toggle="tooltip" target="_blank" data-bs-original-title="[简体中文] translation by OpenAI (gpt-4o-mini-2024-07-18)">GPT</a><span class="statement-badge statement-badge-lang">中文</span></div><div class="problem-description-item-meta"><time class="statement-update-time" datetime="2025-01-20">2025-01-20</time></div></div></li><li class="list-group-item problem-description-item" data-key="420349846921267" data-version="1735129182000" data-author="user:1034871" data-author-name="rapl22" data-author-id="1034871" data-type="user" data-lang="en"><div class="problem-description-item-prefix"><input type="checkbox" data-key="420349846921267" data-bs-toggle="tooltip" data-i18n-title="contest.view.statement_toggle_title" style="margin: 5px 10px"></div><img class="problem-description-item-avatar" src="https://cn.cravatar.com/avatar/7bc65f276f252a482ac634fae94d6002?d=robohash" alt=""><div class="problem-description-item-main"><div class="statement-author-row"><a href="/user/rapl22" data-bs-toggle="tooltip" target="_blank" data-bs-original-title="Forked from System Crawler's version (2024-12-24)">rapl22</a><span class="statement-badge statement-badge-lang">English</span></div><div class="problem-description-item-meta"><time class="statement-update-time" datetime="2024-12-25">2024-12-25</time></div></div></li><li class="list-group-item problem-description-item" data-key="379046811497262" data-version="1689260106000" data-author="user:321450" data-author-name="subarude" data-author-id="321450" data-type="user" data-lang="zh"><div class="problem-description-item-prefix"><input type="checkbox" data-key="379046811497262" data-bs-toggle="tooltip" data-i18n-title="contest.view.statement_toggle_title" style="margin: 5px 10px"></div><img class="problem-description-item-avatar" src="https://cn.cravatar.com/avatar/267bd89cfd402bab55b2edeaa20cb12a?d=retro" alt=""><div class="problem-description-item-main"><div class="statement-author-row"><a href="/user/subarude" data-bs-toggle="tooltip" target="_blank" data-bs-original-title="Forked from Vxiao_huanV's version (2023-07-12)">subarude</a><span class="statement-badge statement-badge-lang">中文</span></div><div class="problem-description-item-meta"><time class="statement-update-time" datetime="2023-07-13">2023-07-13</time></div></div></li><li class="list-group-item problem-description-item" data-key="379361233784985" data-version="1689140159000" data-author="user:578185" data-author-name="Vxiao_huanV" data-author-id="578185" data-type="user" data-lang="zh"><div class="problem-description-item-prefix"><input type="checkbox" data-key="379361233784985" data-bs-toggle="tooltip" data-i18n-title="contest.view.statement_toggle_title" style="margin: 5px 10px"></div><img class="problem-description-item-avatar" src="https://cn.cravatar.com/avatar/4da136d06b043f56c791700fe3f4bba9?d=monsterid" alt=""><div class="problem-description-item-main"><div class="statement-author-row"><a href="/user/Vxiao_huanV" data-bs-toggle="tooltip" target="_blank" data-bs-original-title="宁老板, 嘿嘿嘿">Vxiao_huanV</a><span class="statement-badge statement-badge-lang">中文</span></div><div class="problem-description-item-meta"><time class="statement-update-time" datetime="2023-07-12">2023-07-12</time></div></div></li></div>
+            </div>
+
+            <div class="row" style="margin-top: 20px">
+                <!-- Contest sidebar -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9098591903020457" data-ad-slot="9577100134" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><iframe id="aswift_2" name="aswift_2" data-load-complete="true"></iframe></ins>
+                <script>
+                  var ad_setter = setInterval(function () {
+                    if (document.getElementById('contest_problem').offsetParent !== null) {
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                      clearInterval(ad_setter);
+                    }
+                  }, 1000);
+                </script>
+            </div>
+            </div>
+        </div><button type="button" class="page-panel-desktop-toggle" data-panel-mode="docked" aria-label="Contraer panel lateral"><i class="page-panel-desktop-toggle-icon fa fa-angle-left" aria-hidden="true"></i></button>
+        <div class="fixed-main-panel" id="prob-right-panel">
+            <div class="row">
+                <div id="prob-title-contest">
+                    <h2 id="problem-title"><a href="/problem/CodeForces-1654C" target="_blank">A - Alice and the Cake</a></h2>
+                    <span class="origin">
+                        <a id="problem-origin" href="/problem/CodeForces-1654C/origin" target="_blank">CodeForces - 1654C <i class="fa fa-external-link"></i></a>
+                    </span>
+                </div>
+            </div>
+            <div class="row" id="frame-description-container"><iframe src="/problem/description/321177558442991?3551163336793" width="100%" height="2048px" frameborder="0" scrolling="no" style="height: 2501.27px;"></iframe></div>
+        </div>
+    </div>
+    </div>
+
+</div>
+
+                    </div>
+                
+                
+                    <div class="tab-pane" id="status" role="tabpanel">
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="contest_status" class="container-fluid px-0">
+    <div id="right-panel">
+        <input type="button" class="btn btn-secondary btn-md" id="refresh-all" value="Actualizar" data-i18n="button.refresh">
+        <input type="button" class="btn btn-secondary btn-md" id="reset" data-i18n="button.reset" value="Restablecer">
+        <input type="button" class="btn btn-secondary btn-md" id="filter" data-i18n="button.filter" value="Filtrar">
+        <div class="table-responsive px-0">
+            <table id="listStatus" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th class="run-id d-none d-xl-table-cell">ID</th>
+                    <th class="username">
+                        <span>Usuario</span><br>
+                        <input type="text" id="un" name="un" class="search_text">
+                    </th>
+                    <th class="num">
+                        <span>Prob.</span><br>
+                        <select id="contest-status-num" name="num" class="form-select">
+                            <option value="" data-i18n="all">Todo</option>
+                        </select>
+                    </th>
+                    <th class="status">
+                        <span>Resultado</span><br>
+                        <select id="res" name="res" class="form-select">
+                            <option value="all" data-i18n="all">Todo</option>
+                            <option value="AC" data-i18n="status.result.accepted">Aceptado</option>
+                            <option value="PE" data-i18n="status.result.presentation_error">Error de presentación</option>
+                            <option value="WA" data-i18n="status.result.wrong_answer">Respuesta incorrecta</option>
+                            <option value="TLE" data-i18n="status.result.time_limit_exceeded">Tiempo límite excedido</option>
+                            <option value="MLE" data-i18n="status.result.memory_limit_exceeded">Memoria límite excedida</option>
+                            <option value="OLE" data-i18n="status.result.output_limit_exceeded">Salida límite excedida</option>
+                            <option value="RE" data-i18n="status.result.runtime_error">Error de ejecución</option>
+                            <option value="CE" data-i18n="status.result.compile_error">Error de compilación</option>
+                            <option value="JUDGE_FAILED" data-i18n="status.result.judge_failed">Error de evaluación</option>
+                            <option value="SUBMIT_FAILED_PERM" data-i18n="status.result.unknown_error">Error desconocido</option>
+                            <option value="SUBMIT_FAILED_TEMP" data-i18n="status.result.submit_failed">Envío fallido</option>
+                            <option value="PENDING" data-i18n="status.result.queuing_and_judging">En cola / evaluando</option>
+                        </select>
+                    </th>
+                    <th class="runtime">
+                        <span>Tiempo</span><br>(ms)
+                    </th>
+                    <th class="memory">
+                        <span>Memoria</span><br>(MB)
+                    </th>
+                    <th class="length d-none d-xl-table-cell">
+                        <span>Longitud</span>
+                    </th>
+                    <th class="language">
+                        <span>Leng.</span><br>
+                        <select name="language" id="language" class="form-select">
+                            <option value="" data-i18n="all">Todo</option>
+                            
+                                <option value="C">C</option>
+                            
+                                <option value="CPP">C++</option>
+                            
+                                <option value="CSHARP">C#</option>
+                            
+                                <option value="D">D</option>
+                            
+                                <option value="GO">Go</option>
+                            
+                                <option value="HASKELL">Haskell</option>
+                            
+                                <option value="JAVA">Java</option>
+                            
+                                <option value="JAVASCRIPT">JavaScript</option>
+                            
+                                <option value="KOTLIN">Kotlin</option>
+                            
+                                <option value="LUA">Lua</option>
+                            
+                                <option value="OBJECTIVE_C">Objective-C</option>
+                            
+                                <option value="PASCAL">Pascal</option>
+                            
+                                <option value="PERL">Perl</option>
+                            
+                                <option value="PHP">PHP</option>
+                            
+                                <option value="PYTHON">Python</option>
+                            
+                                <option value="RUBY">Ruby</option>
+                            
+                                <option value="RUST">Rust</option>
+                            
+                                <option value="SCALA">Scala</option>
+                            
+                                <option value="SWIFT">Swift</option>
+                            
+                                <option value="OTHER">Other</option>
+                            
+                        </select>
+                    </th>
+                    <th class="date">
+                        <span>Hora de envío</span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+                    </div>
+                
+                
+                    <div class="tab-pane" id="rank" role="tabpanel">
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="contest_rank">
+    <div class="table-responsive contest-rank-table-scroll" id="contest-rank-table-scroll">
+        <table id="contest-rank-table" cellspacing="1"></table>
+    </div>
+    <div class="contest-rank-sticky-head" id="contest-rank-sticky-head"></div>
+    <table id="contest-rank-table-export"></table>
+
+    <div class="rank_tool">
+        <i class="fa fa-line-chart fa-3x" id="img_time_chart" title="Time chart"></i>
+    </div>
+
+    <!-- Team info modal -->
+    <div class="modal fade" id="teamInfoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="rank-time-chart-layout">
+                        <div class="rank-time-chart-sidebar">
+                            <table class="table table-striped contest-info"></table>
+                            <div id="rank-time-chart-tooltip" class="rank-time-chart-tooltip-panel"></div>
+                        </div>
+                        <div id="rank-time-chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+                    </div>
+                
+                <div class="tab-pane" id="discuss" role="tabpanel">
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="contest_discuss"><div class="comment-posts-container"><div class="show-comment-edit" data-i18n="comment.view.leave_a_comment">Dejar un comentario</div><div class="load-all-replies" style="display: none;">
+        <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+        <span data-i18n="comment.view.load_all_replies">Cargar todas las respuestas</span>
+    </div><div class="comments-loader" style="display: none;">
+        <i class="fa fa-2x fa-refresh fa-spin"></i> <span data-i18n="comment.view.loading_comments">Cargando comentarios...</span>
+    </div>
+
+    
+    
+    <div class="show-spam" style="display: none;" data-i18n="comment.view.show_spam">Mostrar spam</div>
+    
+
+    
+
+</div></div>
+
+                </div>
+            </div>
+
+        </div>
+    
+
+    
+
+</div>
+
+<textarea style="display: none" name="dataJson">{"id":855562,"title":"Estructuras de Datos Iniciales","type":0,"openness":2,"authStatus":3,"begin":1791117300000,"end":1791120660000,"freezeTime":1791120660000,"unfreezeTime":1791120660000,"enableFreeze":false,"createTime":1791115962000,"version":"131","started":true,"ended":true,"managerId":1321179,"managerName":"Kysssh","groupShortName":"educational-contests0","groupName":"Educational Contests","groupOwned":true,"fav":false,"description":{},"problems":[{"pid":4057367,"title":"Alice and the Cake","oj":"CodeForces","probNum":"1654C","num":"A","enabledDescKeys":[321177558442991],"descBriefs":[{"key":321177558442991,"updateDate":"2025-10-10","version":1760081863000,"author":"System","authorKey":"main","type":"main","lang":"en","langDisplay":"English","official":true,"mainOfficial":true,"publicVisible":true,"remarks":"Initialization."},{"key":428903450303683,"updateDate":"2026-10-04","version":1791117404000,"author":"GPT","authorKey":"translator:1281309:es","authorUserId":1281309,"type":"translator","statementKey":"es","lang":"es","langDisplay":"Español","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"Translated by gpt-6-luna"},{"key":361915980792828,"updateDate":"2025-07-04","version":1751604561000,"author":"philtron_c","authorKey":"user:631160","authorUserId":631160,"type":"user","lang":"en","langDisplay":"English","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/631160?v\u003d1723197192","remarks":"Forked from System Crawler\u0027s version (2025-05-07)"},{"key":414407366028678,"updateDate":"2025-01-20","version":1737381365000,"author":"GPT","authorKey":"translator:1281309:zh","authorUserId":1281309,"type":"translator","statementKey":"zh","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"[简体中文] translation by OpenAI (gpt-4o-mini-2024-07-18)"},{"key":420349846921267,"updateDate":"2024-12-25","version":1735129182000,"author":"rapl22","authorKey":"user:1034871","authorUserId":1034871,"type":"user","lang":"en","langDisplay":"English","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/7bc65f276f252a482ac634fae94d6002?d\u003drobohash","remarks":"Forked from System Crawler\u0027s version (2024-12-24)"},{"key":379046811497262,"updateDate":"2023-07-13","version":1689260106000,"author":"subarude","authorKey":"user:321450","authorUserId":321450,"type":"user","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/267bd89cfd402bab55b2edeaa20cb12a?d\u003dretro","remarks":"Forked from Vxiao_huanV\u0027s version (2023-07-12)"},{"key":379361233784985,"updateDate":"2023-07-12","version":1689140159000,"author":"Vxiao_huanV","authorKey":"user:578185","authorUserId":578185,"type":"user","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/4da136d06b043f56c791700fe3f4bba9?d\u003dmonsterid","remarks":"宁老板, 嘿嘿嘿"}],"properties":[{"title":"time_limit","content":"2000 ms","spoiler":false},{"title":"mem_limit","content":"262144 kB","spoiler":false},{"title":"source","content":"\u003ca href\u003d\"https://codeforces.com/contest/1654\"\u003eCodeforces Round 778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)\u003c/a\u003e","spoiler":true},{"title":"tags","content":"\n    data structures\n\n\n    greedy\n\n\n    implementation\n\n\n    sortings\n\n\n    \n","spoiler":true},{"title":"difficulty","content":"1400","spoiler":true},{"title":"editorial","content":"\u003ca href\u003d\"https://codeforces.com/blog/entry/100277\" title\u003d\"Codeforces Round #778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)\" target\u003d\"_blank\"\u003eAnnouncement\u003c/a\u003e\n\u003ca href\u003d\"https://codeforces.com/blog/entry/100127\" title\u003d\"Editorial of Codeforces Round #778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)\" target\u003d\"_blank\"\u003eTutorial \u003cspan class\u003d\"resource-locale\"\u003e(en)\u003c/span\u003e\u003c/a\u003e","spoiler":true}],"weight":1,"languages":{"88":"Kotlin 1.9.21","89":"GNU G++20 13.2 (64 bit, winlibs)","67":"Ruby 3.2.2","28":"D DMD32 v2.105.0","91":"GNU G++23 14.2 (64 bit, msys2)","70":"PyPy 3.10 (7.3.15, 64bit)","51":"PascalABC.NET 3.8.3","96":"C# 13, .NET SDK 9","97":"F# 9, .NET SDK 9","31":"Python 3.13.2","75":"Rust 1.89.0 (2021)","54":"GNU G++17 7.3.0","32":"Go 1.22.2","98":"Rust 1.89.0 (2024)","99":"Kotlin 2.2.0","55":"Node.js 15.8.0 (64bit)","12":"Haskell GHC 8.10.1","34":"JavaScript V8 4.8.0","79":"C# 10, .NET SDK 6.0","13":"Perl 5.20.1","36":"Java 8 32bit","19":"OCaml 4.02.1","3":"Delphi 7","4":"Free Pascal 3.2.2","6":"PHP 8.1.7","7":"Python 2.7.18","9":"C# Mono 6.8","83":"Kotlin 1.7.20","40":"PyPy 2.7.13 (7.3.0)","41":"PyPy 3.6.9 (7.3.0)","20":"Scala 2.12.8","43":"GNU GCC C11 5.1.0","65":"C# 8, .NET Core 3.1","87":"Java 21 64bit"},"submitMethods":[false,true,true]},{"pid":3012152,"title":"Stack of Presents","oj":"CodeForces","probNum":"1279C","num":"B","enabledDescKeys":[349876928067340],"descBriefs":[{"key":349876928067340,"updateDate":"2025-10-11","version":1760160164000,"author":"System","authorKey":"main","type":"main","lang":"en","langDisplay":"English","official":true,"mainOfficial":true,"publicVisible":true,"remarks":"Initialization."},{"key":448412719493441,"updateDate":"2026-06-04","version":1780570079000,"author":"GPT","authorKey":"translator:1281309:vi","authorUserId":1281309,"type":"translator","statementKey":"vi","lang":"vi","langDisplay":"Tiếng Việt","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"Translated by gpt-4.1-mini"},{"key":401432637529853,"updateDate":"2025-07-20","version":1752948517000,"author":"cmy415","authorKey":"user:1074744","authorUserId":1074744,"type":"user","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1074744?v\u003d1751894289","remarks":"Forked from GPT_zh\u0027s version (2024-03-15)"},{"key":372149842836522,"updateDate":"2024-03-15","version":1710493247000,"author":"GPT","authorKey":"translator:1281309:zh","authorUserId":1281309,"type":"translator","statementKey":"zh","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"[简体中文] translation by OpenAI (gpt-3.5-turbo-0125)"},{"key":379255228424544,"updateDate":"2023-08-01","version":1690889286000,"author":"ckq328","authorKey":"user:626582","authorUserId":626582,"type":"user","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/b28bc80f1e8191ddde1ee7adf469e58a?d\u003drobohash","remarks":"Forked from W873243475\u0027s version (2020-01-08)"},{"key":349729802543573,"updateDate":"2020-01-08","version":1578457016000,"author":"W873243475","authorKey":"user:232497","authorUserId":232497,"type":"user","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/4174db94297298c85d5a916b0cb89c74?d\u003didenticon","remarks":"Initialization."}],"properties":[{"title":"time_limit","content":"1000 ms","spoiler":false},{"title":"mem_limit","content":"262144 kB","spoiler":false},{"title":"source","content":"\u003ca href\u003d\"https://codeforces.com/contest/1279\"\u003eEducational Codeforces Round 79 (Rated for Div. 2)\u003c/a\u003e","spoiler":true},{"title":"tags","content":"\n    data structures\n\n\n    implementation\n\n\n    \n","spoiler":true},{"title":"difficulty","content":"1400","spoiler":true},{"title":"editorial","content":"\u003ca href\u003d\"https://codeforces.com/blog/entry/72494\" title\u003d\"Educational Codeforces Round 79 [Rated for Div. 2]\" target\u003d\"_blank\"\u003eAnnouncement\u003c/a\u003e\n\u003ca href\u003d\"https://codeforces.com/blog/entry/72577\" title\u003d\"Educational Codeforces Round 79 Editorial\" target\u003d\"_blank\"\u003eTutorial\u003c/a\u003e","spoiler":true}],"weight":1,"languages":{"88":"Kotlin 1.9.21","89":"GNU G++20 13.2 (64 bit, winlibs)","67":"Ruby 3.2.2","28":"D DMD32 v2.105.0","91":"GNU G++23 14.2 (64 bit, msys2)","70":"PyPy 3.10 (7.3.15, 64bit)","51":"PascalABC.NET 3.8.3","96":"C# 13, .NET SDK 9","97":"F# 9, .NET SDK 9","31":"Python 3.13.2","75":"Rust 1.89.0 (2021)","54":"GNU G++17 7.3.0","32":"Go 1.22.2","98":"Rust 1.89.0 (2024)","99":"Kotlin 2.2.0","55":"Node.js 15.8.0 (64bit)","12":"Haskell GHC 8.10.1","34":"JavaScript V8 4.8.0","79":"C# 10, .NET SDK 6.0","13":"Perl 5.20.1","36":"Java 8 32bit","19":"OCaml 4.02.1","3":"Delphi 7","4":"Free Pascal 3.2.2","6":"PHP 8.1.7","7":"Python 2.7.18","9":"C# Mono 6.8","83":"Kotlin 1.7.20","40":"PyPy 2.7.13 (7.3.0)","41":"PyPy 3.6.9 (7.3.0)","20":"Scala 2.12.8","43":"GNU GCC C11 5.1.0","65":"C# 8, .NET Core 3.1","87":"Java 21 64bit"},"submitMethods":[false,true,true]},{"pid":26752,"title":"Cd and pwd commands","oj":"CodeForces","probNum":"158C","num":"C","enabledDescKeys":[308508787491780],"descBriefs":[{"key":308508787491780,"updateDate":"2026-09-26","version":1790391155000,"author":"System","authorKey":"main","type":"main","lang":"en","langDisplay":"English","official":true,"mainOfficial":true,"publicVisible":true,"remarks":"Initialization."},{"key":387394167084819,"updateDate":"2026-01-08","version":1767854307000,"author":"GPT","authorKey":"translator:1281309:zh","authorUserId":1281309,"type":"translator","statementKey":"zh","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"[简体中文] translation by LLM (gpt-4.1-mini)"},{"key":340060239535330,"updateDate":"2020-08-04","version":1596512219000,"author":"egomezr","authorKey":"user:204936","authorUserId":204936,"type":"user","lang":"en","langDisplay":"English","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/f01f577f33858dd47c2b61ef313ab4d5?d\u003dretro","remarks":"huronOS terminal"}],"properties":[{"title":"time_limit","content":"3000 ms","spoiler":false},{"title":"mem_limit","content":"262144 kB","spoiler":false},{"title":"input_file","content":"\u003cspan style\u003d\u0027color:var(--color-danger)\u0027\u003e stdin\u003c/span\u003e","spoiler":false},{"title":"output_file","content":"\u003cspan style\u003d\u0027color:var(--color-danger)\u0027\u003e stdout\u003c/span\u003e","spoiler":false},{"title":"source","content":"\u003ca href\u003d\"https://codeforces.com/contest/158\"\u003eVK Cup 2012 Qualification Round 1\u003c/a\u003e","spoiler":true},{"title":"tags","content":"\n    *special problem\n\n\n    data structures\n\n\n    implementation\n\n\n    \n","spoiler":true},{"title":"difficulty","content":"1400","spoiler":true},{"title":"editorial","content":"\u003ca href\u003d\"https://codeforces.com/blog/entry/4012\" title\u003d\"VK Cup 2012 Qualification Round 1\" target\u003d\"_blank\"\u003eAnnouncement\u003c/a\u003e\n\u003ca href\u003d\"https://codeforces.com/blog/entry/4089\" title\u003d\"Simple solution to vk cup Qualification Round 1 and 2\" target\u003d\"_blank\"\u003eTutorial \u003cspan class\u003d\"resource-locale\"\u003e(en)\u003c/span\u003e\u003c/a\u003e","spoiler":true}],"weight":1,"languages":{"88":"Kotlin 1.9.21","89":"GNU G++20 13.2 (64 bit, winlibs)","67":"Ruby 3.2.2","28":"D DMD32 v2.105.0","91":"GNU G++23 14.2 (64 bit, msys2)","70":"PyPy 3.10 (7.3.15, 64bit)","51":"PascalABC.NET 3.8.3","96":"C# 13, .NET SDK 9","97":"F# 9, .NET SDK 9","31":"Python 3.13.2","75":"Rust 1.89.0 (2021)","54":"GNU G++17 7.3.0","32":"Go 1.22.2","98":"Rust 1.89.0 (2024)","99":"Kotlin 2.2.0","55":"Node.js 15.8.0 (64bit)","12":"Haskell GHC 8.10.1","34":"JavaScript V8 4.8.0","79":"C# 10, .NET SDK 6.0","13":"Perl 5.20.1","36":"Java 8 32bit","19":"OCaml 4.02.1","3":"Delphi 7","4":"Free Pascal 3.2.2","6":"PHP 8.1.7","7":"Python 2.7.18","9":"C# Mono 6.8","83":"Kotlin 1.7.20","40":"PyPy 2.7.13 (7.3.0)","41":"PyPy 3.6.9 (7.3.0)","20":"Scala 2.12.8","43":"GNU GCC C11 5.1.0","65":"C# 8, .NET Core 3.1","87":"Java 21 64bit"},"submitMethods":[false,true,true]},{"pid":2502708,"title":"Valeriy and Deque","oj":"CodeForces","probNum":"1179A","num":"D","enabledDescKeys":[348872522629279],"descBriefs":[{"key":348872522629279,"updateDate":"2025-11-24","version":1763974170000,"author":"System","authorKey":"main","type":"main","lang":"en","langDisplay":"English","official":true,"mainOfficial":true,"publicVisible":true,"remarks":"Initialization."},{"key":402854526829602,"updateDate":"2025-08-17","version":1755422369000,"author":"zzrzzr114514","authorKey":"user:1158632","authorUserId":1158632,"type":"user","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1158632?v\u003d1789950290","remarks":"YZOI定制"},{"key":406479294670653,"updateDate":"2025-05-09","version":1746768508000,"author":"DeepSeek","authorKey":"translator:1281311:zh","authorUserId":1281311,"type":"translator","statementKey":"zh","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/a34f8923c2662b4ba8d1d53b114ca371?d\u003drobohash","remarks":"[简体中文] translation by LLM (deepseek-chat)"},{"key":414007787864097,"updateDate":"2025-01-18","version":1737203658000,"author":"GPT","authorKey":"translator:1281309:vi","authorUserId":1281309,"type":"translator","statementKey":"vi","lang":"vi","langDisplay":"Tiếng Việt","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"[Tiếng Việt] translation by OpenAI (gpt-4o-mini-2024-07-18)"},{"key":352102299205527,"updateDate":"2024-10-04","version":1728023704000,"author":"GPT","authorKey":"translator:1281309:zh","authorUserId":1281309,"type":"translator","statementKey":"zh","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"[简体中文] translation by OpenAI (gpt-4o-mini-2024-07-18)"},{"key":365139900505166,"updateDate":"2024-04-23","version":1713805304000,"author":"Promod","authorKey":"user:387237","authorUserId":387237,"type":"user","lang":"en","langDisplay":"English","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/387237?v\u003d1679379589","remarks":"promod\u0027s statement"},{"key":370056384119818,"updateDate":"2024-01-27","version":1706299143000,"author":"GPT","authorKey":"translator:1281309:es","authorUserId":1281309,"type":"translator","statementKey":"es","lang":"es","langDisplay":"Español","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"[Español] translation by OpenAI (gpt-3.5-turbo-1106)"}],"properties":[{"title":"time_limit","content":"6000 ms","spoiler":false},{"title":"mem_limit","content":"262144 kB","spoiler":false},{"title":"source","content":"\u003ca href\u003d\"https://codeforces.com/contest/1179\"\u003eCodeforces Round 569 (Div. 1)\u003c/a\u003e","spoiler":true},{"title":"tags","content":"\n    data structures\n\n\n    implementation\n\n\n    \n","spoiler":true},{"title":"difficulty","content":"1500","spoiler":true}],"weight":1,"languages":{"88":"Kotlin 1.9.21","89":"GNU G++20 13.2 (64 bit, winlibs)","67":"Ruby 3.2.2","28":"D DMD32 v2.105.0","91":"GNU G++23 14.2 (64 bit, msys2)","70":"PyPy 3.10 (7.3.15, 64bit)","51":"PascalABC.NET 3.8.3","96":"C# 13, .NET SDK 9","97":"F# 9, .NET SDK 9","31":"Python 3.13.2","75":"Rust 1.89.0 (2021)","54":"GNU G++17 7.3.0","32":"Go 1.22.2","98":"Rust 1.89.0 (2024)","99":"Kotlin 2.2.0","55":"Node.js 15.8.0 (64bit)","12":"Haskell GHC 8.10.1","34":"JavaScript V8 4.8.0","79":"C# 10, .NET SDK 6.0","13":"Perl 5.20.1","36":"Java 8 32bit","19":"OCaml 4.02.1","3":"Delphi 7","4":"Free Pascal 3.2.2","6":"PHP 8.1.7","7":"Python 2.7.18","9":"C# Mono 6.8","83":"Kotlin 1.7.20","40":"PyPy 2.7.13 (7.3.0)","41":"PyPy 3.6.9 (7.3.0)","20":"Scala 2.12.8","43":"GNU GCC C11 5.1.0","65":"C# 8, .NET Core 3.1","87":"Java 21 64bit"},"submitMethods":[false,true,true]},{"pid":3955043,"title":"Berpizza","oj":"CodeForces","probNum":"1468C","num":"E","enabledDescKeys":[341489353274113],"descBriefs":[{"key":341489353274113,"updateDate":"2025-10-10","version":1760099649000,"author":"System","authorKey":"main","type":"main","lang":"en","langDisplay":"English","official":true,"mainOfficial":true,"publicVisible":true,"remarks":"Initialization."},{"key":448425305831885,"updateDate":"2026-06-04","version":1780570219000,"author":"GPT","authorKey":"translator:1281309:vi","authorUserId":1281309,"type":"translator","statementKey":"vi","lang":"vi","langDisplay":"Tiếng Việt","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"Translated by gpt-4.1-mini"},{"key":367897611178739,"updateDate":"2025-10-18","version":1760792369000,"author":"philtron_c","authorKey":"user:631160","authorUserId":631160,"type":"user","lang":"en","langDisplay":"English","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/631160?v\u003d1723197192","remarks":"Forked from System Crawler\u0027s version (2025-10-10)"},{"key":411916164915721,"updateDate":"2025-04-25","version":1745572733000,"author":"DeepSeek","authorKey":"translator:1281311:zh","authorUserId":1281311,"type":"translator","statementKey":"zh","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/a34f8923c2662b4ba8d1d53b114ca371?d\u003drobohash","remarks":"[简体中文] translation by LLM (deepseek-chat)"},{"key":417206943799189,"updateDate":"2025-02-14","version":1739485645000,"author":"rapl22","authorKey":"user:1034871","authorUserId":1034871,"type":"user","lang":"en","langDisplay":"English","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/7bc65f276f252a482ac634fae94d6002?d\u003drobohash","remarks":"Forked from System Crawler\u0027s version (2025-02-14)"},{"key":363246180494659,"updateDate":"2024-07-15","version":1721045582000,"author":"GPT","authorKey":"translator:1281309:zh","authorUserId":1281309,"type":"translator","statementKey":"zh","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"[简体中文] translation by OpenAI (gpt-3.5-turbo-0125)"},{"key":365499399140732,"updateDate":"2024-04-25","version":1714059891000,"author":"GPT","authorKey":"translator:1281309:ru","authorUserId":1281309,"type":"translator","statementKey":"ru","lang":"ru","langDisplay":"русский язык","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"[русский язык] translation by OpenAI (gpt-3.5-turbo-0125)"},{"key":337047583220966,"updateDate":"2021-10-14","version":1634158984000,"author":"Arefin_1904111","authorKey":"user:394813","authorUserId":394813,"type":"user","lang":"en","langDisplay":"English","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/277ff00a4849c9f6b988c3d6e9120929?d\u003dretro","remarks":"Forked from System Crawler\u0027s version at 2021-10-08"}],"properties":[{"title":"time_limit","content":"5000 ms","spoiler":false},{"title":"mem_limit","content":"524288 kB","spoiler":false},{"title":"source","content":"\u003ca href\u003d\"https://codeforces.com/contest/1468\"\u003e2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)\u003c/a\u003e","spoiler":true},{"title":"tags","content":"\n    data structures\n\n\n    implementation\n\n\n    \n","spoiler":true},{"title":"difficulty","content":"1400","spoiler":true},{"title":"editorial","content":"\u003ca href\u003d\"https://codeforces.com/blog/entry/85881\" title\u003d\"2020-2021 ICPC, NERC, Южный четвертьфинал (онлайн-трансляция, правила ICPC, предпочтительно команды)\" target\u003d\"_blank\"\u003eAnnouncement\u003c/a\u003e\n\u003ca href\u003d\"CDN_BASE_URL/5418bb8486efeb1ba8581540e684a2c9\" title\u003d\"Statements (PDF)\" target\u003d\"_blank\"\u003eStatements (PDF) \u003cspan class\u003d\"resource-locale\"\u003e(en)\u003c/span\u003e\u003c/a\u003e\n\u003ca href\u003d\"https://codeforces.com/blog/entry/85951\" title\u003d\"2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules) — Tutorials\" target\u003d\"_blank\"\u003eTutorial #1 \u003cspan class\u003d\"resource-locale\"\u003e(en)\u003c/span\u003e\u003c/a\u003e\n\u003ca href\u003d\"CDN_BASE_URL/82d2e77e1e97e598c7eb3211f16ce285\" title\u003d\"Tutorial (PDF)\" target\u003d\"_blank\"\u003eTutorial (PDF) \u003cspan class\u003d\"resource-locale\"\u003e(en)\u003c/span\u003e\u003c/a\u003e","spoiler":true}],"weight":1,"languages":{"88":"Kotlin 1.9.21","89":"GNU G++20 13.2 (64 bit, winlibs)","67":"Ruby 3.2.2","28":"D DMD32 v2.105.0","91":"GNU G++23 14.2 (64 bit, msys2)","70":"PyPy 3.10 (7.3.15, 64bit)","51":"PascalABC.NET 3.8.3","96":"C# 13, .NET SDK 9","97":"F# 9, .NET SDK 9","31":"Python 3.13.2","75":"Rust 1.89.0 (2021)","54":"GNU G++17 7.3.0","32":"Go 1.22.2","98":"Rust 1.89.0 (2024)","99":"Kotlin 2.2.0","55":"Node.js 15.8.0 (64bit)","12":"Haskell GHC 8.10.1","34":"JavaScript V8 4.8.0","79":"C# 10, .NET SDK 6.0","13":"Perl 5.20.1","36":"Java 8 32bit","19":"OCaml 4.02.1","3":"Delphi 7","4":"Free Pascal 3.2.2","6":"PHP 8.1.7","7":"Python 2.7.18","9":"C# Mono 6.8","83":"Kotlin 1.7.20","40":"PyPy 2.7.13 (7.3.0)","41":"PyPy 3.6.9 (7.3.0)","20":"Scala 2.12.8","43":"GNU GCC C11 5.1.0","65":"C# 8, .NET Core 3.1","87":"Java 21 64bit"},"submitMethods":[false,true,true]},{"pid":756189,"title":"Minimal string","oj":"CodeForces","probNum":"797C","num":"F","enabledDescKeys":[293726567810510],"descBriefs":[{"key":293726567810510,"updateDate":"2026-01-12","version":1768197443000,"author":"System","authorKey":"main","type":"main","lang":"en","langDisplay":"English","official":true,"mainOfficial":true,"publicVisible":true,"remarks":"Initialization."},{"key":395966611520695,"updateDate":"2025-09-08","version":1757264698000,"author":"duytran","authorKey":"user:254332","authorUserId":254332,"type":"user","lang":"vi","langDisplay":"Tiếng Việt","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/3957197301973f215516b9379803db74?d\u003didenticon","remarks":"Forked from GPT_vi\u0027s version (2025-09-08)"},{"key":395967479350032,"updateDate":"2025-09-08","version":1757264340000,"author":"GPT","authorKey":"translator:1281309:vi","authorUserId":1281309,"type":"translator","statementKey":"vi","lang":"vi","langDisplay":"Tiếng Việt","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"[Tiếng Việt] translation by LLM (gpt-4.1-mini)"},{"key":412212150600547,"updateDate":"2025-04-29","version":1745905150000,"author":"DeepSeek","authorKey":"translator:1281311:zh","authorUserId":1281311,"type":"translator","statementKey":"zh","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/a34f8923c2662b4ba8d1d53b114ca371?d\u003drobohash","remarks":"[简体中文] translation by LLM (deepseek-chat)"},{"key":362874314201575,"updateDate":"2024-07-12","version":1720754480000,"author":"GPT","authorKey":"translator:1281309:ru","authorUserId":1281309,"type":"translator","statementKey":"ru","lang":"ru","langDisplay":"русский язык","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"[русский язык] translation by OpenAI (gpt-3.5-turbo-0125)"},{"key":369021486540346,"updateDate":"2024-05-02","version":1714587277000,"author":"icpcclub","authorKey":"user:552012","authorUserId":552012,"type":"user","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/ef1e361dbcead50c96b9be6d25d7123f?d\u003dmonsterid","remarks":"Forked from GPT_zh\u0027s version (2024-05-02)"},{"key":378224710941858,"updateDate":"2024-05-02","version":1714586610000,"author":"GPT","authorKey":"translator:1281309:zh","authorUserId":1281309,"type":"translator","statementKey":"zh","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"[简体中文] translation by OpenAI (gpt-3.5-turbo-0125)"},{"key":373700692530940,"updateDate":"2024-02-22","version":1708558652000,"author":"souzajackson","authorKey":"user:632733","authorUserId":632733,"type":"user","lang":"pt","langDisplay":"português","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/fbfd732e2e28e19c23779d713e987960?d\u003dmonsterid","remarks":"Forked from lesortey\u0027s version (2024-01-26)"},{"key":370157247359311,"updateDate":"2024-01-26","version":1706223150000,"author":"lesortey","authorKey":"user:790037","authorUserId":790037,"type":"user","lang":"pt","langDisplay":"português","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/790037?v\u003d1690762019","remarks":"Forked from GPT_pt\u0027s version (2024-01-26)"},{"key":370157041465768,"updateDate":"2024-01-26","version":1706222982000,"author":"GPT","authorKey":"translator:1281309:pt","authorUserId":1281309,"type":"translator","statementKey":"pt","lang":"pt","langDisplay":"português","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/1281309","remarks":"[português] translation by OpenAI (gpt-3.5-turbo-1106)"},{"key":378462506245203,"updateDate":"2023-08-11","version":1691769488000,"author":"Lockeder","authorKey":"user:585141","authorUserId":585141,"type":"user","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cdn.vjudge.net.cn/user/avatar/585141?v\u003d1663054135","remarks":"Forked from ZhengruiOI\u0027s version (2017-04-18)"},{"key":379395506121327,"updateDate":"2023-06-27","version":1687798685000,"author":"1S22S1","authorKey":"user:235571","authorUserId":235571,"type":"user","lang":"en","langDisplay":"English","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/b3e81c0469bd16c2fa9e2b1475ebda5b?d\u003didenticon","remarks":"Forked from System Crawler\u0027s version (2023-06-22)"},{"key":336536616232628,"updateDate":"2021-11-22","version":1637574059000,"author":"cmihaescu","authorKey":"user:345448","authorUserId":345448,"type":"user","lang":"ro","langDisplay":"Română","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/351cd088d2dbf2f4d7b105add62904b6?d\u003dmonsterid","remarks":"Forked from System Crawler\u0027s version at 2021-11-14"},{"key":347769997634362,"updateDate":"2019-08-19","version":1566217643000,"author":"iron_china","authorKey":"user:272005","authorUserId":272005,"type":"user","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/f68f160abf9138e06ef4781d354ba794?d\u003dwavatar","remarks":"Initialization."},{"key":288641898016933,"updateDate":"2018-02-09","version":1518154576000,"author":"tivility","authorKey":"user:130024","authorUserId":130024,"type":"user","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/928d852b845cdb15a0c93c1306f95df3?d\u003dretro","remarks":"Initialization."},{"key":293706314483782,"updateDate":"2017-04-18","version":1492477534000,"author":"ZhengruiOI","authorKey":"user:133463","authorUserId":133463,"type":"user","lang":"zh","langDisplay":"中文","official":false,"mainOfficial":false,"publicVisible":true,"avatarUrl":"https://cn.cravatar.com/avatar/458b13b389bd0cccbe9356d8cd8a5ff8?d\u003dmonsterid","remarks":"Initialization."}],"properties":[{"title":"time_limit","content":"1000 ms","spoiler":false},{"title":"mem_limit","content":"262144 kB","spoiler":false},{"title":"source","content":"\u003ca href\u003d\"https://codeforces.com/contest/797\"\u003eEducational Codeforces Round 19\u003c/a\u003e","spoiler":true},{"title":"tags","content":"\n    data structures\n\n\n    greedy\n\n\n    strings\n\n\n    \n","spoiler":true},{"title":"difficulty","content":"1700","spoiler":true},{"title":"editorial","content":"\u003ca href\u003d\"https://codeforces.com/blog/entry/51567\" title\u003d\"Educational Codeforces Round 19\" target\u003d\"_blank\"\u003eAnnouncement\u003c/a\u003e\n\u003ca href\u003d\"https://codeforces.com/blog/entry/51588\" title\u003d\"51588\" target\u003d\"_blank\"\u003eTutorial\u003c/a\u003e","spoiler":true}],"weight":1,"languages":{"88":"Kotlin 1.9.21","89":"GNU G++20 13.2 (64 bit, winlibs)","67":"Ruby 3.2.2","28":"D DMD32 v2.105.0","91":"GNU G++23 14.2 (64 bit, msys2)","70":"PyPy 3.10 (7.3.15, 64bit)","51":"PascalABC.NET 3.8.3","96":"C# 13, .NET SDK 9","97":"F# 9, .NET SDK 9","31":"Python 3.13.2","75":"Rust 1.89.0 (2021)","54":"GNU G++17 7.3.0","32":"Go 1.22.2","98":"Rust 1.89.0 (2024)","99":"Kotlin 2.2.0","55":"Node.js 15.8.0 (64bit)","12":"Haskell GHC 8.10.1","34":"JavaScript V8 4.8.0","79":"C# 10, .NET SDK 6.0","13":"Perl 5.20.1","36":"Java 8 32bit","19":"OCaml 4.02.1","3":"Delphi 7","4":"Free Pascal 3.2.2","6":"PHP 8.1.7","7":"Python 2.7.18","9":"C# Mono 6.8","83":"Kotlin 1.7.20","40":"PyPy 2.7.13 (7.3.0)","41":"PyPy 3.6.9 (7.3.0)","20":"Scala 2.12.8","43":"GNU GCC C11 5.1.0","65":"C# 8, .NET Core 3.1","87":"Java 21 64bit"},"submitMethods":[false,true,true]}],"problemsHash":"131286aaed40d1a210ea59613377ce8a","privatePeerContestIds":[],"enableTimeMachine":true,"sumTime":true,"penalty":1200,"partialScore":false,"oneShot":false,"customizedWeight":false,"showPeers":false,"originVisible":true,"participantMode":0,"excludedFromRank":false,"participation":{"enabled":false,"canChange":false,"options":[{"type":"user","name":"Kysssh"}]},"clonedFromId":0}</textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="body-footer">
+    <div style="margin-bottom: 8px">
+        <a href="mailto:is.un@qq.com" target="_blank">
+            <img src="/static/bundle/a7b7e5c7e94c918596f2.svg">
+        </a>
+        <img src="/static/bundle/fdbb90aaddd32a5ab4ad.png" class="qq" data-bs-toggle="popover" data-bs-placement="top">
+        <a href="https://weibo.com/u/5340553087" target="_blank">
+            <img src="/static/bundle/aae271671b3d18e15b40.svg">
+        </a>
+        <a href="https://space.bilibili.com/3056509/lists/3909505" target="_blank">
+            <img src="/static/bundle/ad1d62977bf56d0e0010.png">
+        </a>
+        <a href="https://t.me/joinchat/Erw7nRGwXN3iSCoKguVW3w" target="_blank">
+            <img src="/static/bundle/7182da66feaf3e99632a.svg">
+        </a>
+        <a href="https://www.facebook.com/virtualjudge/" target="_blank">
+            <img src="/static/bundle/c2687d1cf1f3e06984eb.svg">
+        </a>
+    </div>
+    <div id="footer-info">
+        All Copyright Reserved © 2010-2026<br>
+        <span data-i18n="bottom.server_time">Hora del servidor</span>: <span class="currentTimeTZ">2026-10-04 10:31:04 EST</span>
+    </div>
+</div>
+
+
+<input name="systemVersion" type="hidden" value="1791081473793">
+<input name="gaId" type="hidden" value="G-374JLX1715">
+
+    <input id="visitor_username" name="username" type="hidden" value="Kysssh">
+    <input id="visitor_userId" name="userId" type="hidden" value="1321179">
+    <input id="visitor_sup" name="sup" type="hidden" value="0">
+    <input id="newMessage" name="newMessage" type="hidden" value="false">
+
+
+
+
+
+<script type="text/javascript">basePath = "";</script>
+
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;cbda702c6a634090aafa4717574879a5&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+
+<deepl-input-controller translate="no"></deepl-input-controller></body>

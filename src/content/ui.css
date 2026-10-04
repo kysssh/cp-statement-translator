@@ -200,3 +200,14 @@ body > .cpt-root {
 .cpt-attribution a:hover {
   filter: brightness(1.2);
 }
+
+/* VJudge: seguir el tema del sitio y permitir la acci?n luna/sol de la barra. */
+:root[data-bs-theme='dark'] .cpt-root:not([data-cpt-theme='light']),
+.cpt-root[data-cpt-theme='dark'] {
+  --cpt-bg: #171a24; --cpt-border: #2b3042; --cpt-text: #eceff6;
+  --cpt-muted: #98a2b8; --cpt-err: #ff8c78; --cpt-err-bg: #3a1d19;
+}
+.cpt-root[data-cpt-theme='light'] {
+  --cpt-bg: #ffffff; --cpt-border: #dfe3ee; --cpt-text: #1b1f2a;
+  --cpt-muted: #667085; --cpt-err: #c0341d; --cpt-err-bg: #fde8e4;
+}

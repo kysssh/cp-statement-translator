@@ -33,3 +33,33 @@ export async function translateBySegments(
   }
   return out.join('');
 }
+
+/** Respaldo en un lote: los marcadores permanecen locales y se traduce la prosa. */
+export async function translateSegmentsBatch(
+  text: string,
+  translateMany: (texts: string[]) => Promise<string[]>,
+): Promise<string> {
+  const re = tokenRegex();
+  const parts: { source: string; index?: number }[] = [];
+  const sources: string[] = [];
+  const addText = (source: string) => {
+    if (!/\p{L}/u.test(source)) { parts.push({ source }); return; }
+    parts.push({ source, index: sources.length });
+    sources.push(source.trim());
+  };
+  let cursor = 0;
+  for (const match of text.matchAll(re)) {
+    addText(text.slice(cursor, match.index));
+    parts.push({ source: match[0] });
+    cursor = match.index! + match[0].length;
+  }
+  addText(text.slice(cursor));
+  if (!sources.length) return text;
+  const outs = await translateMany(sources);
+  if (outs.length !== sources.length || outs.some(out =>
+      !out.trim() || tokenRegex().test(out) || /⟦|⟧/.test(out))) {
+    throw new Error('El respaldo no devolvió todos los fragmentos de texto sin marcadores.');
+  }
+  return parts.map(part => part.index === undefined ? part.source :
+    /^\s*/.exec(part.source)![0] + outs[part.index].trim() + /\s*$/.exec(part.source)![0]).join('');
+}

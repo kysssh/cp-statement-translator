@@ -91,6 +91,11 @@ export function mountUi(container: HTMLElement, handlers: UiHandlers): void {
   setUi('idle');
 }
 
+export function unmountUi(): void {
+  root?.remove();
+  root = null;
+}
+
 export function setUi(state: UiState, info: UiInfo = {}): void {
   if (!root) return;
   root.dataset.state = state;

@@ -1,5 +1,6 @@
 import { extract, restore, type ProtectionConfig } from './protector';
 import { isValid, normalizeTokens } from './validator';
+import { translateSegmentsBatch } from './segments';
 
 export interface TranslateOpts {
   /** Reintento: el traductor debe evitar enviar los marcadores (o ser más estricto). */
@@ -31,7 +32,16 @@ export async function translateBlocks(
   cfg: ProtectionConfig,
   translate: TranslateFn,
   cache?: BlockCache,
+  options: { signal?: AbortSignal; isCurrent?: () => boolean; retryWithoutMarkers?: boolean } = {},
 ): Promise<PipelineResult> {
+  const assertCurrent = () => {
+    if (options.signal?.aborted || (options.isCurrent && !options.isCurrent())) {
+      throw new DOMException('La traducción ya no pertenece al problema visible.', 'AbortError');
+    }
+  };
+  assertCurrent();
+  const accepts = (source: string, out: string) => isValid(source, out) &&
+    !(options.retryWithoutMarkers && /\p{L}/u.test(source) && source.trim() === out.trim());
   const extractions = blocks.map((b) => extract(b, cfg));
   const sources = extractions.map((e) => e.text);
 
@@ -40,36 +50,63 @@ export async function translateBlocks(
 
   // La caché nunca se da por buena sin revalidar.
   const cached = await cache?.load(sources);
-  if (cached && cached.length === blocks.length && cached.every((o, i) => isValid(sources[i], o))) {
+  assertCurrent();
+  if (cached && cached.length === blocks.length && cached.every((o, i) => accepts(sources[i], o))) {
     outs = cached;
     fromCache = true;
   }
 
   if (!outs) {
     const raw = await translate(sources);
+    assertCurrent();
     if (raw.length !== blocks.length) throw new Error('La traducción no devolvió el número de bloques esperado.');
 
     outs = raw.map((o, i) => {
       const fixed = normalizeTokens(o);
-      return isValid(sources[i], fixed) ? fixed : null;
+      return accepts(sources[i], fixed) ? fixed : null;
     });
 
     // Un reintento aislado por cada bloque inválido.
     for (let i = 0; i < outs.length; i++) {
+      assertCurrent();
       if (outs[i] !== null) continue;
       try {
         const [again] = await translate([sources[i]], { isolated: true });
+        assertCurrent();
         const fixed = normalizeTokens(again ?? '');
-        if (isValid(sources[i], fixed)) outs[i] = fixed;
+        if (accepts(sources[i], fixed)) outs[i] = fixed;
       } catch {
+        assertCurrent(); // Cancelación no debe convertirse en un bloque omitido.
         /* se queda sin traducir */
       }
     }
 
+    // VJudge: último respaldo sin exponer marcadores al proveedor.
+    if (options.retryWithoutMarkers) {
+      for (let i = 0; i < outs.length; i++) {
+        assertCurrent();
+        if (outs[i] !== null) continue;
+        try {
+          const segmented = await translateSegmentsBatch(sources[i], async texts => {
+            assertCurrent();
+            const response = await translate(texts, { isolated: true });
+            assertCurrent();
+            return response;
+          });
+          if (accepts(sources[i], segmented)) outs[i] = segmented;
+        } catch {
+          assertCurrent();
+          // Un fallo sigue dejando el bloque original intacto.
+        }
+      }
+    }
+
     // Solo se cachea si TODO quedó bien: nunca se congela un fallo.
+    assertCurrent();
     if (outs.every((o) => o !== null)) await cache?.save(sources, outs as string[]);
   }
 
+  assertCurrent();
   const skipped: Element[] = [];
   let translated = 0;
   blocks.forEach((block, i) => {

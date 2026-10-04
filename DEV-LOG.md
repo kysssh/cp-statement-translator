@@ -359,3 +359,38 @@ Las capturas HTML preservan los espacios originales, incluidos los de bloques de
 - V0 registrada en commit 1c4c22c. V1 se registra separadamente. Registro del adapter, manifest, frames/UI y navegación corresponden a V2.
 - Grupos privados, virtuales y contests antes del inicio siguen pendientes de pruebas reales. Anuncios y descripción del contest fuera de alcance.
 - V1 terminada como base del adapter/core; V2 requiere confirmación del usuario.
+
+## VJudge — V2, integración y validación disponible (2026-10-04)
+
+- Registrado el adapter y content script dedicado para problem/contest/group. Un controlador en la página padre accede al iframe del mismo origen; all_frames false evita barras duplicadas. No necesita inyección en frames sin URL.
+- Identidad de contest resuelta desde tabla de origen, título y pestaña activa, comprobados contra el hash. Solo se traduce el problema abierto, con pulsación explícita.
+- Navegación A/B/A reinicia UI, espera la carga del nuevo iframe y comparte caché con la página suelta por juez/id. Cancelación y comprobación de vigencia descartan respuestas tardías antes de guardar o modificar el DOM.
+- Versiones con metadata es y heurística de español avisan sin solicitar traducción. PDF, contenido vacío, error explícito, ausencia de acceso y overview no montan botón. Imágenes permanecen originales.
+- Aviso de proveedor externo y ajuste Solo local en VJudge. Prueba con proveedor local simulado: cero mensajes TRANSLATE. No verifica instalación ni descarga del modelo local real.
+- npm run check: TypeScript y 173 pruebas en 15 archivos aprobadas, incluidas regresiones de los otros sitios y 17 pruebas nuevas de integración.
+- tools/verify-vjudge-navigation.mjs carga la extensión real en Chromium y utiliza capturas del usuario con navegación y HTTP Groq simulados. No utiliza sesión personal ni llama a proveedores reales. El informe detalla las comprobaciones y límites.
+- V08/V09 y defensas de V10/V11/V12 implementadas. V13 parcial: faltan pruebas en sesión real para grupo privado, contest propio y virtual; falta observar el cambio real del botón IA de VJudge. No se declara V2 completa ni se crea etiqueta de cierre V14.
+## VJudge — ampliación de V13 en Chromium (2026-10-04)
+
+- Ampliado tools/verify-vjudge-navigation.mjs a las ocho capturas de origen: Codeforces, AtCoder, POJ, Gym, CodeChef, HackerRank, Kattis y USACO. Los fragmentos interiores se envuelven explícitamente en #description-container para reconstruir la carcasa; no se cambian los originales.
+- Para cada origen: petición simulada, una sola barra, HTML original exacto al mostrar EN e identidad/outerHTML de fórmulas, ejemplos, código, imágenes, SVG y saltos tras traducir y alternar EN/ES.
+- Ejecución final aprobada: 17 comprobaciones, cero excepciones y cero errores de consola. Extensión y navegador reales; navegación y respuestas HTTP simuladas. Cero llamadas reales a Groq.
+- Añadida VERIFICACION-VJUDGE.md con pasos para la sesión autenticada, sin solicitar cookies ni claves. V13 permanece parcial para grupos privados, contest propio, virtual y acción real de IA de VJudge; V14 no cerrada.
+- No se modificó src en esta continuación. Se conserva la validación de 173 pruebas y build del turno anterior. node --check del verificador y git diff --check correctos.
+## VJudge — estados especiales y documentación (2026-10-04)
+
+- Verificador Chromium ampliado con cinco estados sintéticos sobre la carcasa capturada: vacío, error explícito, sin iframe/acceso, overview y español sin metadata. Ninguno aumenta el contador de peticiones; los cuatro primeros no muestran barra incluso tras polling y el último avisa antes de usar proveedor.
+- Ejecución final: 22 comprobaciones aprobadas, cero excepciones y cero errores de consola. Capturas y navegación reconstruida, HTTP Groq simulado; no prueba una sesión autenticada ni disponibilidad/calidad de proveedores.
+- README actualizado con VJudge en validación, instalación desde dist, navegación bajo demanda, caché, opción Solo local, PDF/imágenes y cobertura pendiente. El ZIP publicado v1.1.0 no incluye esta integración; no se cambian versión ni etiqueta.
+- No se modificó src. Se mantiene la base de TypeScript, 173 pruebas y build previamente aprobada. Verificador válido con node --check y diff --check correcto.
+- Todo lo verificable con las capturas disponibles queda registrado. Faltan resultados de sesión real para grupos privados, contest propio y virtual, acción de IA del sitio y modelo local real. V13 parcial y V14 parcialmente documentada, sin cierre de versión.
+## VJudge — recuperación de párrafos con fórmulas (2026-10-04)
+
+- El usuario reportó traducción funcional y PDF sin barra; detectó el primer párrafo de Alice and the Cake en inglés. No se atribuye a un proveedor concreto ni se declara observada la respuesta original de la API.
+- Confirmada cobertura del párrafo en el fixture vj-contest-a.html. Dos causas reproducidas mediante respuestas simuladas: pérdida de marcadores en ambos intentos y respuesta idéntica al texto fuente (también desde caché).
+- Pipeline con opción retryWithoutMarkers, activada solo en VJudge: tras los dos intentos normales, traduce en un lote los fragmentos de prosa y reensambla localmente los marcadores. No relaja la validación ni envía fórmulas al proveedor. Si falla o se cancela, conserva el original.
+- Respuestas idénticas con prosa dejan de aceptarse en VJudge, incluida la caché. Otros sitios conservan el comportamiento previo. El respaldo puede consumir una petición adicional por bloque fallido; los proveedores que dividen lotes pueden realizar más.
+- Seis pruebas nuevas en tests/vjudge-fallback.spec.ts con el párrafo real, identidad/HTML de fórmulas, caché, lotes incompletos, marcadores inventados y cancelación.
+- npm run check inicial: dos timeouts de pruebas existentes bajo concurrencia. Repetición con npm run check -- --maxWorkers=2 aprobada: TypeScript y 179 pruebas en 16 archivos. npm run build aprobado; dist actualizado.
+- Chromium: 23 comprobaciones aprobadas, incluida recuperación del párrafo Alice después de dos respuestas sin marcadores con la extensión real y proveedor simulado. Cero llamadas reales a Groq y cero errores de consola.
+- Pendiente confirmar el resultado con el mismo motor usado por el usuario; no se evalúa calidad real con el proveedor. El reporte manual se registra sin inferir qué variantes autenticadas probó.

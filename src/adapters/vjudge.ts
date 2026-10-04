@@ -1,3 +1,4 @@
+import { vjudgePageKey } from './vjudge-identity';
 import type { SiteAdapter } from './types';
 
 /** Selectores de las capturas de V0; documento de enunciado dentro de un iframe. */
@@ -36,6 +37,10 @@ export const vjudge: SiteAdapter = {
     };
     const direct = sourceKey(loc.href);
     if (direct) return direct;
+    if (doc) {
+      const contextual = vjudgePageKey(doc, loc);
+      if (contextual) return contextual;
+    }
     if (doc?.referrer) {
       const referrer = sourceKey(doc.referrer);
       if (referrer) return referrer;
@@ -43,7 +48,7 @@ export const vjudge: SiteAdapter = {
     try {
       const parent = doc?.defaultView?.parent;
       if (parent && parent !== doc?.defaultView) {
-        const key = sourceKey(parent.location.href);
+        const key = vjudgePageKey(parent.document, parent.location);
         if (key) return key;
       }
     } catch { /* Padre de otro origen. */ }

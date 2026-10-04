@@ -166,6 +166,10 @@ async function init() {
   renderProviders();
   renderConfig();
   $('themeSlot').replaceChildren(themeControl());
+  const localOnly = $('vjudgeLocalOnly') as HTMLInputElement;
+  const privacy = await chrome.storage.local.get('vjudgeLocalOnly');
+  localOnly.checked = privacy.vjudgeLocalOnly === true;
+  localOnly.addEventListener('change', () => { void chrome.storage.local.set({ vjudgeLocalOnly: localOnly.checked }); });
   await renderCache();
   $('clearCache').addEventListener('click', async () => {
     await clearCache();

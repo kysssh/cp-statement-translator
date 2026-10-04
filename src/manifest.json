@@ -1,9 +1,11 @@
 {
     "manifest_version": 3,
     "name": "CP Statement Translator",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Traduce Codeforces, CSES, USACO Guide y CP-Algorithms al español preservando fórmulas y código.",
-    "permissions": ["storage"],
+    "permissions": [
+        "storage"
+    ],
     "host_permissions": [
         "https://api.groq.com/*",
         "https://generativelanguage.googleapis.com/*",
@@ -11,14 +13,30 @@
         "https://api-free.deepl.com/*",
         "https://api.deepl.com/*"
     ],
-    "background": { "service_worker": "src/background/service-worker.ts", "type": "module" },
+    "background": {
+        "service_worker": "src/background/service-worker.ts",
+        "type": "module"
+    },
     "options_page": "src/options/options.html",
-    "action": { "default_title": "CP Statement Translator", "default_popup": "src/popup/popup.html" },
-    "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+    "action": {
+        "default_title": "CP Statement Translator",
+        "default_popup": "src/popup/popup.html"
+    },
+    "icons": {
+        "16": "icons/icon16.png",
+        "32": "icons/icon32.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
     "content_scripts": [
         {
-            "matches": ["https://*.codeforces.com/*", "https://cses.fi/*"],
-            "js": ["src/content/dark-entry.ts"],
+            "matches": [
+                "https://*.codeforces.com/*",
+                "https://cses.fi/*"
+            ],
+            "js": [
+                "src/content/dark-entry.ts"
+            ],
             "run_at": "document_start"
         },
         {
@@ -30,14 +48,32 @@
                 "https://*.codeforces.com/problemset/gymProblem/*",
                 "https://cses.fi/problemset/task/*"
             ],
-            "js": ["src/content/index.ts"],
+            "js": [
+                "src/content/index.ts"
+            ],
             "run_at": "document_idle"
         },
         {
-            "matches": ["https://usaco.guide/*", "https://cp-algorithms.com/*"],
-            "js": ["src/content/docs.ts"],
+            "matches": [
+                "https://usaco.guide/*",
+                "https://cp-algorithms.com/*"
+            ],
+            "js": [
+                "src/content/docs.ts"
+            ],
             "run_at": "document_idle"
+        },
+        {
+            "matches": [
+                "https://vjudge.net/problem/*",
+                "https://vjudge.net/contest/*",
+                "https://vjudge.net/group/*"
+            ],
+            "js": [
+                "src/content/vjudge.ts"
+            ],
+            "run_at": "document_idle",
+            "all_frames": false
         }
     ]
 }
-

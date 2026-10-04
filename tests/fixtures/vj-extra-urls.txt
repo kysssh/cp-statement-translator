@@ -1,0 +1,12 @@
+url de un grupo:
+https://vjudge.net/group/clubespc
+
+Contest terminado del mismo grupo:
+https://vjudge.net/contest/805156
+
+Problemas del contest:
+https://vjudge.net/contest/805156#problem
+
+problema A del contest:
+https://vjudge.net/contest/805156#problem/A
+

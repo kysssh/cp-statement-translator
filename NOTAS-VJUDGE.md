@@ -156,3 +156,28 @@ No se debe presentar ese fallback como cumplimiento completo de esa regla V05.
 Verificación: npm run check (TypeScript y 156 pruebas, 14 archivos),
 npm run build correcto, git diff --check correcto.
 V1 terminada como base de extracción/protección. V2 pendiente de confirmación.
+
+## V2 — integración disponible y límites (2026-10-04)
+
+El controlador src/content/vjudge-controller.ts monta una sola barra en el padre y lee el iframe mismo origen. La tabla del contest, título y pestaña permiten comprobar juez/id y compartir caché con la página suelta. Navegar invalida peticiones; el problema nuevo requiere pulsar Traducir. Se ofrecen aviso de proveedor externo y ajuste Solo local en VJudge.
+
+Validación: 173 pruebas aprobadas en 15 archivos. tools/vjudge-navigation-report.json registra la extensión real con capturas servidas por CDP, navegación reconstruida y Groq simulado; no demuestra el comportamiento de la aplicación remota autenticada. PDF UVA se excluye; estados vacío/error/sin acceso y heurística de español tienen pruebas explícitas.
+
+V13 sigue parcial: grupos privados, contest propio y virtual requieren sesión real. Tampoco se observó la acción real de la IA de VJudge; la defensa se verifica sobre metadata es y contenido español. El traductor local fue simulado, sin verificar su modelo instalado. No se ejecuta V14 hasta cubrir o acordar estos límites.
+
+Política Groq consultada el 2026-10-04: no conserva por defecto datos de inferencia, pero puede registrar entradas/salidas por fiabilidad o abuso hasta 30 días; ofrece controles ZDR. No usa entradas/salidas para entrenar sin autorización explícita. Fuentes: https://console.groq.com/docs/your-data y https://console.groq.com/docs/legal/services-agreement. La opción local evita enviar el enunciado al proveedor; la caché queda en chrome.storage.local y puede borrarse desde Opciones.
+### Ampliación del navegador a todos los orígenes
+
+El informe tools/vjudge-navigation-report.json ahora contiene 17 comprobaciones aprobadas: las nueve de integración y ocho de preservación por origen (Codeforces, AtCoder, POJ, Gym, CodeChef, HackerRank, Kattis y USACO). Se compara HTML original exacto en EN y las mismas instancias/outerHTML de opacos tras EN/ES. No son pruebas de navegación remota: los fragmentos se envuelven en la raíz #description-container y se sirven mediante CDP en la carcasa reconstruida.
+
+Pasos para completar las pruebas autenticadas en VERIFICACION-VJUDGE.md. Continúan pendientes las variantes privadas/propias/virtuales y observar la IA del sitio. La cobertura automática no reemplaza esas filas.
+### Estados especiales en Chromium y README
+
+El informe suma 22 comprobaciones aprobadas. Los cinco casos nuevos son sintéticos: vacío, error explícito, iframe ausente/sin acceso, overview y español sin metadata. No se solicitan traducciones; los estados no traducibles permanecen sin barra tras un ciclo de polling. No equivalen a comprobar permisos o un contest antes del inicio en la aplicación real.
+
+README documenta el uso de la rama actual y diferencia dist del ZIP publicado v1.1.0. No se cambian versión/etiqueta: V13 sigue parcial y V14 solo tiene su parte documental adelantada.
+### Reporte del usuario y párrafo Alice
+
+El usuario confirma traducción funcional y ausencia de barra en PDF. Reporta un primer párrafo en inglés en Alice and the Cake, mientras el siguiente se traduce. No se especificó el proveedor ni el conjunto exacto de variantes probado.
+
+El párrafo está cubierto por la extracción. Se añadió respaldo optativo de VJudge para respuestas con marcadores dañados o idénticas al inglés: traducir solo fragmentos de prosa en lote y reconstruir los marcadores localmente. Se conservan validación, identidad de fórmulas y cancelación. 179 pruebas y 23 comprobaciones en Chromium aprobadas; la recuperación se prueba con respuestas simuladas. dist recompilado para repetir la prueba del usuario.

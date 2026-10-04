@@ -1,0 +1,139 @@
+{
+  "capturedAt": "2026-10-04T20:27:56.772Z",
+  "browser": "C:/Users/PERCY/AppData/Local/ms-playwright/chromium-1243/chrome-win64/chrome.exe",
+  "extension": "C:\\Users\\PERCY\\OneDrive\\Documentos\\Proyectos\\cp-statement-translator\\dist",
+  "translation": "Extensión real; HTML de capturas servido por CDP, navegación simulada y HTTP de Groq simulado. No verifica sesión real ni aplicación remota.",
+  "checks": [
+    {
+      "name": "Barra única en página padre y acceso a iframe real mismo origen",
+      "passed": true
+    },
+    {
+      "name": "Traducción con content script, mensajes y service worker reales",
+      "passed": true
+    },
+    {
+      "name": "Alternancia EN/ES",
+      "passed": true
+    },
+    {
+      "name": "Capturas de barra con tema claro y oscuro",
+      "passed": true
+    },
+    {
+      "name": "A/B/A: cambio reinicia UI; regreso usa caché sin nueva petición",
+      "passed": true
+    },
+    {
+      "name": "Versión es: aviso sin llamada",
+      "passed": true
+    },
+    {
+      "name": "PDF real de UVA sin botón",
+      "passed": true
+    },
+    {
+      "name": "Ruta de problema suelto comparte caché de origen con contest (carcasa reconstruida)",
+      "passed": true
+    },
+    {
+      "name": "Respuesta tardía de A descartada tras navegar a B",
+      "passed": true
+    },
+    {
+      "name": "Captura codeforces: traducción, HTML original EN e identidad de opacos EN/ES",
+      "passed": true
+    },
+    {
+      "name": "Captura atcoder: traducción, HTML original EN e identidad de opacos EN/ES",
+      "passed": true
+    },
+    {
+      "name": "Captura poj: traducción, HTML original EN e identidad de opacos EN/ES",
+      "passed": true
+    },
+    {
+      "name": "Captura gym: traducción, HTML original EN e identidad de opacos EN/ES",
+      "passed": true
+    },
+    {
+      "name": "Captura codechef: traducción, HTML original EN e identidad de opacos EN/ES",
+      "passed": true
+    },
+    {
+      "name": "Captura hackerrank: traducción, HTML original EN e identidad de opacos EN/ES",
+      "passed": true
+    },
+    {
+      "name": "Captura kattis: traducción, HTML original EN e identidad de opacos EN/ES",
+      "passed": true
+    },
+    {
+      "name": "Captura usaco: traducción, HTML original EN e identidad de opacos EN/ES",
+      "passed": true
+    },
+    {
+      "name": "Estado sintético empty: sin petición y UI adecuada",
+      "passed": true
+    },
+    {
+      "name": "Estado sintético error: sin petición y UI adecuada",
+      "passed": true
+    },
+    {
+      "name": "Estado sintético no-access: sin petición y UI adecuada",
+      "passed": true
+    },
+    {
+      "name": "Estado sintético overview: sin petición y UI adecuada",
+      "passed": true
+    },
+    {
+      "name": "Estado sintético spanish-text: sin petición y UI adecuada",
+      "passed": true
+    },
+    {
+      "name": "Alice: dos respuestas sin marcadores recuperadas mediante fragmentos, fórmulas intactas",
+      "passed": true
+    }
+  ],
+  "exceptions": [],
+  "consoleErrors": [],
+  "worker": {
+    "targetId": "AD7CEF69416C987A67A0074E6D0E42F2",
+    "type": "service_worker",
+    "title": "Service Worker chrome-extension://cfbmlgbpgkidijcclpbkelmnojbfllnm/service-worker-loader.js",
+    "url": "chrome-extension://cfbmlgbpgkidijcclpbkelmnojbfllnm/service-worker-loader.js",
+    "attached": false,
+    "canAccessOpener": false,
+    "browserContextId": "41B82EB3C7ED0DA918329C95B23FDA61"
+  },
+  "browserVersion": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/153.0.8010.12",
+    "revision": "@971a7443b0c9b0a9b2860529b33331b76077ec62",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "jsVersion": "15.3.76.4"
+  },
+  "extensionOrigin": "chrome-extension://cfbmlgbpgkidijcclpbkelmnojbfllnm",
+  "localOnly": "Verificado en tests/vjudge-integration.spec.ts con proveedor local simulado y cero mensajes TRANSLATE.",
+  "requestCount": 14,
+  "blockCounts": [
+    21,
+    15,
+    21,
+    18,
+    19,
+    6,
+    11,
+    25,
+    25,
+    24,
+    16,
+    21,
+    1,
+    8
+  ],
+  "intercepted": 181,
+  "passed": true
+}

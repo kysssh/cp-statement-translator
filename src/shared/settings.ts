@@ -42,3 +42,9 @@ export async function getThemeMode(): Promise<ThemeMode> {
 export async function setThemeMode(mode: ThemeMode): Promise<void> {
   await chrome.storage.local.set({ [THEME_KEY]: mode });
 }
+
+/** Impide usar proveedores externos en VJudge, sin leer API keys. */
+export async function getVjudgeLocalOnly(): Promise<boolean> {
+  const { vjudgeLocalOnly } = await chrome.storage.local.get('vjudgeLocalOnly');
+  return vjudgeLocalOnly === true;
+}
