@@ -38,6 +38,7 @@ export async function translateBySegments(
 export async function translateSegmentsBatch(
   text: string,
   translateMany: (texts: string[]) => Promise<string[]>,
+  options: { preserveFailed?: boolean; onUntranslated?: () => void } = {},
 ): Promise<string> {
   const re = tokenRegex();
   const parts: { source: string; index?: number }[] = [];
@@ -55,7 +56,29 @@ export async function translateSegmentsBatch(
   }
   addText(text.slice(cursor));
   if (!sources.length) return text;
-  const outs = await translateMany(sources);
+  let outs: string[];
+  try {
+    outs = await translateMany(sources);
+  } catch (error) {
+    if (!options.preserveFailed) throw error;
+    outs = [];
+  }
+  const valid = (out: string | undefined): out is string =>
+    !!out?.trim() && !/[⟦⟧]/.test(out) && !out.includes('$$$');
+  if (options.preserveFailed) {
+    // Un lote incompleto no permite asociar con seguridad las respuestas.
+    if (outs.length !== sources.length) outs = [];
+    for (let i = 0; i < sources.length; i++) {
+      if (valid(outs[i]) && outs[i].trim() !== sources[i]) continue;
+      try {
+        const retry = await translateMany([sources[i]]);
+        outs[i] = retry.length === 1 && valid(retry[0]) ? retry[0] : sources[i];
+      } catch {
+        outs[i] = sources[i];
+      }
+      if (outs[i].trim() === sources[i]) options.onUntranslated?.();
+    }
+  }
   if (outs.length !== sources.length || outs.some(out =>
       !out.trim() || tokenRegex().test(out) || /⟦|⟧/.test(out))) {
     throw new Error('El respaldo no devolvió todos los fragmentos de texto sin marcadores.');

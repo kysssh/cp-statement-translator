@@ -19,6 +19,7 @@ export interface BlockCache {
 export interface PipelineResult {
   translated: number;
   skipped: Element[];
+  partial: Element[];
   fromCache: boolean;
 }
 
@@ -32,7 +33,7 @@ export async function translateBlocks(
   cfg: ProtectionConfig,
   translate: TranslateFn,
   cache?: BlockCache,
-  options: { signal?: AbortSignal; isCurrent?: () => boolean; retryWithoutMarkers?: boolean } = {},
+  options: { signal?: AbortSignal; isCurrent?: () => boolean; retryWithoutMarkers?: boolean; preserveFailedSegments?: boolean } = {},
 ): Promise<PipelineResult> {
   const assertCurrent = () => {
     if (options.signal?.aborted || (options.isCurrent && !options.isCurrent())) {
@@ -47,6 +48,7 @@ export async function translateBlocks(
 
   let outs: (string | null)[] | null = null;
   let fromCache = false;
+  const partialIndices = new Set<number>();
 
   // La caché nunca se da por buena sin revalidar.
   const cached = await cache?.load(sources);
@@ -81,19 +83,27 @@ export async function translateBlocks(
       }
     }
 
-    // VJudge: último respaldo sin exponer marcadores al proveedor.
+    // Último respaldo sin exponer marcadores al proveedor.
     if (options.retryWithoutMarkers) {
       for (let i = 0; i < outs.length; i++) {
         assertCurrent();
         if (outs[i] !== null) continue;
         try {
+          let incomplete = false;
           const segmented = await translateSegmentsBatch(sources[i], async texts => {
             assertCurrent();
             const response = await translate(texts, { isolated: true });
             assertCurrent();
             return response;
+          }, {
+            preserveFailed: options.preserveFailedSegments,
+            onUntranslated: () => { incomplete = true; },
           });
-          if (accepts(sources[i], segmented)) outs[i] = segmented;
+          assertCurrent();
+          if (accepts(sources[i], segmented)) {
+            outs[i] = segmented;
+            if (incomplete) partialIndices.add(i);
+          }
         } catch {
           assertCurrent();
           // Un fallo sigue dejando el bloque original intacto.
@@ -103,11 +113,12 @@ export async function translateBlocks(
 
     // Solo se cachea si TODO quedó bien: nunca se congela un fallo.
     assertCurrent();
-    if (outs.every((o) => o !== null)) await cache?.save(sources, outs as string[]);
+    if (!partialIndices.size && outs.every((o) => o !== null)) await cache?.save(sources, outs as string[]);
   }
 
   assertCurrent();
   const skipped: Element[] = [];
+  const partial: Element[] = [];
   let translated = 0;
   blocks.forEach((block, i) => {
     const out = outs![i];
@@ -119,8 +130,13 @@ export async function translateBlocks(
     }
     // El fragmento se construye ANTES de vaciar el bloque (restore mueve nodos).
     block.replaceChildren(restore(out, extractions[i].slots));
+    if (partialIndices.has(i)) {
+      partial.push(block);
+      block.classList.add('cpt-skipped');
+      block.setAttribute('title', 'Algunos fragmentos se conservaron en su idioma original');
+    }
     translated++;
   });
 
-  return { translated, skipped, fromCache };
+  return { translated, skipped, partial, fromCache };
 }

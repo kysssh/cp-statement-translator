@@ -72,6 +72,7 @@ async function translate(adapter: SiteAdapter, root: HTMLElement) {
       adapter.protection,
       makeTranslate(provider, key),
       storageCache(key, provider),
+      { retryWithoutMarkers: adapter.id === 'codeforces', preserveFailedSegments: adapter.id === 'codeforces' },
     );
 
     view = createView(blocks, snapshot, result.skipped);
@@ -80,6 +81,9 @@ async function translate(adapter: SiteAdapter, root: HTMLElement) {
       note:
         [
           result.fromCache ? 'Desde la caché.' : '',
+          result.partial.length
+            ? `${result.partial.length} bloque(s) se tradujeron parcialmente; solo los fragmentos que fallaron siguen en inglés (borde punteado).`
+            : '',
           result.skipped.length
             ? `${result.skipped.length} bloque(s) se dejaron en inglés por seguridad (borde punteado).`
             : '',
